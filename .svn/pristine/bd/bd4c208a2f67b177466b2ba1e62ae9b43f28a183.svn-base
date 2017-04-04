@@ -1,0 +1,25 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"ccimagetypemaster",
+"Columns":[
+		{
+        	"table":"ccimagetypemaster",
+            "dbcol":"imageTypeId",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+		{
+        	"table":"ccimagetypemaster",
+            "dbcol":"imageId",
+			"dbdatatype":"int",
+            "csvindex":"2"
+        },
+	
+		{
+        	"table":"ccimagetypemaster",
+            "dbcol":"imageType",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        }
+	]
+}

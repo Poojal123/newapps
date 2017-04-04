@@ -1,0 +1,11 @@
+<?php
+
+class JLA_model extends CI_Model {
+
+        public function importData($csvname)
+        {
+		        return $csvname;
+        }
+
+}
+?>

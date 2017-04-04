@@ -1,0 +1,111 @@
+<div class="container-fluid">
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Report</h3></div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">         
+			<form class="form" role="form" action="{{url}}" method="get" target="_blank" >
+               <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                        <label >Range From</label>
+                        <input type="number" class="form-control" ng-model="rangeFrom" ng-blur="updateRange()"  />
+                    </div>
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                        <label >Range To</label>
+                        <input type="number" class="form-control" ng-model="rangeTo" ng-blur="updateRange()"/>
+                    </div>
+               </div>
+
+				<div>OR</div>
+                
+               <div class="row" >
+                    <div class="form-group col-md-9" ><!--ng-if="reportType!=''"-->
+						<textarea class="form-control" rows="5" ng-model="appRefNos"></textarea>
+                    </div>
+               </div>
+               <br /> 
+		            
+               <div class="row" >
+                     <div class="form-group col-md-12">
+	                    <div class="col-md-3"><button class="btn btn-lg btn-primary " type="button" ng-click="gen()" >Generate DAT</button></div>       	                    <div class="col-md-3"><button class="btn btn-lg btn-primary " type="button" ng-click="getCsv()" >
+                        Generate CSV</button></div>       
+
+                    </div>    
+				</div>
+
+            </form>
+		</div>
+  </div> 
+      <div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+					<div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="ICIC_CC_InFile{{outputdate | date:'ddMMyyyyhmmssa'}}.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form"  method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div ><!--id="scrollable-area"-->
+                 <table class="table table-striped" ng-table="tableParams" show-filter="false" export-csv="csv" separator=",">
+                     <tr ng-repeat="report in $data">
+			           <td  scope="row"  title="'APP_NO'" filter="{ APP_NO: 'text'}" sortable="'APP_NO'" align="center" width="250px">
+                       	{{report.AppSerialNo}}</td>
+                        <td  scope="row"  title="'APP_FIRSTNAME'" filter="{ APP_FIRSTNAME: 'text'}" sortable="'APP_FIRSTNAME'" align="center" width="250px">
+                       	{{report.yourFirstName}}</td>
+                        <td  scope="row"  title="'APP_LASTTNAME'" filter="{ APP_LASTTNAME: 'text'}" sortable="'APP_LASTTNAME'" align="center" width="250px">
+                       	{{report.yourLastName}}</td>
+                        <td  scope="row"  title="'APP_DOB'" filter="{ APP_DOB: 'text'}" sortable="'APP_DOB'" align="center" width="250px">
+                       	{{report.dateOfBirth}}</td>
+                        <td  scope="row"  title="'DMA_CITY'" filter="{ DMA_CITY: 'text'}" sortable="'DMA_CITY'" align="center" width="250px">
+                       	{{report.dmaCity}}</td>
+                        <td  scope="row"  title="'DMA_ID'" filter="{ DMA_ID: 'text'}" sortable="'DMA_ID'" align="center" width="250px">
+                       	{{report.dmaId}}</td>
+                        <td  scope="row"  title="'DME_ID'" filter="{ DME_ID: 'text'}" sortable="'DME_ID'" align="center" width="250px">
+                       	{{report.dmeId}}</td>
+                       
+                       
+                        
+                        
+                     </tr>
+     
+                 </table>
+			    </div>
+                                  </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

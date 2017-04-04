@@ -1,0 +1,49 @@
+
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-6">
+         <div class="card">
+            <div class="header">
+               <h4 class="chart-title">Image Rename</h4>
+            </div>
+            <div class="content">
+               <form method="post" name="form1" ng-submit="subForm(formdata.file)" >
+                  <div class="row">
+                     <div class="col-md-10">
+                        <div class="form-group">
+                           <label>Job No.</label>
+                           <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+                        </div>
+                     </div>
+                     <div class="col-md-2">
+                        <div class="form-group">
+                           <br>
+                           <button type="submit" name="import" id="import" ng-click="import1()" class="btn btn-info btn-fill btn-wd">Import</button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+               <script type="text/ng-template" id="checkboxheader.html">
+                  <input type="checkbox" ng-click="selectAll()">
+               </script>
+               <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                  <tr ng-repeat="filename in $data">
+                     <td scope="row" width="100px" align="center" data-header="'checkboxheader.html'">
+                        <input type="checkbox" ng-model="filename.isSelected"> 
+                     </td>
+                     <td scope="row" title="'File Name'"  filter="{fileName: 'text'}" sortable="'fileName'" align="left">{{filename}}</td>
+                     </td>
+                  </tr>
+               </table>
+               ----{{$data}}----
+            </div>
+         </div>
+      </div>
+   </div>
+   <hr>
+   <p class="small text-muted">
+      <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+   </p>
+</div>
+

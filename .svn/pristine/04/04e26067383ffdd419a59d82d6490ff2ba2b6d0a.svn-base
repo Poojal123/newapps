@@ -1,0 +1,48 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_schemepromotion",
+"Columns":[
+		{
+        	"table":"plde_schemepromotion",
+            "dbcol":"schemeId",
+			"dbdatatype":"int",
+            "csvindex":"1",
+			"header":"SCHEMEID"
+        },
+        {
+        	"table":"plde_schemepromotion",
+            "dbcol":"schemeDesc",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"SCHEMEDESC"
+        },
+        {
+        	"table":"plde_schemepromotion",
+            "dbcol":"promotionId",
+			"dbdatatype":"int",
+            "csvindex":"3",
+			"header":"PROMOTIONID"
+        },
+        {
+        	"table":"plde_schemepromotion",
+            "dbcol":"promotionDesc",
+			"dbdatatype":"string",
+            "csvindex":"4",
+			"header":"PROMOTIONDESC"
+        },
+        {
+        	"table":"plde_schemepromotion",
+            "dbcol":"schemeStartDate",
+			"dbdatatype":"string",
+            "csvindex":"5",
+			"header":"SCHEME_START_DATE"
+        },
+		{
+        	"table":"plde_schemepromotion",
+            "dbcol":"schemeEndDate",
+			"dbdatatype":"string",
+            "csvindex":"6",
+			"header":"SCHEME_END_DATE"
+        }
+	]
+}

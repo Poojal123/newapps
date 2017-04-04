@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" id={{section.sectionId}}>
+
+                <div class="header">
+                
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+					
+                <div class="content">
+               
+					<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                        	<div class="row" >
+                            	<div class="col-md-4" ng-repeat="field in rowFields track by $index" >
+                                	<div class="form-group">
+                                    
+                                    <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</br>
+                                    	
+                                    </label>
+                                        
+                                    <label class="col-md-12" ng-if="field.fieldType=='MaskDate'">{{field.fieldName}}
+                                 		<input 
+                                  			ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  			class = "form-control" 
+                                        	type = "text"
+                                        	id = "field.model"
+                                        	ng-model = "formdata[field.model]"
+                                        	value = "" 	
+                                        	ng-blur = "fireEvent(field.model)"
+                                        	ng-change = "validateSplChar(field.model)"
+                                        	placeholder = "MM/YYYY"
+                                  			mask ="19/2999"
+                                        />
+                                		<!--<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />-->
+                                	</label>
+                                     <label ng-if="field.fieldType=='Radio'">
+                <vc-radio  model= "formdata[field.model]" value="{{field.fieldName}}" label="{{field.fieldName}}" name="{{field.metaInfo.name}}"></vc-radio>
+                                    	<!--<vc-radio  
+                                        	model= "field.model" 
+                                            value="{{field.fieldName}}" 
+                                            label="{{field.fieldName}}" 
+                                            name="{{field.metaInfo.name}}">
+                                        </vc-radio>-->
+                                   	</label>
+                                
+                                	<label class="col-md-12" ng-if="field.fieldType=='Calendar'" >{{field.fieldName}}
+                                		<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                	</label>
+                               	</div>
+                          	</div>
+                       	</div>
+					</span>
+
+                    <br>
+                	<button type="submit" ng-click="report()" class="btn btn-lg btn-primary">Submit</button>
+                </form>
+        	</div>
+            </div>
+        </div>
+    </div>
+
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+                    <div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="chequeBookRequest.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">       
+                 <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div class="scrollable-area">
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" >	                 
+                     <tr ng-repeat="misreport in $data"> 
+                      <td scope="row" title="'Entry Date'" filter="{EntryDate: 'text'}" sortable="'EntryDate'" align="center" width="250px">  
+                      {{misreport.EntryDate | date:'MM/dd/yyyy'}}                  
+                        </td>
+                     <td scope="row" title="'Payee Name Capture'" filter="{countPayee: 'text'}" sortable="'countPayee'" align="center" width="250px">  
+                        {{misreport.countPayee}}                  
+                    </td>
+                	<td scope="row" title="'Drwaee Name Capture'" filter="{countDrawee: 'text'}" sortable="'countDrawee'" align="center" width="250px">  
+                        {{misreport.countDrawee}}                  
+                    </td>
+                    <td scope="row" title="'SOLID Capture'" filter="{countSolId: 'text'}" sortable="'countSolId'" align="center" width="250px">  
+                        {{misreport.countSolId}}                  
+                    </td>
+                 </table>
+			    </div>
+                 </form>      
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

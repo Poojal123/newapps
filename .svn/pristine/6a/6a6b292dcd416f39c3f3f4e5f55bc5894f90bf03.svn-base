@@ -1,0 +1,82 @@
+// JavaScript Document
+
+// 1. FILE UPLOAD
+// 2. BATCH CREATE
+// 3. IMPORT CALL
+
+bpoApps.controller("JLA_uploadController",function($scope,Sections,Fields,Upload,$timeout,toastr,CORE_CONFIG,WEB_API,Batch,CSVImport)
+{	
+	$scope.logs = "";
+	$scope.currentFileName = "";
+	$scope.currentRow = 0;
+	$scope.formdata = {
+			file: "",
+			folder:""
+	};
+		
+		
+	$scope.uploadFiles=[{json:"jalLiveCount",file:"flModel",heading:"Live Count"},{json: "jalAuditAppraiser",file:"flModel",heading:"Audit Appraiser"},{json: "jalBranchCluster",file:"flModel",heading:"Branch Cluster"},{json: "jalCourierMaster",file:"flModel",heading:"Courier Master"},{json:"jalGoldRate",file:"flModel",heading:"Gold Rate"}];	
+		
+	$scope.file = Upload;	
+
+
+	$scope.liveCount1 = function(i,file){
+				console.log("fileee-"+JSON.stringify(file))
+		
+				$scope.formdata = {
+						 "file":file,
+						 "folder":"JLA_IMPORT_CSV"
+					};
+					
+				$scope.file.upload = Upload.upload({
+				  url: CORE_CONFIG.WEB_SERVICE+WEB_API.UPLOAD,
+				  data: $scope.formdata,
+				});
+			
+				$scope.file.upload.then(function (response) {
+					
+					if(response.data.status == "success"){
+						$scope.logs += "CSV Uploaded successfully.";
+						$scope.currentFileName = response.data.result.upload_data.file_name;
+						
+						// GET BATCH ID GENERATED
+						
+								// INITIATE IMPORT WEB SERVICE FOR BATCH ID AND UPLOADD FILE
+								var arrFile = $scope.currentFileName.split(".");
+								$scope.currentFileName = arrFile[0];
+						
+								$scope.csv = CSVImport.get({"file":$scope.currentFileName,"folderId":"JLA_IMPORT_CSV","json":$scope.uploadFiles[i].json});
+								$scope.csv.$promise.then(function(result){		
+									console.log(JSON.stringify(result));
+									$scope.logs += "\n"+result.result.totalRows+" records imported successfully.";									
+									toastr.success('Jewel Loan Audit CSV Imported Successfully ', 'Done')
+							});	
+						
+						
+						
+					}else{
+						console.log("ERROR");	
+					}
+					
+					$scope.file = Upload;	
+				
+				}, function (response) {
+					
+				  if (response.status > 0){
+					//$scope.errorMsg = response.status + ': ' + response.data;
+				  	//$timeout($scope.progressbar.complete(), 1000);	
+
+				  }
+				}, function (evt) {
+				
+				  	//$timeout($scope.progressbar.complete(), 1000);	
+                    //file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				
+				});
+
+		
+	}
+
+	
+});
+

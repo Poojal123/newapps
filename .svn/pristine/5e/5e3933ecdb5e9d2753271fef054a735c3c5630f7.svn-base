@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+	<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>
+	<div class="row">
+    	<div class="col-sm-12" ng-repeat="section in sections">
+         	<div class="card" id={{section.sectionId}}>
+            	<div class="content">
+                	<form method="post" name="form1" ng-submit="ChangeDate()">
+                    	<div class="row">
+                        	<div class="col-md-6" >
+                                  <strong>{{section.sectionName}}</strong>
+                            </div>          
+    					</div>	
+                          <hr />  
+                      	<span ng-repeat="rowFields in section.sortedFields track by $index">
+                        	<div class="row">
+                    			<div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                           			<br />
+                                	<label class="col-md-12" ng-if="field.fieldType=='MaskDate'" >{{field.fieldName}}
+                           				<input 
+                                  			ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  			class = "form-control" 
+                                    		type = "text"
+                                    		id = "field.model"
+                                    		ng-model = "formdata[field.model]"
+                                    		value = "" 	
+                                    		ng-blur = "fireEvent(field.model)"
+                                    		ng-change = "validateSplChar(field.model)"
+                                    		placeholder = "MM/DD/YYYY"
+                                  			mask ="19/29/2999"     
+                            			/>
+                        			</label>
+									<label class="col-md-12" ng-if="field.fieldType=='Calendar'" >{{field.fieldName}}
+                                		<input my-datepicker format="{{format}}" type="text" ng-change="change(field.model)" ng-model="formdata[field.model]" id="myDP" />
+                                	</label>
+                     			</div>
+                          </div>
+                     </span><hr />	
+               	<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </form>
+   </div>
+   </div>
+   <hr>
+   <p class="small text-muted">
+      <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+   </p>
+</div>
+</div>
+</div>

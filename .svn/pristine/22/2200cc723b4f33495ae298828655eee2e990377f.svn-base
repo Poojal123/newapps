@@ -1,0 +1,81 @@
+{
+"Name":"Import JLA",
+"PrimaryTable":"jlabranchmaster",
+"Columns":[
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"solId",
+	    "dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+            "table":"jlabranchmaster",
+            "dbcol":"branchName",
+	    "dbdatatype":"string",
+            "csvindex":"2"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"region",
+	    "dbdatatype":"string",
+            "csvindex":"3"
+        },
+
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"zone",
+	    "dbdatatype":"string",
+            "csvindex":"4"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"category",
+	    "dbdatatype":"string",
+            "csvindex":"5"
+        },
+ 
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"branchEmailId",
+	    "dbdatatype":"string",
+            "csvindex":"6"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"ProcessManagerName",
+	    "dbdatatype":"string",
+            "csvindex":"7"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"clusterManagerEmailId",
+	    "dbdatatype":"string",
+            "csvindex":"8"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"branchId",
+	    "dbdatatype":"string",
+            "csvindex":"9"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"clusterManagerContactNo",
+	    "dbdatatype":"string",
+            "csvindex":"10"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"CCEmailIds",
+	    "dbdatatype":"string",
+            "csvindex":"11"
+        },
+	{
+            "table":"jlabranchmaster",
+            "dbcol":"fromEmialID",
+	    "dbdatatype":"string",
+            "csvindex":"12"
+        }
+
+	]
+}

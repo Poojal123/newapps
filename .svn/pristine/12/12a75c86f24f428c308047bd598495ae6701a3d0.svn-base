@@ -1,0 +1,75 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		{
+            "dbcol":"Title",
+			"TitleName":"",
+			"spaces":"1"
+        },
+		{
+            "dbcol":"clgDate",
+			"TitleName":"",
+			"spaces":"1"
+        },
+		{
+            "dbcol":"lotNumber",
+			"TitleName":"LOT: ",
+			"spaces":"1"
+        },
+		{
+            "dbcol":"batchId",
+			"TitleName":"BATCH: ",
+			"spaces":"1"
+        }
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"accountNumber2",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"INRAccountNumber",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"flagC",
+			"header":"",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"amountCheaqueNumberShortbankName",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"",
+			"spaces":"80"
+        },
+		{
+            "dbcol":"draweeName",
+			"header":"",
+			"spaces":"1"
+        }
+	],
+	"Totals":[
+		{
+            "dbcol":"totalRecord",
+			"header":"TOTAL RECORD : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalAmount",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"Title2",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        }
+	]
+}

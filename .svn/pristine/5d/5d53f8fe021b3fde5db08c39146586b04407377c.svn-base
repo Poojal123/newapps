@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="card">
+
+                <div class="header">
+                    <h4 class="chart-title">Upload</h4>
+                </div>
+
+                <div class="content">
+                   <div ng-repeat="uploadfile in uploadFiles track by $index" >
+                            
+                    <form method="post" name="liveCount" ng-submit="liveCount1($index,uploadfile.file)">
+						<label>{{uploadfile.heading}}</label>
+				
+                          <div class="row" >
+                            <div class="col-md-8" >
+                                <div class="form-group">
+                                
+                                    <div class="row" >
+                                    <div class="col-md-6">
+                                        
+                                    <label>Select File
+                                     <input 
+	                                    type="file" 
+                                    	style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                     	ng-model="uploadfile.file"
+                                        name="file"
+                                        ngf-model-invalid="errorFile"
+                                        ngf-select
+                                        /><br>
+                                          <i ng-show="form.file.$error.maxSize">File too large 
+                                              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                     </label>   
+                                   </div>
+                                   <div class="col-md-6">
+                                    
+                                     <button 
+                                     	type="submit" 
+                                        class="btn btn-info btn-fill btn-wd" 
+                                        >Upload</button>
+                                       </div>
+                                       </div>
+                                </div>
+
+                          	</div>
+                             </div>
+						<hr>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>           
+            </div>
+                  <label class="col-md-12" >Logs  
+                      <textarea
+                        class="form-control" rows="3"
+                        ng-model="logs">
+                  </textarea>  
+ 				</label>
+                 
+        </div>
+    </div>
+
+
+
+
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

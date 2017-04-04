@@ -1,0 +1,531 @@
+<div class="container-fluid">
+
+
+	<div class="row">
+    	
+    	<div class="col-sm-6" >
+
+		    <!-- ACCOMODATION DETAILS -->
+        
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Accomodation Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileAcco,
+                            														masterTbl.fileAcco,
+                                                                                    fileObjects.fileAcco,
+                                                                                    fileData.fileAcco,
+                                                                                    serverFile.fileAcco,
+                                                                                    masterTbl.fileAcco,
+                                                                                    'Accomodation'
+                                                                                    )" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileAcco"
+                                                name="fileAcco"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileAcco"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+ 		   <!-- COMPANY NATURE-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Company Nature Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileCompNature,
+                            														masterTbl.fileCompNature,
+                                                                                    fileObjects.fileCompNature,
+                                                                                    fileData.fileCompNature,
+                                                                                    serverFile.fileCompNature,
+                                                                                    masterTbl.fileCompNature,
+                                                                                    'Company Nature')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileCompNature"
+                                                name="fileCompNature"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileCompNature"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+ 		   <!-- CUST CATEGORY-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Company Customer Category</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileCustCategory,
+                            														masterTbl.fileCustCategory,
+                                                                                    fileObjects.fileCustCategory,
+                                                                                    fileData.fileCustCategory,
+                                                                                    serverFile.fileCustCategory,
+                                                                                    masterTbl.fileCustCategory,
+                                                                                    'Customer Category')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileCustCategory"
+                                                name="fileCustCategory"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileCustCategory"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 		   <!-- DESIGNATION-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Company Designation</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileDesignation,
+                            														masterTbl.fileDesignation,
+                                                                                    fileObjects.fileDesignation,
+                                                                                    fileData.fileDesignation,
+                                                                                    serverFile.fileDesignation,
+                                                                                    masterTbl.fileDesignation,
+                                                                                    'Company Nature')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileDesignation"
+                                                name="fileDesignation"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileDesignation"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 		   <!-- COMPANY OCCUPATION TYPE-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Occupation Type</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileOccupationType,
+                            														masterTbl.fileOccupationType,
+                                                                                    fileObjects.fileOccupationType,
+                                                                                    fileData.fileOccupationType,
+                                                                                    serverFile.fileOccupationType,
+                                                                                    masterTbl.fileOccupationType,
+                                                                                    'Occupation Type')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileOccupationType"
+                                                name="fileOccupationType"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileOccupationType"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 		   <!-- PROFESSION-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Profession Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileProfession,
+                            														masterTbl.fileProfession,
+                                                                                    fileObjects.fileProfession,
+                                                                                    fileData.fileProfession,
+                                                                                    serverFile.fileProfession,
+                                                                                    masterTbl.fileProfession,
+                                                                                    'Profession')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileProfession"
+                                                name="fileProfession"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileProfession"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 		   <!-- PRO QUALIFICATION-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Pro Qualification Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileProQualification,
+                            														masterTbl.fileProQualification,
+                                                                                    fileObjects.fileProQualification,
+                                                                                    fileData.fileProQualification,
+                                                                                    serverFile.fileProQualification,
+                                                                                    masterTbl.fileProQualification,
+                                                                                    'Pro Qualification')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileProQualification"
+                                                name="fileProQualification"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileProQualification"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+ 		   <!-- QUALIFICATION-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Qualification Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.qualification,
+                            														masterTbl.qualification,
+                                                                                    fileObjects.qualification,
+                                                                                    fileData.qualification,
+                                                                                    serverFile.qualification,
+                                                                                    masterTbl.qualification,
+                                                                                    'Qualification')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.qualification"
+                                                name="qualification"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.qualification"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+ 		   <!-- RELIGION -->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Religion Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileReligion,
+                            														masterTbl.fileReligion,
+                                                                                    fileObjects.fileReligion,
+                                                                                    fileData.fileReligion,
+                                                                                    serverFile.fileReligion,
+                                                                                    masterTbl.fileReligion,
+                                                                                    'Religion')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileReligion"
+                                                name="fileReligion"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileReligion"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+ 		   <!-- RESIDENCE TYPE-->
+            <div class="row" >  <!-- ng-repeat="i in [1, 2, 3, 4,5,6,7,8,9]"-->
+              <div class="col-sm-12" >
+                <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Residence Type Master</h4>
+                        </div>
+        
+                        <div class="content">
+                            <form method="post" name="form1" ng-submit="subForm(fileObjects.fileResidenceType,
+                            														masterTbl.fileResidenceType,
+                                                                                    fileObjects.fileResidenceType,
+                                                                                    fileData.fileResidenceType,
+                                                                                    serverFile.fileResidenceType,
+                                                                                    masterTbl.fileResidenceType,
+                                                                                    'Residence Type')" >
+        
+                                  <div class="row" >
+                                    <div class="col-md-6 form-group" >
+        
+                                             <input 
+                                                type="file" 
+                                                style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                                ng-model="fileObjects.fileResidenceType"
+                                                name="fileResidenceType"
+                                                ngf-model-invalid="errorFile"
+                                                ngf-select
+                                                data-file="fileData.fileResidenceType"
+                                               
+                                                />
+                                            
+                                    </div>
+        
+                                    <div class="col-md-2 form-group" >
+                                              <button type="submit" class="btn btn-info btn-fill btn-wd" >Upload file</button>
+                                    </div>
+                                  </div>
+                                 
+                                
+                                
+                                
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+            
+        </div>
+
+             
+        
+        <div class="col-sm-6 affix" style="right:0px;" >
+        
+                        <div class="card" >
+        
+                        <div class="header">
+                            <h4 class="chart-title">Import Logs</h4>
+                        </div>
+        
+                        <div class="content">
+                          <textarea class="form-control" rows="10" ng-model="logs" readonly="readonly"    />
+						</div>        
+
+						</div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

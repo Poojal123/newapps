@@ -1,0 +1,27 @@
+{
+"Name":"Import Live counter master",
+"PrimaryTable":"jlalivecountmaster",
+"Columns":[
+	{
+            "table":"jlalivecountmaster",
+            "dbcol":"solId",
+	     "dbdatatype":"string",
+            "csvindex":"1",
+            "header":"Sol ID"
+        },
+        {
+            "table":"jlalivecountmaster",
+            "dbcol":"liveCount",
+	    "dbdatatype":"string",
+            "csvindex":"2",
+            "header" :"Live Count"
+        },
+	{
+            "table":"jlalivecountmaster",
+            "dbcol":"liveAmount",
+	    "dbdatatype":"string",
+            "csvindex":"3",
+            "header" :"Amt"
+        }
+	]
+}

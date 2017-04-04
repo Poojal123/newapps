@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div >
+        <div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Gold Bond {{process.processName}}</div>
+
+                     <div align="right" class="col-xs-6" role="toolbar" aria-label="Toolbar with button groups" style="margin-top:10px;">
+                      <div class="btn-group" role="group" aria-label="First group" align="right" style="background-color:#0C6;">
+                        <button type="button" class="btn btn-secondary btn btn-info btn-fill btn-wd" ng-click="getNext()" ng-if="!isStarted">Start</button>
+                        <button type="button" class="btn btn-secondary btn btn-info btn-fill btn-wd" ng-click="endEntry()" ng-if="isStarted">Save</button>
+
+                      </div>
+                    </div>
+
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			
+            <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+
+
+
+                          
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                 
+								
+                                <div class="form-group" ng-if="field.fieldType=='Label'">
+                                    <label>{{field.fieldName}}</label>
+                                    <input type="text" class="form-control border-input" ng-model="formdata[field.model]">
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='TextArea'">
+                                    <label>{{field.fieldName}}</label>
+                                    <TextArea  class="form-control border-input" ng-model="formdata[field.model]"></TextArea>
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='Checkbox'">
+                                    <label>{{field.fieldName}}
+                                    <input type="checkbox" class="form-control border-input" ng-model="formdata[field.model]" /></label>
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='DropDown' && formdata.rejected" >
+                                    <label>{{field.fieldName}}</label>
+               	                    <vc-ddl    whr='' tbl='alplreasonmaster'  dbval='rId'  dblbl='name' data-accessor="selectedReason" ></vc-ddl>
+
+                                </div>
+                                
+                                </div>
+
+                          	</div>
+     						
+                          </div>
+                            
+						</span>
+                        
+                                       
+   <div class="clearfix"></div>
+                        
+                    </form>
+                </div>
+		</div>
+  </div>
+
+
+
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-8">
+  		  <searchable-multiselect 
+          		tbl="role" 
+                val="name" 
+                lbl="name" 
+                display-attr="name" 			  	
+                ng-keydown="show($event)"
+			  	add-item="addLanguageToUser(item,user)"  
+                remove-item="removeLanguageFromUser(item,user)" 
+                tabindex=4  >
+	    </searchable-multiselect>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

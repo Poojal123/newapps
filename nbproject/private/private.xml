@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/models/Core_model.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/Core/controllers.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/models/GOLDBOND_model.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/CC/controllers.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/models/JLA_model.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/models/CC_model.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/storage/config/ccimport.json</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/sqls/04022017/bpoapps.sql</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/constants.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/PDCCTS/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/controllers/api/CC.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/ALPL/controllers.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/views/CC/uploadCC.html</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/controllers/api/JLA.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/PDCCTS/controller.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/app.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/Core/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/controllers/api/CoreApp.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/application/models/CASA_model.php</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/JLA/controllers.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/ALPL/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/CC/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/JLA/services.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/storage/config/jalAuditAppraiser.json</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/scripts/CASA/controllers.js</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/assets/views/JLA/upload.html</file>
+            <file>file:/G:/xampp/htdocs/bpoapps/storage/config/jalCourierMaster.json</file>
+        </group>
+    </open-files>
+</project-private>

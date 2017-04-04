@@ -1,0 +1,41 @@
+{
+"Name":"OCTM Generate",
+"Columns":[
+		{
+            "dbcol":"debitAccountNumber",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"INRDebitAccountNo",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"D",
+			"header":"",
+			"spaces":"7"
+        },
+		{
+            "dbcol":"amuntAndCreditCardNumber",
+			"header":"",
+			"spaces":"33"
+        },
+		{
+            "dbcol":"CHQ",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"chequeDate",
+			"header":"",
+			"spaces":"7"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"",
+			"spaces":"1"
+        }
+		
+	]
+}

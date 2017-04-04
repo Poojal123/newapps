@@ -1,0 +1,34 @@
+{
+"Name":"Import DSA Code",
+"PrimaryTable":"plde_dsa",
+"Columns":[
+		{
+        	"table":"plde_dsa",
+            "dbcol":"branchId",
+			"dbdatatype":"int",
+            "csvindex":"1",
+			"header":"BRANCHID"
+        },
+        {
+        	"table":"plde_company",
+            "dbcol":"officeName",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"LSO_OFFICE_NAME_C"
+        },
+        {
+        	"table":"plde_company",
+            "dbcol":"brokerId",
+			"dbdatatype":"int",
+            "csvindex":"3",
+			"header":"BROKERID"
+        },
+        {
+        	"table":"plde_company",
+            "dbcol":"brokerName",
+			"dbdatatype":"string",
+            "csvindex":"4",
+			"header":"BROKERNAME"
+        }
+	]
+}

@@ -1,0 +1,19 @@
+{{field.fieldName}}
+<ui-select allow-clear  ng-model="accessor.selectedItem" ng-change="ddlChange()"  
+tabindex="{{field.fieldId}}"
+focus
+id="{{id}}"
+name= "{{field.fieldName}}"
+ng-disabled="(processfield | filter: {fieldId:field.fieldId}).length < 1"                                     			
+class="{{bg}}"
+>
+	
+  <ui-select-match placeholder="{{ddlplaceholder}}">{{$select.selected.displaylabel}}</ui-select-match>
+
+  <ui-select-choices repeat="item in datalist | filter: $select.search" >
+    <span ng-bind-html="item.displaylabel | highlight: $select.search"></span>
+
+  </ui-select-choices>
+</ui-select>
+
+ <div ng-show="field.prevInvalidate" class="{{bgtext}}">{{field.prevVal}}</div>

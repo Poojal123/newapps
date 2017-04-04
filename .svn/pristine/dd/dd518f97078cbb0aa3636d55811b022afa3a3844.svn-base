@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Second Pass entry
+                    </h4>
+                </div>
+                <div class="panel-body">        
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                            <div class="row">
+                            <label class="col-md-4">Select Lot Number
+                                <vc-ddl   
+                                 	 label="lot Number"
+                                     tbl='corelotnumber' 
+                                     dbval='lotNumber'
+                                     dblbl='lotNumberId'
+                                     data-accessor="formdata1.octmotherchequeentry__lotNumber" 
+                                     data-model="formdata1.octmotherchequeentry__lotNumber" 
+                                     whr=""
+                                     sql="select lotNumber,lotNumberId as displaylabel from corelotnumber"
+                                     vc-change=""
+                                     data-field="field"
+                                     data-datalist="getAllLots"
+                                 ></vc-ddl>
+                            </label>
+
+                              <label class="col-md-4" >Clg Date
+                              		<input my-datepicker format="{{format}}" type="text" ng-model="formdata1.octmotherchequeentry__clgDate" id="octmotherchequeentry__clgDate" />
+                              </label>
+                            </div>
+                            </div>
+                              <div class="row">
+                                    <button class="btn btn-info btn-fill btn-wd" ng-click="showme()"> Get Data</button>
+                              </div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                            <div id="scrollable-area">
+                                <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                    <tr ng-repeat="misreport in $data">
+                                        <td  scope="row"  title="'Batch Id'" filter="{ batchId: 'text'}" sortable="'batchId'" align="center" width="250px">
+                                            {{misreport.batchId}}
+                                        </td>
+                                        <td  scope="row"  title="'Total'" filter="{ Total: 'text'}" sortable="'Total'" align="center" width="250px">
+                                            {{misreport.Total}}
+                                        </td>
+                                        <td  scope="row"  title="'Non Cts Category'" filter="{ nonCtsCategory: 'text'}" sortable="'nonCtsCategory'" align="center" width="250px">
+                                            {{misreport.nonCtsCategoryName}}
+                                        </td>
+                                        <td  scope="row" align="center" width="250px">
+                                            <input type="button" class="btn btn-info btn-fill btn-wd" value="View" ng-click="gotodataentry2(misreport)" />
+                                        </td>
+
+                                    </tr>
+                                </table>
+			                </div>
+                        </form>
+                    </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+
+<div class="container-fluid">
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" >
+                <div class="header">
+                    <h4 class="chart-title">Work In Progress</h4>
+                </div>
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                
+                                    <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</label>
+                                    <label ng-if="field.fieldType=='Label' && field.model=='octmchequeentry.categoryAmount'">
+                                       
+                                    </label>
+                                    {{formdata}}
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"                                     
+                                    />
+                                    </label>   
+                                      <label ng-if="field.fieldType=='Radio'">
+                    <vc-radio  model="formdata[field.model]" value="{{field.fieldName}}" label="{{field.fieldName}}" name="{{field.metaInfo.name}}"></vc-radio>
+                                    </label> 
+                               </div>
+                          	</div>     						
+                          </div>                            
+						</span>
+                      <br>
+                       <button type="submit"  ng-click="submitWIP()" style="margin-left:14px;" class="btn btn-info btn-fill btn-wd">submit</button>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</h3></div>
+					
+                  <div class="col-xs-6"  align="right"><a class="btn" title="Export Table" ng-click='csvnew.generate()' ng-href="{{ csvnew.link() }}"
+                     download="{{date | date:'yyyy-MM-dd'}}_WorkInProgress.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export 
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+    
+     <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+                 <div id="scrollable-area"  >
+                  <table class="table table-striped" ng-table="tableParams" show-filter="true" 
+                  	export-csv="csvnew" separator=",">
+                    	 <tr ng-repeat="Wipreport in $data">
+                       		<td  scope="row"  title="'Application No.'" filter="{applicationNo: 'text'}" 
+                             sortable="'applicationNo'" align="center" width="250px"> {{Wipreport.applicationNo}}
+                      		 </td>
+                       	  	<td  scope="row"  title="'Customer'" filter="{yourFirstName: 'text'}" 
+                            	sortable="'yourFirstName'" align="center" width="250px">{{Wipreport.yourFirstName}}
+                      		 </td> 
+                       		<td  scope="row"  title="'Data Entry User'" filter="{AppSerialNo: 'text'}" 
+                            sortable="'AppSerialNo'" align="center" width="250px">{{Wipreport.CAPName}}
+                       		</td>
+                            <td  scope="row"  title="'Data Entry Time'" filter="{AppSerialNo: 'text'}" 
+                            sortable="'AppSerialNo'" align="center" width="250px">{{Wipreport.CAPTime}}
+                       		</td>  
+                       		<td  scope="row"  title="'QC User'" filter="{ApplRefNo: 'text'}" 			                            sortable="'ApplRefNo'" align="center" width="250px">{{Wipreport.QCName}}
+                       		</td>
+                            <td  scope="row"  title="'QC Time'" filter="{AppSerialNo: 'text'}" 
+                            sortable="'AppSerialNo'" align="center" width="250px">{{Wipreport.QCTime}}
+                       		</td>
+                            
+                            
+                        </tr>
+                 </table>
+			    </div>
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

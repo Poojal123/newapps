@@ -1,0 +1,41 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_occupationtype",
+"Columns":[
+		{
+        	"table":"plde_occupationtype",
+            "dbcol":"moduleId",
+			"dbdatatype":"string",
+            "csvindex":"1",
+			"header":"MODULEID"
+        },
+        {
+        	"table":"plde_occupationtype",
+            "dbcol":"key1",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"KEY1"
+        },
+        {
+        	"table":"plde_occupationtype",
+            "dbcol":"key2",
+			"dbdatatype":"string",
+            "csvindex":"3",
+			"header":"KEY2"
+        },
+        {
+        	"table":"plde_occupationtype",
+            "dbcol":"accovalue",
+			"dbdatatype":"string",
+            "csvindex":"4",
+			"header":"VALUE"
+        },
+        {
+        	"table":"plde_occupationtype",
+            "dbcol":"accodesc",
+			"dbdatatype":"string",
+            "csvindex":"5",
+			"header":"DESCRIPTION"
+        }
+	]
+}

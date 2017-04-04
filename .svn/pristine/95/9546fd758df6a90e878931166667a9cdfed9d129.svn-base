@@ -1,0 +1,31 @@
+{{field.fieldName}}
+<input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    class="form-control"  
+                                    type="{{inputtype}}" 
+                                    ng-model="model"
+									name =  "{{field.fieldName}}"
+                                    tabindex="{{field.fieldOrder}}" 
+                                    focus
+                                    ng-change="vcChange()"
+                                    ng-blur="localstorage(this)"
+                                    id="{{accessorid}}"
+									maxlength="{{field.maxLen}}"                                    
+                                    minlength="{{field.minLen}}"
+                                    style="margin-bottom:5px; margin-top:2px; border-color:{{bg}}; border-style:solid; 
+                                    border-width:1px; cursor:pointer; color:#000"
+                                    pattern="{{allowedChars}}"
+                                    ng-disabled="((processfield | filter: {fieldId:field.fieldId}).length < 1) || disabled"
+									ng-focus="onFocus(field)"   
+                                    capitalize                                
+                                    />
+                                    
+                                    <div ng-show="field.prevInvalidate" style="color:{{bg}}">{{field.prevVal}}</div>
+ 
+                                    
+                                     
+                                    <!--{{(processfield | filter: {fieldId:field.fieldId,prepopulated:1}).length}}-->
+                                    <!-- focus -->
+                                    <!-- pattern="[a-zA-Z0-9.@,()-]+" -->
+                                    <!-- capitalize -- >
+                                    <!-- ng-disabled="((processfield | filter: {fieldId:field.fieldId}).length < 1) || disabled" -->

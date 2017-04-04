@@ -1,0 +1,85 @@
+{
+"Name":"Import TS",
+"PrimaryTable":"tsuploadcheques",
+"Columns":[
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"UDKNo",
+	    "dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+            "table":"tsuploadcheques",
+            "dbcol":"chequeId",
+	    "dbdatatype":"string",
+            "csvindex":"2"
+        },
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"MICR",
+	    "dbdatatype":"int",
+            "csvindex":"3"
+        },
+
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"accountNo",
+	    "dbdatatype":"string",
+            "csvindex":"4"
+        },
+	
+ 
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"TC",
+	    "dbdatatype":"int",
+            "csvindex":"5"
+        },
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"amount",
+	    "dbdatatype":"int",
+            "csvindex":"6"
+        },
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"payeeName",
+	    "dbdatatype":"string",
+            "csvindex":"7"
+        },
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"fileName",
+	    "dbdatatype":"string",
+            "csvindex":"8"
+        }
+		,
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"imageName",
+	    "dbdatatype":"string",
+            "csvindex":"9"
+        }
+		,
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"batchNo",
+	    "dbdatatype":"string",
+            "csvindex":"-1"
+        }
+		,
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"recdDate",
+	    "dbdatatype":"string",
+            "csvindex":"-1"
+        }
+		,
+	{
+            "table":"tsuploadcheques",
+            "dbcol":"job",
+	    "dbdatatype":"string",
+            "csvindex":"-1"
+        }
+	]
+}

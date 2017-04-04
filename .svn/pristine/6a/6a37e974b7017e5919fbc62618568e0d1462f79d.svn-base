@@ -1,0 +1,86 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		{
+            "dbcol":"Title",
+			"TitleName":"",
+			"spaces":"0"
+        },
+		{
+            "dbcol":"clgDate1",
+			"TitleName":"  ",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"lotNumber",
+			"TitleName":"LOT : ",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"batchId",
+			"TitleName":"BATCH : ",
+			"spaces":"2"
+        }
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"serialNumber1",
+			"header":"SRL",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"accountNumber2",
+			"header":"ACCOUNT No.",
+			"spaces":"16"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"CHQ No.",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"chequeAmnt",
+			"header":"AMOUNT",
+			"spaces":"20"
+        },
+		{
+            "dbcol":"draweeName",
+			"header":"DRAWEE BANK",
+			"spaces":"20"
+        },
+		{
+            "dbcol":"chequeDate1",
+			"header":"CHQ DATE",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"transCode",
+			"header":"TRANS",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"payeeName",
+			"header":"PAYEENAME",
+			"spaces":"1"
+        }
+	],
+	"Totals":[
+		
+		{
+            "dbcol":"totalRecord",
+			"header":"TOTAL RECORD : ",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"totalAmount",
+			"header":"TOTAL RECORD : ",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"Title2",
+			"header":"UPLOAD FILE NAME : ",
+			"spaces":"4"
+        }
+	]
+}

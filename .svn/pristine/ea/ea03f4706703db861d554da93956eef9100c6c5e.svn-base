@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>AngularJS image cropper</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, target-densitydpi=device-dpi'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body ng-app="app">
+
+  <a class="github-link" href="https://github.com/bcabanes/angular-image-cropper">Star on GitHub</a>
+
+  <main class="wrapp">
+    <header>
+      <h1>Angular image cropper</h1>
+      <p>A really simple cropper for angular with action buttons and no external dependencies.</p>
+    </header>
+    <section class="cropper">
+      <div ng-controller="mainController as vm">
+        <image-cropper image-url="{{vm.imageUrl}}"
+          width="640"
+          height="480"
+          show-controls="{{vm.showControls}}"
+          fit-on-init="false"
+          center-on-init="true"
+          api="vm.cropperApi"
+          crop-callback="vm.updateResultImage"
+          action-labels="vm.myButtonLabels"
+        ></image-cropper>
+
+        <div class="result">
+          <img class="frame" ng-src="{{vm.resultImage}}">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="bundle.js"></script>
+</body>
+</html>

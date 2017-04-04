@@ -1,0 +1,189 @@
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" id={{section.sectionId}}>
+
+                <div class="header">
+                
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+					
+                <div class="content">
+               
+					<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                        	<div class="row" >
+                            	<div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                	<div class="form-group">
+                                    
+                                    <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</br>
+                                    	
+                                    </label>
+                                        
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >
+
+                                        <vc-text 
+                                              ng-if="field.fieldType=='TextField' || field.fieldType=='Email'"
+                                              data-model="formdata[field.model]"
+                                              data-field="field"
+                                              data-processfield="processField"
+                                              data-inputtype="field.fieldType"                                         
+                                              vc-blur="change([field.model])"
+                                              maxlength="{{field.maxLen}}"                                   
+                                              allowedchars="{{field.allowedChars}}"
+                                              id="{{field.fieldId}}"
+                                            
+                                         ></vc-text>
+                                    </label>
+
+
+                                	<!--<label class="col-md-12" ng-if="field.fieldType=='Email'"   >{{field.fieldName}}
+                                		<input 
+                                    	ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    	value="{{field.htmlCode}}" 
+                                    	class="form-control"  
+                                    	type="email" 
+                                    	ng-model="formdata[field.model]"
+                                    />
+									</label>                                    -->
+                                        
+                                              
+                                	<label class="col-md-12" ng-if="field.fieldType=='DropDown'">
+                                		
+                                       <vc-select
+                                             ng-if="field.fieldType=='DropDown'" 
+                                             label="{{field.fieldName}}"
+                                             whr=''
+                                             tbl='{{field.metaInfo.Tables}}' 
+                                             dbval='{{field.metaInfo.Val}}' 
+                                             dblbl='{{field.metaInfo.DisplayLabel}}'
+                                             data-accessor="formdata[field.model]" 
+                                             labelaccessor="{{field.model}}"
+                                             data-datalist="field.metaInfo.datalist"
+                                             labeldatalist="{{field.metaInfo.datalist}}"
+                                             sql="{{field.metaInfo.sql}}" 
+                                             data-field="field"
+                                             data-processfield="processField"
+                                             vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"                                     		ng-hide="((field.model=='amountLog__category')&&(chequeEntry==true)) || ((field.model=='amountLog__nonCtsCategory')&&(otherChequeEntry == true))"
+                                             ></vc-select>
+                                    </label>
+                                    </label>
+                                    
+                                 <!--  <label ng-if="field.fieldType=='Radio'">
+                                   <input type="radio" ng-model="field.fieldName" value="{{field.fieldName}}" ng-change='change(value)' name="{{field.metaInfo.name}}">
+                                   {{field.fieldName}}
+                                 <vc-radio
+                                   model= "field.fieldName" 
+                                   label="{{field.fieldName}}"
+                                   value="{{field.fieldName}}" 
+                                   name="{{field.metaInfo.name}}">
+                                   </vc-radio>
+                              </label>-->
+                                  
+                                
+                                	 <label ng-if="field.fieldType=='Checkbox'">
+                                 <box ng-model='formdata[field.model]'
+                                 ng-click="change(field.model,formdata[field.model])"
+                                 > </box>
+                                 {{field.fieldName}}
+                              </label>
+                                
+                                	
+                                    <label class="col-md-12" ng-if="field.fieldType=='MaskDate'">{{field.fieldName}}
+                                 		<input 
+                                  			ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  			class = "form-control" 
+                                        	type = "text"
+                                        	id = "field.model"
+                                        	ng-model = "formdata[field.model]"
+                                        	value = "" 	
+                                        	ng-blur = "fireEvent(field.model)"
+                                        	ng-change = "validateSplChar(field.model)"
+                                        	placeholder = "MM/DD/YYYY"
+                                  			mask ="19/29/2999"
+                                        />
+                                		<!--<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />-->
+                                	</label>
+                                
+                                	<label class="col-md-12" ng-if="field.fieldType=='Calendar'" >{{field.fieldName}}
+                                		<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                	</label>
+                               	</div>
+                          	</div>
+                       	</div>
+					</span>
+
+                    <br>
+                	<button type="submit" ng-click="report()" class="btn btn-lg btn-primary">Submit</button>
+                </form>
+        	</div>
+            </div>
+        </div>
+    </div>
+
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+                    <div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                 <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div>
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" >
+                     <tr ng-repeat="misreport in $data"> 
+                      <td scope="row" title="'Batch Id'" filter="{batchNumber: 'text'}" sortable="'batchNumber'" align="center" width="250px">  
+                      {{misreport.batchNumber}}                  
+                        </td>
+                     <td scope="row" title="'Clearing Date'" filter="{clgDate: 'text'}" sortable="'clgDate'" align="center" width="250px">  
+                        {{misreport.clgDate | date:'MM/dd/yyyy'}}                  
+                    </td>
+                	<td scope="row" title="'Category'" filter="{categoryAmount: 'text'}" sortable="'categoryAmount'" align="center" width="250px">  
+                        {{misreport.categoryAmount}}                  
+                    </td>
+                    <td scope="row" title="'Lot Number'" filter="{lotNumber: 'text'}" sortable="'lotNumber'" align="center" width="250px">  
+                        {{misreport.lotNumber}}                  
+                    </td>
+                    <td scope="row" title="'Account Number'" filter="{accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="250px">  
+                        {{misreport.accountNumber}}                  
+                    </td>
+                    <td scope="row" title="'Cheque Number'" filter="{chequeNumber: 'text'}" sortable="'chequeNumber'" align="center" width="250px">  
+                        {{misreport.chequeNumber}}                  
+                    </td>
+                    <td scope="row" title="'MICR'" filter="{micrCode: 'text'}" sortable="'micrCode'" align="center" width="250px">  
+                        {{misreport.micrCode}}                  
+                    </td>
+                    <td scope="row" title="'Cheque Amt1'" filter="{chequeAmount: 'text'}" sortable="'chequeAmount'" align="center" width="250px">  
+                        {{misreport.chequeAmount}}                  
+                    </td>
+                    <td scope="row" title="'User1'" filter="{fullName: 'text'}" sortable="'fullName'" align="center" width="250px">  
+                        {{misreport.fullName}}                  
+                    </td>
+                    <td scope="row" title="'Cheque Amnt2'" filter="{chequeAmnt2: 'text'}" sortable="'chequeAmnt2'" align="center" width="250px">  
+                        {{misreport.chequeAmnt2}}                  
+                    </td>
+                     <td scope="row" title="'User2'" filter="{fullName2: 'text'}" sortable="'fullName2'" align="center" width="250px">  
+                        {{misreport.fullName2}}                  
+                    </td>
+                    
+                     <td scope="row" title="'Status'" filter="{status: 'text'}" sortable="'status'" align="center" width="250px">  
+                        {{misreport.status}}                  
+                    </td>
+                    
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>      
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

@@ -1,0 +1,56 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"ccpincodemasternew",
+"Columns":[
+		{
+        	"table":"ccpincodemasternew",
+            "dbcol":"id",
+			"dbdatatype":"int",
+            "csvindex":"1",
+			"header":"id"
+        },
+		{
+        	"table":"ccpincodemasternew",
+            "dbcol":"pincode",
+			"dbdatatype":"int",
+            "csvindex":"2",
+			"header":"Pincode"
+        },
+        {
+        	"table":"ccpincodemasternew",
+            "dbcol":"topincode",
+			"dbdatatype":"int",
+            "csvindex":"3",
+			"header":"topincode"
+        },
+        {
+        	"table":"ccpincodemasternew",
+            "dbcol":"cityshort",
+			"dbdatatype":"string",
+            "csvindex":"4",
+			"header":"cityshortname"
+        },
+        {
+        	"table":"ccpincodemasternew",
+            "dbcol":"cityname",
+			"dbdatatype":"string",
+            "csvindex":"5",
+			"header":"cityfullname"
+        },
+        {
+        	"table":"ccpincodemasternew",
+            "dbcol":"stateshort",
+			"dbdatatype":"string",
+            "csvindex":"6",
+			"header":"stateshortname"
+        },
+        {
+        	"table":"ccpincodemasternew",
+            "dbcol":"stdcode",
+			"dbdatatype":"int",
+            "csvindex":"7",
+			"header":"pinco"
+        }
+
+	]
+}

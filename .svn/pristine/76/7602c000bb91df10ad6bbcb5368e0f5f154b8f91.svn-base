@@ -1,0 +1,140 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" id={{section.sectionId}}>
+
+                <div class="header">
+                
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+					
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                    	<label ng-if="field.fieldType=='Label'">{{field.fieldName}}</label>
+                                        
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"
+                                     
+                                    />
+                                    </label>
+
+
+                                    <label class="col-md-12" ng-if="field.fieldType=='Email'"   >{{field.fieldName}}
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="{{field.htmlCode}}" 
+                                    class="form-control"  
+                                    type="email" 
+                                    ng-model="formdata[field.model]"
+                                    />
+									                  </label>                                    
+                                    
+                                    
+                                    <label class="col-md-12" ng-if="field.fieldType=='DropDown'">{{field.fieldName}}
+                                        <vc-ddl   
+	                                 ng-if="field.fieldType=='DropDown'"
+                                 	 label="{{field.fieldName}}"
+                                     whr='' 
+                                     tbl='{{field.metaInfo.Tables}}' 
+                                     dbval='{{field.metaInfo.Val}}' 
+                                     dblbl='{{field.metaInfo.DisplayLabel}}'
+                                     data-accessor="formdata[field.model]" 
+                                     data-model="formdata[field.model]" 
+                                     sql="" 
+                                     vc-change="showme(field.model)"
+                                     data-field="field"
+                                     data-datalist="getAllProcessesNew"      
+                                 ></vc-ddl>{{formdata}}
+									                  </label>
+									                  </label>
+                                    <label ng-if="field.fieldType=='Radio'">
+                                           
+
+                    <vc-radio  model= "field.fieldName" value="{{field.fieldName}}" label="{{field.fieldName}}" name="{{field.metaInfo.name}}"></vc-radio>
+                                   
+                                
+                                    </label>
+                                  
+                                
+                                <label ng-if="field.fieldType=='Checkbox'">
+                                    <box data-ng-model='checkboxValue' name="{{field.fieldName}}"> </box>
+                                <!--<my-checkbox ng-model="field.fieldName" value="">{{field.fieldName}}</my-checkbox>-->
+                                </label>
+                                <label class="col-md-12" ng-if="field.fieldType=='MaskDate'">{{field.fieldName}}
+                                 <input 
+                                  		ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  		class = "form-control" 
+                                        type = "text"
+                                        id = "field.model"
+                                        ng-model = "formdata[field.model]"
+                                        value = "" 	
+                                        ng-blur = "fireEvent(field.model)"
+                                        ng-change = "validateSplChar(field.model)"
+                                        placeholder = "MM/DD/YYYY"
+                                  		mask ="19/29/2999"
+                                        
+                                />
+                                <!--<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />-->
+                                </label>
+                               </div>
+                          	</div>
+                          </div>
+
+						</span>
+
+                            <br>
+                       select batchId -----> <input type="button" ng-click="report()" class="btn btn-info btn-fill btn-wd" value="Batch Wise Slip" />
+                       select date and lot number ----> <input type="button" ng-click="getreport()" class="btn btn-info btn-fill btn-wd" value="Daily MIS" />
+                    select date --- > <input type="button" ng-click="userentry()" class="btn btn-info btn-fill btn-wd" value="User Entry MIS"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+                    <div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div>
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     
+                     <tr ng-repeat="company in $data"> 
+                       <td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px"></td>
+                       <td scope="row" title="'cheque Amount'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center"></td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

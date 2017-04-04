@@ -1,0 +1,20 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_companyType",
+"Columns":[
+		{
+        	"table":"plde_companyType",
+            "dbcol":"industryId",
+			"dbdatatype":"int",
+            "csvindex":"1",
+			"header":"INDUSTRYID"
+        },
+        {
+        	"table":"plde_companyType",
+            "dbcol":"industryDesc",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"INDUSTRYDESC"
+        }
+	]
+}

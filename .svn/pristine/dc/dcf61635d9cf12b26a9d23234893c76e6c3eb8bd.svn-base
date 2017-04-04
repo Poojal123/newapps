@@ -1,0 +1,528 @@
+<div class="container-fluid">
+
+
+
+	<div class="progress" ng-show="proval > 0">
+
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+
+        {{proval}}% {{currentstatus}}
+
+      </div>
+
+    </div>
+
+
+
+
+
+   <div class="row">
+
+      <div class="col-sm-12">
+
+         <div class="card">
+
+<!--            <div class="header">
+
+               <h4 class="chart-title">Image Optimization</h4>
+
+            </div>-->
+
+            <div class="content">
+              
+               <form method="post" name="form1" ng-submit="optimize()" >
+
+                  <div class="row">
+
+                     <div class="col-md-10">
+
+                        <div class="form-group">
+
+                           <label>Image Optimization Job No.</label>
+
+                           <input type="text" ng-model="optimizeObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+
+                        </div>
+
+                     </div>
+
+                     <div class="col-md-2">
+
+                        <div class="form-group">
+
+                           <br>
+
+                           <button type="submit" name="import" id="import" class="btn btn-info btn-fill btn-wd" ng-disabled="proval > 0">Optimize</button>
+
+                        </div>
+
+                     </div>
+
+                  </div>
+
+               </form>
+
+            </div>
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+<span align="center">
+
+
+    
+    <div class="row">
+
+
+
+    	<div class="col-sm-7" style="height:75vh;">
+
+            <div class="card" class="col-md-12" style="height:75vh; ">
+
+	            <div class="header">
+
+                    <h4 class="chart-title">Canvas
+
+                    </h4>
+
+                </div>
+
+                <div class="content" style="height:70vh;" >
+
+                        <canvas-viewer src="fileInput" overlays="overlays" options="optionsThumb"></canvas-viewer>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-sm-5">
+
+            <div class="card">
+
+                <div class="header">
+
+	                <div class="row">
+
+                       <div class="col-md-10 form-group">
+                           <div style="display: none" class="alert alert-success alert-dismissable fade in ToastMsg_Success" id="ToastMsg_Success">
+                               <!--<p id="ToastMsg_Success_text"></p>-->
+                            <!--<a ng-click="$('#ToastMsg_Success').hide()" class="success_close close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                        </div>
+    		                <h4 class="chart-title">Image Indexing</h4>
+
+            			</div>
+
+                       <div class="col-md-2 form-group" align="right">
+
+
+
+                    <button type="submit" name="import" ng-disabled="proval > 0" id="import" ng-click="import()" class="btn btn-info btn-fill btn-wd">Import</button>&nbsp;&nbsp;<span ng-show="proval > 0">Downloading... {{proval}}%</span>
+
+					</div>
+
+                </div>
+
+                <div class="content inputchanges">
+
+                    <form name="form_id" id="form_id"  ng-submit="navigate(true,count+1)">
+
+
+
+                    <!--
+
+                            <div class="col-md-6" >
+
+
+
+                                   <vc-ddl  dblbl='status_name' whr='' tbl='alplstatusmaster' dbval='statusId' data-accessor="accessor"  ></vc-ddl>
+
+
+
+                            </div>
+
+                    -->
+
+                        <div class="row" >
+
+                            <div class="col-md-12">
+
+                            	<div class="row" style="margin-top:-20px;">
+
+                                    <div class="col-md-3 form-group">
+
+                                        <label >Indexing Type</label>
+
+                                        <vc-ddl   whr='' tbl='casaimageindextype' dbval='indexingId' dblbl='indexingType'
+
+                                         data-accessor="selectedindextype" sql="" vc-change="applyValidations()" ></vc-ddl>
+
+
+
+                                    </div>
+
+                                    <div  class="col-md-3 form-group" ng-show = "selectedindextype.selectedItem.indexingId == 7"  class="row">
+
+                                        <label>Sub Type </label>
+
+                                        <vc-ddl  id="casanrisubtype" whr='' tbl='casanritype' dbval='nriId' dblbl='nriType'
+
+                                         data-accessor="selectednritype" sql="" vc-change="applyValidations()"  ></vc-ddl>
+
+                                    </div>
+
+                                    <div  class="col-md-5 form-group" class="row">
+
+                                        <label>Job No.</label>
+
+                                        <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div > <!-- ng-show="arrfiles.length > 0 && proval == 0" -->
+
+                         <hr size="30">
+
+                         <div class="row">
+
+                             <div class="col-md-3">
+
+                                <div class="form-group">
+
+                                    <label>Total Image</label>
+
+                                    <input size="6" readonly="readonly" type="text" class="" placeholder="Total Image" value="{{indexObject.imageCount}}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-3">
+
+                                <div class="form-group">
+
+                                    <label>Image Name</label>
+
+                                    <input size="15" readonly="readonly" type="text" class="" placeholder="Image Name" value="{{indexObject.currentimage}}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-3">
+
+                                <div class="form-group">
+
+                                    <label>Current Image</label>
+
+                                    <input size="6" readonly="readonly" type="text" class="" placeholder="Current Image" value="{{indexObject.currentImageIndex}}">
+
+                                </div>
+
+                            </div>
+
+                             <div class="col-md-2">
+
+                             <div class="form-group">
+
+                                    <label>Initials</label><br>
+
+                                    <input size="2" type="text" ng-model="indexObject.initials" class="" placeholder="Enter initials" value="{{indexObject.initials}}" readonly="readonly">
+
+                                </div>
+
+                             </div>
+
+                        </div>
+
+<!--                        <div class="row">
+
+                            <div class="col-md-3">
+
+                                <div class="form-group">
+
+                                    <label>Initials</label><br>
+
+                                    <input type="text" ng-model="indexObject.initials" class="form-control border-input" placeholder="Enter initials" value="{{indexObject.initials}}" readonly="readonly">
+
+                                </div>
+
+                            </div>
+
+                        </div>-->
+
+                        <div class="row">
+
+                            <div class="col-md-3" ng-show="selectedindextype.selectedItem.indexingId == 1 || selectedindextype.selectedItem.indexingId == 6 || selectedindextype.selectedItem.indexingId == 7 || selectednritype.selectedItem.nriId == 1 || selectednritype.selectedItem.nriId == 2 ||                                      selectednritype.selectedItem.nriId == 3">
+
+                                <div class="form-group">
+
+                                    <label>Promo Code </label> <!-- ({{promoCodePattern}}|{{promoCodeLen}}) -->
+
+                                        <input
+
+                                        maxlength="{{promoCodeLen}}"
+
+                                        minlength="{{promoCodeLen}}"
+                                        size="5"
+
+																				pattern="{{promoCodePattern}}"
+
+                                        id="promocode"
+
+                                        type="text" ng-model="indexObject.hasPromo"
+
+                                        placeholder="Enter Promo Code"
+
+                                        ng-readonly="promoreadonly"
+
+                                        class="" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3" ng-show="selectedindextype.selectedItem.indexingId == 1 || selectedindextype.selectedItem.indexingId == 6 || selectedindextype.selectedItem.indexingId == 7 || selectednritype.selectedItem.nriId == 1 || selectednritype.selectedItem.nriId == 2 ||                                      selectednritype.selectedItem.nriId == 3">
+
+                                <div class="form-group">
+
+                                    <label>Application No. </label><!-- ({{appnoPattern}}|{{appnoLen}}) -->
+
+                                        <input type="text"
+
+                                        id="applicationno"
+
+                                        maxlength="{{appnoLen}}"
+										size="15"
+																				minlength="{{appnoLen}}"
+
+                                        minlength="{{appnoLen}}"
+
+                                        pattern="{{appnoPattern}}"
+
+                                        type="text"
+
+																				ng-model="indexObject.apnnumber"
+
+                                        class=""
+
+                                        placeholder="Enter application No."
+
+                                        value="{{indexObject.apnnumber}}"
+
+                                        onblur="$(this).nextAll('#documentType:first').focus();"
+
+                                        >
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6" >
+
+                                <div class="form-group" ng-show="selectedindextype.selectedItem.indexingId == 8 || selectedindextype.selectedItem.indexingId == 9 || selectedindextype.selectedItem.indexingId == 10">
+
+                                    <label>Account No <!-- ({{accnoPattern}}|{{accnoLen}}) --><br />
+
+                                        <input type="text"
+
+                                        id="accountno"
+
+                                        maxlength="{{accnoLen}}"
+
+																				minlength="{{accnoLen}}"
+
+																				pattern="{{accnoPattern}}"
+
+                                        ng-model="indexObject.accountNo"
+
+                                        size="25"
+
+                                        placeholder="Enter Account No."
+
+                                        value="{{indexObject.accountNo}}">
+</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5">
+
+                                <div class="form-group">
+
+                                    <label>Document Type</label><br>
+
+                                        <!--<vc-ddl id="documentType"  whr='' tbl='casadoctypemaster' dbval='documentId' dblbl='documentName'
+
+                                            data-accessor="selectedddlDocumentTypes" sql="" vc-change="" ></vc-ddl>-->
+
+					<vc-select id="documentType"  whr='' tbl='casadoctypemaster' dbval='documentId' dblbl='documentName'
+
+                                            data-accessor="selectedddlDocumentTypes" sql="" vc-change="Update_expiry()" ></vc-select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <div class="form-group" ng-if="selectedddlDocumentTypes.selectedItem.documentId == 60 || selectedddlDocumentTypes.selectedItem.documentId == 70 || selectedddlDocumentTypes.selectedItem.documentId == 29 || selectedddlDocumentTypes.selectedItem.documentId == 44 ||  selectedddlDocumentTypes.selectedItem.documentId == 30 || selectedddlDocumentTypes.selectedItem.documentId == 24 || selectedddlDocumentTypes.selectedItem.documentId == 5 || selectedddlDocumentTypes.selectedItem.documentId == 20 ||                                      selectedddlDocumentTypes.selectedItem.documentId == 39 || selectedddlDocumentTypes.selectedItem.documentId == 51 || selectedddlDocumentTypes.selectedItem.documentId == 54 "><!-- || selectedddlDocumentTypes.selectedItem.documentId == 77 -->
+
+                                    <label>Expiry Date (Date Format : MMYYYY)</label><br>
+
+                                    <input name="expirydate" pattern="{{datepattern}}" type="text" ng-model="indexObject.expirydate" class="form-control border-input" placeholder="Enter Expiry Date" value="{{indexObject.expirydate}}" ng-blur="validateExpiryDate()" id="expirydate"
+                                                 minlength="6"   maxlength="6" required>
+                                 </div>
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>                        <!--<div class="text-center input-group">-->
+
+
+
+                <div class="row">
+
+                            <div class="col-md-8">
+
+                                <div class="form-group" ng-show="arrfiles.length > 0">
+
+								<!--added-->
+
+
+
+                                    <button accesskey="1" type="button" ng-click="navigate(false,0)"class="btn btn-info btn-fill btn-wd">&lt;&lt;</button>
+
+                                    <button accesskey="p" type="button" ng-click="navigate(false,count-1)" class="btn btn-info btn-fill btn-wd">&lt;</button>
+
+                                    <button accesskey="n" type="button" ng-click="navigate(false,count+1)"class="btn btn-info btn-fill btn-wd">&gt;</button>
+
+                                    <button accesskey="s"  type="submit" class="btn btn-info btn-fill btn-wd">Save+&gt;</button>
+
+                                    <button accesskey="4" type="button" ng-click="navigate(false,arrfiles.length-1)" class="btn btn-info btn-fill btn-wd">&gt;&gt;</button>
+
+                                    <!--<button type="button" ng-click="merge()" class="btn btn-info btn-fill btn-wd">Generate </button>-->
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                         </div>
+
+
+
+                        <div class="row">
+
+	                        <div class="col-md-3">
+
+                                <div class="input-group">
+
+                                      <input ng-model="indexObject.goto" type="text" class="form-control" value="{{indexObject.goto}}" placeholder="Search for...">                               <span class="input-group-btn">
+
+                                      <button class="btn btn-default" ng-click="navigate(false,indexObject.goto-1)" type="button">Goto</button>
+
+                                      </span>
+
+                                  </div>
+
+
+
+                            </div>
+
+                            <div class="col-md-2">
+
+                            	<div>
+
+                                 <input type="text" size="20" value="1" ng-model="defaultZoomVal" class="form-control"  />
+
+                                 <button style=" float: left;  margin-top: -29px;margin-left: 59px;width: 96px;" ng-click="defaultZoom()" type="button">Set Zoom</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div style=" text-align: left;">
+
+                        	<div>Zoom In [ alt + i ] | Zoom Out [ alt + o ] | Rotate Left [ alt + l ]</div>
+
+
+
+												 <div> Rotate Right [ alt + r ] | First [ alt + 1 ] | Save [alt + s ] </div>
+
+												 <div> Previous [ alt + p ] | Next [ alt + n ] | Last [ alt + 4 ] </div>
+
+                    </div>
+
+                        <div class="clearfix"></div>
+
+                        </div>
+
+                    </form>
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <hr>
+
+    <p class="small text-muted">
+
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+        
+    </p>
+
+</div>
+

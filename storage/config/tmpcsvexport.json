@@ -1,0 +1,6 @@
+{
+"Name":"Export TMP ALPL",
+"ShowHeaders":true,
+"Headers":["appno","apsNo","batchId"],
+"Columns":["appno","apsNo","batchId"]
+}

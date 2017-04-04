@@ -1,0 +1,415 @@
+// JavaScript Document
+bpoApps.constant('APPCONSTANTS',{
+		SESS_CLIENTID: "SESS_CLIENTID",
+		SESS_MODULES: "SESS_MODULES",
+		SESS_USER: "SESS_USER"
+	});
+
+
+
+bpoApps.constant('CORE_CONFIG', 
+	{
+		HTTP_PROTOCOL: 'http://',
+		SERVER_IP: WEB_URL,
+		WEB_SERVICE: WEB_URL+'index.php/api'		
+	}
+);
+bpoApps.constant('IMPORT_JSON', 
+	[
+		{
+			"APP":"AL/PL",
+			"JSONS":[
+				{
+					"title":"Designation Master",
+					"file":"alplmasterDesignation.json"
+				},
+				{
+					"title":"Master Import",
+					"file":"master.json"
+				},
+				{
+					"title":"Master Import",
+					"file":"master.json"
+				},
+				{
+					"title":"Application Master",
+					"file":"alplimport.json"
+				},
+				{
+					"title":"AccomodationType Master",
+					"file":"alplmasterAcco.json"
+				},
+				{
+					"title":"Caste Master",
+					"file":"alplmasterCaste.json"
+				},
+				{
+					"title":"ChannelCode Master",
+					"file":"alplmasterChannelCode.json"
+				},
+				{
+					"title":"CompanyName Master",
+					"file":"alplmasterCompName.json"
+				},
+				{
+					"title":"CompanyNature Master",
+					"file":"alplmasterCompNature.json"
+				},
+				{
+					"title":"CompanyType Master",
+					"file":"alplmasterCompType.json"
+				},
+				{
+					"title":"CustomerCategory Master",
+					"file":"alplmasterCustCategory.json"
+				},
+				{
+					"title":"Dme Master",
+					"file":"alplmasterDME.json"
+				},
+				{
+					"title":"Dsa Master",
+					"file":"alplmasterDSA.json"
+				},
+				{
+					"title":"OccupationType Master",
+					"file":"alplmasterOccupationType.json"
+				},
+				{
+					"title":"PinCode Master",
+					"file":"alplmasterPinCode.json"
+				},
+				{
+					"title":"Profession Master",
+					"file":"alplmasterProfession.json"
+				},
+				{
+					"title":"ProQualification Master",
+					"file":"alplmasterProQualification.json"
+				},
+				{
+					"title":"Qualification Master",
+					"file":"alplmasterQualification.json"
+				},
+				{
+					"title":"Religion Master",
+					"file":"alplmasterReligion.json"
+				},
+				{
+					"title":"ResidenceType Master",
+					"file":"alplmasterResidenceType.json"
+				},
+				{
+					"title":"SchemePromotion Master",
+					"file":"alplmasterSchemePromo.json"
+				},
+			]	
+		},
+		{
+			"APP":"Technical Scrutiny",
+			"JSONS":[
+				{
+					"title":"Reason Master",
+					"file":"technicalreason.json"
+				}
+			]	
+		},
+		{
+			"APP":"Credit Card",
+			"JSONS":[
+				{
+					"title":"Pricing Master",
+					"file":"ccpriceCodeMasterUpload.json"
+				}
+			]	
+		},
+		{
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Courier Master",
+					"file":"jalCourierMaster.json"
+				}
+			]	
+		}
+	]
+);
+bpoApps.constant('JLA_IMPORT_JSON', 
+	[
+		{
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Courier Master",
+					"file":"jalCourierMaster.json"
+				}
+			]
+		},
+                {
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Live Counter Master",
+					"file":"jalLiveCount.json"
+				}
+			]	
+		},
+                {
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"GoldRate Master",
+					"file":"jalGoldRate.json"
+				}
+			]	
+		},
+                {
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Audit Appraiser Master",
+					"file":"jalAuditAppraiser.json"
+				}
+			]	
+		}
+                ,
+                {
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Branch Appraiser Master",
+					"file":"jalBranchAppraiserMaster.json"
+				}
+			]	
+		}
+                ,
+                {
+			"APP":"Jewel Loan Audit",
+			"JSONS":[
+				{
+					"title":"Branch Email Master",
+					"file":"jlaBranchEmailMaster.json"
+				}
+			]	
+		}
+		
+	]
+);		
+
+// defines the url's for the angular pages 
+bpoApps.constant('WEB_API', 
+	{
+		// ALL CASA WEB SERVICES
+		GETCASADOCTYPES: '/CASA/getDocumentTypes',
+		GETFILENAME:'/CASA/folderscan',
+		GETINDEXTYPE: '/CASA/getIndexingTypes',
+		GETNRITYPE: '/CASA/getNriTypes',
+		MERGEIMAGES:'/CASA/mergeimages',
+		RENAMEBATCH:'/CASA/renameBatch',
+		OPTIMIZE:'/CASA/optimize',
+		
+
+		//ALPL Webservices
+		CSVUPLOAD: '/Alpl/UploadCSV',
+		PROCESS: '/Alpl/Process',
+		BATCHAPPLICATION: '/Alpl/BatchApplication',
+		ALLOCATEAPPLICATION: '/Alpl/AllocateApplication',
+		USERS: '/Alpl/Users',
+		BATCHES: '/Alpl/Batches',
+		APPLICATION: '/Alpl/Applications',
+		PROCESSUSERS: '/Alpl/ProcessUsers',
+		RELEASE: '/Alpl/Release',
+		SEARCHRELEASE:'/Alpl/SearchRelease',
+		DELRELEASE:'/Alpl/DeleteRelease',
+		ALPLNEXTRECORD:'/Alpl/NextRecord',
+		REPORT_PERFORMANCE: '/Alpl/Performance',
+		MIS_REPORT_SUMMARY: '/Alpl/MISSummaryReport',
+		REJECTION_REPORT: '/Alpl/RejectReport',
+		COREUSER:'/Alpl/CoreUser',
+		USERPROCESS:'/Alpl/UserProcess',
+		ALPLUSER:'/Alpl/ALPLUser',
+		GETALPLUSERS:'/Alpl/getALPLUsers',
+		DUPLICATERECORDS:'/Alpl/DuplicateRecords',
+		EXCELDUPLICATERECORDS:'/Alpl/ExcelDuplicateRecords',
+		MISCONSOLIDATED:'/Alpl/MISConsolidatedReport',
+		INSERTBATCHTYPE:'/Alpl/InsertBatchType',
+		GETPREVIOUSREMARKS:'/Alpl/GetPreviousRemarks',
+		CHECKAPS:'/Alpl/CheckAps',
+		ALPLSEARCHSTATUS:'/Alpl/SearchStatus',
+		
+		//JLA Webservices
+		JLACSVUPLOAD: '/JLA/UploadCSV',
+		JLACSVIMPORTUNI: '/JLA/JlaImportCSV',
+		
+		
+		PLDECSVIMPORT: '/Alpl/PLDEMasterImport',
+		
+
+		//TS Webservices//TS Webservices
+		TSSTARTENTRY: '/TechnicalScrutiny/StartEntry',
+		TSENDENTRY: '/TechnicalScrutiny/EndEntry',
+		TSGETREPORT:'/TechnicalScrutiny/getreport',
+		PROCESSSTATUSGETREPORT:'/TechnicalScrutiny/processStatusGetReport',
+		PENDINGWORKGETREPORT:'/TechnicalScrutiny/pendingWorkGetReport',
+		INWARDTECHNICALSCRUTINY:'/TechnicalScrutiny/inwardTechnicalScrutinyGetReport',
+		PENDENCYCHECK:'/TechnicalScrutiny/pendencyCheckGetReport',
+		IMPORTTXT:'/TechnicalScrutiny/ImportTXT',
+		USERPRODUCTIVITY:'/TechnicalScrutiny/userProductivityStatusGetReport',
+		HOURLYSTATUSGETREPORT:'/TechnicalScrutiny/hourlyStatusGetReport',
+		TSBATCHAPPLICATION: '/TechnicalScrutiny/TSBatchApplication',
+		TSALLOCATEAPPLICATION: '/TechnicalScrutiny/TSAllocateApplication',
+		//CSVUPLOAD: '/TechnicalScrutiny/UploadCSV',
+		//CSVUPLOAD: '/TechnicalScrutiny/UploadCSV',
+		PREVIOUS:'/TechnicalScrutiny/Previous',
+		NEXTRECORD:'/TechnicalScrutiny/Next',
+		TSGETFILENAME:'/TechnicalScrutiny/folderscan',
+		TSUSERS: '/TechnicalScrutiny/TSUsers',
+		TSBATCHES: '/TechnicalScrutiny/TSBatches',
+		TSAPPLICATION: '/TechnicalScrutiny/TSApplications',
+		SEARCHTSRELEASE: '/TechnicalScrutiny/SearchTSRelease',
+		DELTSRELEASE: '/TechnicalScrutiny/DeleteTSRelease',
+        DELPURGE: '/TechnicalScrutiny/deletepurgedata',
+		TSSEARCHSTATUS: '/TechnicalScrutiny/SearchStatus',
+		TSUPDATESTATUS: '/TechnicalScrutiny/UpdateStatus',
+		
+		//PDCCTS WEB SERVICES
+		COMMUNICATIONMODULES: '/PDCCTS_Pro/RoleModules',
+		PDCCSVIMPORT: '/PDCCTS_Pro/PDCImportCSV',
+		PDCUPLOAD: '/PDCCTS_Pro/Upload',
+		PURGEDATA:'/PDCCTS_Pro/PurgeData',
+		
+		// ALL CORE WEB SERVICES
+		GETCORESECTIONS: '/CoreApp/getSections',
+		GETCOREFIELDS: '/CoreApp/Fields',
+		CSVIMPORT: '/CoreApp/ImportCSV',
+		CSVIMPORTUNI: '/CoreApp/ImportCSVUni',
+		EXCELIMPORT: '/CoreApp/ExcelImport',
+		MENUS: '/CoreApp/Menus',
+		BATCH: '/CoreApp/Batch',
+		UPLOAD: '/CoreApp/Upload',
+		TABLE: '/CoreApp/Table',
+		GETDDL: '/CoreApp/getDDL',
+		USERS: '/CoreApp/Users',
+		ROLEMODULES: '/CoreApp/RoleModules',
+		CONTRACTUSERS: '/CoreApp/ContractUsers',
+		CONTRACTS: '/CoreApp/Contracts',
+		PROCESSFIELDS: '/CoreApp/ProcessFields',
+		PREPOPULATED: '/CoreApp/PrePopulated',
+		LOGIN: '/CoreApp/loginEmployee',
+		FORGOT: '/CoreApp/Forgot',
+		NEWPASS: '/CoreApp/NewPass',
+		IMPORTPREVIEW: '/CoreApp/FilePreview',
+
+
+		//OCTM WEB SERVICES
+		CREATEBATCHID:'/OCTM/createbatchid',
+		CREATEBATCHID1:'/OCTM/createbatchid1',
+		GETLOTCATEGORY:'/OCTM/getlotcategory',
+		GETBANKNAME:'/OCTM/getbankname',
+		GETREPORT1:'/OCTM/getreport',
+		GETDATEMASTER:'/OCTM/getdatemaster',
+		GETDATEMASTER1:'/OCTM/getdatemaster1',
+		GETSECONDPASS:'/OCTM/getsecondpass',
+		GETALLSECONDPASS:'/OCTM/getallsecondpass',
+		UPDATESECONDPASS:'/OCTM/updatesecondpass',
+		GETOTHERSECONDPASS:'/OCTM/getsecondpass2',
+		GETALLSECONDPASS2:'/OCTM/getallsecondpass2',
+		UPDATEOTHERSECONDPASS:'/OCTM/updatesecondpass2',
+		GETOUTSTATION:'/OCTM/getoutstation',
+		GETCATEGORYREPORT:'/OCTM/getcategoryreport',
+		GETLOTREPORT:'/OCTM/getlotreport',
+		GETMICRCODE:'/OCTM/getmicrcode',
+		GETSOLID: '/OCTM/getsolId',
+		GETSHOWLIST:'/OCTM/getshowlist',
+		GETSHOWLIST1:'/OCTM/getshowlist1',
+		GETSHOWLIST2:'/OCTM/getshowlist2',
+		LAST:'/OCTM/last',
+		LASTOTHER:'/OCTM/lastother',
+		CHECKDATE:'/OCTM/checkdate',
+		GETBATCHFINISH:'/OCTM/getbatchfinish',
+		GETSERIALNUMBER:'/OCTM/getserialnumber',
+		GETCHECKRANGE:'/OCTM/getcheckrange',
+		GETBATCHSLIP:'/OCTM/getbatchslip',
+		GETCREDITMIS:'/OCTM/getcreditmis',
+		GETDAILYMISALLLOT:'/OCTM/getdailymisAllLot',
+		GETDAILYMISONELOT:'/OCTM/getdailymisOneLot',
+		GETDAILYMISSUMMARY:'/OCTM/getdailymisSummary',
+		GETSECONDPASSALLOCATE:'/OCTM/getsecondpassallocate',
+		
+		GETREJECTION:'/OCTM/getrejection',
+		GETUSERREPORT:'/OCTM/getuserreport',
+		GETBATCH:'/OCTM/getbatch',
+		STARTENTRY:'/OCTM/startentry',
+		STARTOTHERENTRY:'/OCTM/startOtherEntry',
+		DELETERECORD : '/OCTM/deleterecord',
+		DELETEOTHERRECORD : '/OCTM/deleteotherrecord',
+		// GETBATCHSLIP:'/OCTM/getbatchslip',
+		// GETCREDITMIS:'/OCTM/getcreditmis',
+		// GETDAILYMIS:'/OCTM/getdailymis',
+		// GETREJECTION:'/OCTM/getrejection',
+		// GETUSERREPORT:'/OCTM/getuserreport',
+		EXPORTBATCHWISESLIP:'/OCTM/exportBatchWiseSlipText',
+		GETMISALLREPORT:'/OCTM/getmisAllReport',
+		GETDATAENTRYREPORT:'/OCTM/getDataEntryReport',
+		GETAMOUNTLOG:'/OCTM/getamountLog',
+		GETCREDITCARDSLIPREPORT:'/OCTM/getCreditCardSlipreport',
+		GENERATECREDITCARDSLIPTEXT:'/OCTM/genarateCreditCardSlipText',
+		GENARATEEXCEL:'/OCTM/genarateExcel',
+		REPLACEBATCHANDLOTNUMBER:'/OCTM/getreplaceBatchAndLotNumber',
+		DELETEBATCH:'/OCTM/deleteBatch',
+		BATCHSTATUS:'/OCTM/getbatchStatus',
+		DAILYOUTPUT:'/OCTM/getdailyOutput',
+		PRODUCTIVITYREPORT:'/OCTM/getproductivityreport',
+		HOURLYPRODUCTIVITYREPORT:'/OCTM/gethourlyproductivityreport',
+		CHEQUEBOOKREQUESTMIS:'/OCTM/getchequebookrequestMIS',
+		CATEGORYBILLINGREPORT:'/OCTM/getcategoryBillingReport',
+		DRWAEEPAYEEBILLINGREPORT:'/OCTM/getdrwaeePayeeBillingReport',
+		USERENTRYBILLINGREPORT:'/OCTM/getuserEntryBillingReport',
+		GENERATEREPORT:'/OCTM/getGenerateReport',
+		GENERATETEXT:'/OCTM/getGenerateTEXT',
+		GENERATETEXTCTS:'/OCTM/getGenerateTEXTCts',
+		GENERATETEXTPATTI:'/OCTM/getGenerateTEXTPatti',
+		GETNRECHEQUE:'/OCTM/getNRECheque',
+		BATCHSTATUSFORSECONDPASS:'/OCTM/getbatchStatusForSecondPass',
+
+		//CC WEB SERVICES
+		AGENCYBATCH:'/CC/AgencyBatch',
+		BATCHRANGE:'/CC/BatchRange',
+		GETIMAGES:'/CC/folderscan',
+		CCMERGEIMAGES:'/CC/MergeImages',
+		CREATEBLANKENTRY:'/CC/CreateBlankEntry',
+		GETQUERYEXECUTE:'/CC/executequery',
+		ALLOCATEBLANKENTRY:'/CC/AllocateBlankEntry',
+		CREATEAGENCY:'/CC/AgencyCreate',
+		CCALLOCATERECORD:'/CC/CCAllocateRecord',
+		CCUPDATESTATUS:'/CC/CCUpdateStatus',
+		ADDCCFIELDS: '/CC/InsertFields',
+		DATA:'/CC/Data',
+		MARKDUP:'/CC/CCMarkDup',
+		CCJDDATA:'/CC/CCJdData',
+		CCBANKCSV:'/CC/CCBankreportCsv',
+		CALCULATEAGE:'/CC/CalculateAge',
+		MISSUMMARYREPORT:'/CC/MISSummaryreport',
+		MISREJECTIONREPORT:'/CC/MISRejectionreport',
+		DATEWISEPRODUCTIVITY:'/CC/DateWiseProductivity',
+		CCHOURLYPRODUCTIVITY:'/CC/hourlyProductivity',
+		CCDASHBOARDSUMMARYREPORT:'/CC/dashboardSummaryReport',
+		CCMERGEDIMAGEREPORT:'/CC/CCMergedImageReport',
+		CCGETJOB:'/CC/CCgetJob',
+		CCGETUNMAPPED:'/CC/unMapped',
+		CCGETPREVIOUS:'/CC/Previous',
+		CCSEARCHAPPLICATION:'/CC/SearchApp',
+
+		CCDASHBOARDDOWNLOAD:'/CC/dashboardDownload',
+
+		CCDASHBOARDDOWNLOAD:'/CC/dashboardDownload',
+		CCGETRANGE:'/CC/getRange',
+		CCSETTING:'/CC/AuditSetting',
+		WIPREPORT:'/CC/WIPReport',
+		IMAGENAME:'/CC/ImageName',
+		SNIPPET:'/CC/Snippet',
+		GENERATEOUTPUT:'/CC/generateOutput',
+		CHECKPINCODE:'/CC/pincode',
+		CHECKSERIALNO:'/CC/CheckSerialNo'
+	}
+);

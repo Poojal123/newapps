@@ -1,0 +1,169 @@
+
+
+<div class="container-fluid">
+	<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-6" style="height:78vh; overflow:scroll"> 
+            <div class="card">
+                <div class="header row">
+                	<div class="col-sm-6"><h4 class="chart-title">Image Indexing
+                    </h4></div>
+                    <div class="col-sm-6" align="right">
+                   <span style="color:#F00" ng-if="isVisible==true">Last Application: {{lastImgName}}</span>
+                                       	<button 
+                        	type="button" name="import" id="import" 
+                            accesskey="i"
+                            ng-click="import()" class="btn btn-info btn-fill btn-wd">Import</button>
+                    </div>
+                    
+                </div>   
+                   <div class="content">
+                    <form>      
+                           
+                        <div class="row">
+                        <div class="col-md-3">
+                        Agency Code
+ 							  <vc-ddl   
+	                                
+                                 	 label="Agency Code"
+                                     whr=' '  
+                                     tbl='ccagencymaster' 
+                                     dbval='agencyId' 
+                                     dblbl='agencyCode'
+                                     data-accessor="formdata.agencyCode" 
+                                     labelaccessor="agencyCode"
+                                     data-datalist="getAgencyCode"
+                                     labeldatalist="getAgencyCode"
+                                     sql="" 
+                                     vc-change="getValue()"
+                                     data-field="formdata.agencyCode"
+                                      
+                                 ></vc-ddl>   </div>  
+                             
+                            <div class="col-md-3">
+                                 Job No
+							 
+                                 <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no."> 
+							</div>
+                            <div class="col-md-5">Selected Image
+                                    <input type="text" class="form-control border-input" placeholder="Selected Image" value="{{selectedimages}}" readonly />
+                             </div>
+<!--                             <div class="col-md-3">Total Images
+                                    <input type="text" class="form-control border-input" placeholder="Remaining Images" value="{{indexObject.totalCount}}" readonly />
+                             </div>
+                            <div class="col-md-3">Remaining Images
+                                    <input type="text" class="form-control border-input" placeholder="Remaining Images" value="{{remainingImages}}" readonly />
+                             </div>-->
+                             <div class="col-md-4" ng-if="isVisibleField==true">Range From
+                                     <input type="text" class="form-control border-input" ng-model="indexObject.rangeFrom" 
+                                      required />
+                             </div>
+                                                      	 
+         			 
+                    
+		                     <div class="col-md-4" ng-if="isVisibleField==true"> To
+                               <input type="text" class="form-control border-input" ng-model="indexObject.rangeTo"  
+                                required />
+                             </div>
+                             <div class="col-md-4" ng-if="isVisibleField==true">Application No
+                                     <input type="text" class="form-control border-input" ng-model="indexObject.imageName"  
+                                      ng-blur="selectImg()" required />
+                             </div>
+                                                      	 
+         			 
+                    
+                                <span style="color:#999" ng-if="isVisibleField==true">
+                             &nbsp; Application No.  Format : Year (4digit) + JD (3digit) + agency code (2digit) + counter (4digit)
+							</span>
+                    <span class="infoTotal" ng-if="isVisibleField==true">
+                        Total Image: {{indexObject.totalCount}}
+                                                                            </span>
+                    <span class="infoTotal" ng-if="isVisibleField==true">
+                         Remaining Image: {{indexObject.remaining}}
+                                                                            </span>
+
+                             </div>
+                             
+                                 
+                         </form>
+                          
+                      </div>     
+            </div>
+         
+         <br />
+         
+            <div class="card">
+                    
+                   <div class="content">
+                     
+                     
+                     
+<div  class="gridListdemoBasicUsage " >
+                             
+      <div layout="row" flex >
+          
+ 
+            <div class="card col-sm-4" 
+            	ng-repeat="arrfile in newarrFiles" 
+                style="width:120px; height:130px; 
+                margin:5px" tag="{{$index}}"
+                ng-dblclick="showDbC($index+1)"
+            	ng-click="show(arrfile,!isPreview)" ng-class='arrfile.isSelected?"selectedStyle":""'
+            	layout="column">
+                <div class="chart-wrapper" align="center" style="width:100px; height:100px;"> 
+					<canvas-viewer src="arrfile.obj" overlays="overlays" options="optionsThumb"></canvas-viewer>
+                <!--{{arrfile.img}}-->
+                {{$index}}
+                </div>
+            </div>
+           
+          
+      </div> 
+                               <input type="button" ng-click="LoadMore()" class="btn btn-info btn-fill btn-wd" value="Load More" /> 
+							</div>
+                            
+  
+                     
+                     
+                     
+                     
+                     
+                          
+                      </div>     
+            </div>
+         
+         </div>
+         
+        	<div class="col-sm-6 ">
+        	<div > 
+            <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Image Indexing
+                    </h4>
+                </div>   
+            	<div class="content" style="height:60vh">
+                 
+                <canvas-viewer src="fileInput" overlays="overlays" options="options">
+
+                </div>
+		                     <div ng-if="isVisibleField==true">
+                                       <input accesskey="s" type="button" ng-click="merge()" class="btn btn-info btn-fill btn-wd" value="Generate TIFF" ng-disabled="enable==false"/>
+                             </div>
+
+            </div>
+            </div>
+         </div>
+    		
+    <hr>
+    </div>
+    
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>
+

@@ -1,0 +1,88 @@
+
+<div class="container-fluid">
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Image Indexing
+                   <!-- <input type="button" ng-click="report()" class="btn btn-info btn-fill btn-wd" value="Generate Report"/>-->
+                    </h4>
+                </div>                
+                <div class="content">
+                    <form>      
+                                 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job No.</label>
+                                    <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+                                </div>
+                            </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <br>
+                                        <button type="button" name="import" id="import" ng-click="import()" class="btn btn-info btn-fill btn-wd">Import</button>
+                                    </div>
+                                </div>                            
+                               <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Total Image</label>
+                                    <input type="text" class="form-control border-input" placeholder="Total Image" value="{{indexObject.imageCount}}" readonly="readonly">
+                                </div>
+                                 <div class="form-group">
+                                    <label>Selected Image</label>
+                                    <input type="text" class="form-control border-input" placeholder="Selected Image" value="{{selectedimages}}" readonly="readonly">
+                                </div>
+                          
+                            </div>
+                         </div>                         	 
+         					<div>
+                            	<label> Application No.
+                            		<input type="text" ng-model="indexObject.imageName" ng-disabled="textenable==false" required />
+                                    </label>
+                             	<input type="button" ng-click="merge()" class="btn btn-info btn-fill btn-wd" value="Generate TIFF" ng-disabled="enable==false"/></br>
+                               <label style="color:#999">
+                                Format : Year (4digit) + JD (3digit) + agency code (2digit) + counter (4digit)
+							</label>
+                            </div>
+                         </form>
+                         <br />
+                         <div  class="gridListdemoBasicUsage " >
+                             <div class='md-padding' layout="row" flex>
+                              	<div layout="row" flex>
+                                  <div class="parent" layout="column" ng-repeat="arrfile in newarrFiles" flex>
+
+                                    <md-card ng-click="show(arrfile,!isPreview)" ng-class='arrfile.isSelected?"selectedStyle":""' class="card">
+                                     <md-card-content>
+<!--                                      <img src="{{weburl}}/{{arrfile.img}}" type="image/tiff" alt="My Tiff">-->
+                                      <canvas-viewer src="arrfile.obj" overlays="overlays" options="options" ></canvas-viewer>
+                                      <input type="checkbox"  ng-model="arrfile.isSelected">{{arrfile.img}}
+                                      </md-card-content>                                  
+                                    </md-card>
+                                  </div>
+                              </div>  
+							</div>
+                           </div>                            
+                          </div>
+                          
+                      </div>
+                  </div>
+                <div class="col-sm-6">           
+                    <div class="chart-wrapper" align="center">
+                        <!--<img id="image" rotate degrees="heading" src="{{weburl}}/{{indexObject.currentimage}}" width="80%" align="center" >  -->      
+                        <canvas-viewer src="fileInput" overlays="overlays" options="options">                        </canvas-viewer><!--assets/img/vara-solutions.jpg-->               
+               		 </div>
+        		</div>
+               </div>
+    <hr>
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>
+

@@ -1,0 +1,42 @@
+{{field.fieldName}}
+<span><select
+ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+ng-model="accessor.selectedItem" 
+ng-change="ddlChange()"  
+ng-blur="ddlBlur(this)"  
+tabindex="{{field.fieldOrder}}"
+focus
+id="{{id}}"
+name= "{{field.fieldName}}"
+ng-disabled="((processfield | filter: {fieldId:field.fieldId}).length < 1) || disabled"
+class="{{bg}} form-control col-md-5"
+ng-options="item as item.displaylabel for item in datalist"
+ng-focus="onFocus(field,prevfield)"
+>
+
+</select>&nbsp;
+<a tabindex="-1" href ng-click="accessor.selectedItem=null">x</a></span>
+<div ng-show="field.prevInvalidate!=''" class="{{bgtext}}">{{field.prevVal}}</div>
+<!--
+//multiple="vcmultiple"
+multiple="{{ismulti}}"
+
+<ui-select  ng-model="accessor.selectedItem" ng-change="ddlChange()"  
+tabindex="{{field.fieldId}}"
+focus
+id="{{id}}"
+name= "{{field.fieldName}}"
+ng-disabled="(processfield | filter: {fieldId:field.fieldId}).length < 1"                                     			
+class="{{bg}}"
+>
+	
+  <ui-select-match placeholder="{{ddlplaceholder}}">{{$select.selected.displaylabel}}</ui-select-match>
+
+  <ui-select-choices repeat="item in datalist | filter: $select.search" >
+    <span ng-bind-html="item.displaylabel | highlight: $select.search"></span>
+
+  </ui-select-choices>
+</ui-select>
+
+ <div ng-show="field.prevInvalidate" class="{{bgtext}}">{{field.prevVal}}</div>
+ -->

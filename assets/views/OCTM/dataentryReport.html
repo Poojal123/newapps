@@ -1,0 +1,39 @@
+<div class="container-fluid">
+----> {{company.dataentry}}
+    <div class="row">
+   
+   <div class="panel-body">        
+                 
+                <div>
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv">
+                     <tr ng-repeat="company in $data"> 
+                       <td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px">{{company.serialNumber}}</td>
+                       <td scope="row" title="'Cheque Amount'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center"  width="250px">{{company.chequeAmount}}</td>
+                       
+                        <td scope="row" title="'Batch No.'" filter="{ batchNumber: 'text'}" sortable="'batchNumber'" align="center"  width="250px">{{company.batchNumber}}</td>
+                        <td scope="row" title="'Lot No.'" filter="{ lotNumber: 'text'}" sortable="'lotNumber'" align="center"  width="250px">{{company.lotNumber}}</td>
+                        <td scope="row" title="'User Name'" filter="{ fullName: 'text'}" sortable="'fullName'" align="center"  width="250px">{{company.fullName}}</td>
+                        <td scope="row" title="'Category'" filter="{ categoryAmount: 'text'}" sortable="'categoryAmount'" align="center"  width="250px">{{company.categoryAmount}}</td>
+                        <td scope="row" title="'Account No.1'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center"  width="250px">{{company.accountNumber}}</td>
+                        <td scope="row" title="'Account No.2'" filter="{ accountNumber2: 'text'}" sortable="'accountNumber2'" align="center"  width="250px">{{company.accountNumber2}}</td>            
+                        <td scope="row" title="'Playslip Date'" filter="{ payinSlipDate: 'text'}" sortable="'payinSlipDate'" align="center"  width="250px">{{company.payinSlipDate}}</td>
+                        <td scope="row" title="'Cheque Date'" filter="{ chequeDate: 'text'}" sortable="'chequeDate'" align="center"  width="250px">{{company.chequeDate}}</td>
+                        <td scope="row" title="'Cheque Number'" filter="{ chequeNumber: 'text'}" sortable="'chequeNumber'" align="center"  width="250px">{{company.chequeNumber}}</td>
+                        <td scope="row" title="'MICR Code'" filter="{ micrCode: 'text'}" sortable="'micrCode'" align="center"  width="250px">{{company.micrCode}}</td>
+                        <td scope="row" title="'Trans Code'" filter="{ transCode: 'text'}" sortable="'transCode'" align="center"  width="250px">{{company.transCode}}</td>
+                        <td scope="row" title="'Payee Name'" filter="{ payeeName: 'text'}" sortable="'payeeName'" align="center"  width="250px">{{company.payeeName}}</td>
+                        <td scope="row" title="'Drawee Name'" filter="{ draweeName: 'text'}" sortable="'draweeName'" align="center"  width="250px">{{company.draweeName}}</td>
+                        <td scope="row" title="'Cheque Amount'" filter="{ chequeAmnt: 'text'}" sortable="'chequeAmnt'" align="center"  width="250px">{{company.chequeAmnt}}</td>
+                        <td scope="row" title="'Sol Id'" filter="{ solId: 'text'}" sortable="'solId'" align="center"  width="250px">{{company.solId}}</td>            
+                        
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+
+                <div class="content">
+                
+                    <form method="post" name="form1" ng-submit="subForm(file)" >
+                      <span ng-repeat="rowFields in section.sortedFields track by $index">
+                         <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                      
+                                <label class="col-md-12" ng-if="field.fieldType=='DropDown'">
+                                    <span> {{field.fieldName}}</span>
+                                     <vc-ddl   whr='' tbl='{{field.metaInfo.Tables}}' dbval='{{field.metaInfo.Val}}' dblbl='{{field.metaInfo.DisplayLabel}}'
+                                        data-accessor="formdata[field.model]" sql=""  ></vc-ddl>
+                                </label>
+    
+                      </div>
+                      </div>
+                      </span>  
+                  <br>
+                  <button type="submit" ng-click="" style="margin-left:20px;" class="btn btn-info btn-fill btn-wd">submit</button>
+                  <button type="submit" ng-click="" class="btn btn-info btn-fill btn-wd">Exit</button>
+                            
+                    </form>
+
+				
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

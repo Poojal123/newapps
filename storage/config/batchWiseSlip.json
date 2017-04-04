@@ -1,0 +1,43 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		
+		{
+            "dbcol":"Title",
+			"TitleName":"",
+			"spaces":"17"
+        }	
+		
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"serialNumber",
+			"header":"SRL",
+			"spaces":"8"
+        },
+		{
+            "dbcol":"chequeAmount",
+			"header":"Cheque Amount",
+			"spaces":"14"
+        }
+	],
+	"Totals":[
+		
+		{
+            "dbcol":"batchNumber",
+			"header":"BATCH NO     : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalCheque",
+			"header":"TOTAL RECORD : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"total",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        }
+	]
+}

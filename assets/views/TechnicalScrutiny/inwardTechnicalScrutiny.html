@@ -1,0 +1,77 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+         <div class="header">
+                
+                    <h4 class="chart-title">Inward Technical Scrutiny Report</h4>
+                </div>
+                <form method="post" name="form1" ng-submit="subForm()" >
+               	<span ng-repeat="rowFields in section.sortedFields track by $index">
+                     <div class="row">
+                        <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                           <div class="form-group">
+                           <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</label>
+                                 <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"
+                                     
+                                    />
+                                    </label>
+                                    
+                                     <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                                <input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                </label>
+                            
+                              </div>
+                        </div>
+                     </div>
+                  </span>
+                  
+                       <button type="submit" ng-click="inwardTechnicalScrutinyReport()" class="btn btn-lg btn-primary" download>Submit</button>
+				</form>
+                </div>
+                </div>
+                </div>
+		<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</h3></div>				
+                  
+                </div>
+                <div class="header">
+                            <h4 class="chart-title">Import Logs</h4>
+                        </div>
+        
+                        <div class="content">
+                          <textarea class="form-control" rows="5" ng-model="logs" readonly="readonly"    />
+						</div> 
+                
+       </h3>
+      </div>
+      <div class="panel-body">    
+                    <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="misreport in $data">
+                  <td  scope="row"  title="'UDK No'" filter="{ UDKNo: 'text'}" sortable="'UDKNo'" align="center" width="250px">
+                       	{{misreport.UDKNo}}</td>
+                 <!-- <td  scope="row"  title="'Rejection Status'" filter="{ rejectReasonId: 'text'}" sortable="'rejectReasonId'" align="center" width="250px">
+                       	{{misreport.rejectReasonId}}</td> -->
+                      <td  scope="row"  title="'Reason'" filter="{ reasonName: 'text'}" sortable="'reasonName'" align="center" width="250px">
+                       	{{misreport.reasonName}}</td> 
+                        <td  scope="row"  title="'Payee Name'" filter="{ payeeName: 'text'}" sortable="'payeeName'" align="center" width="250px">
+                       	{{misreport.payeeName}}</td> 
+                        <td  scope="row"  title="'Payee Name Flag'" filter="{ pnstatus: 'text'}" sortable="'pnstatus'" align="center" width="250px">
+                       	N</td>       
+                     </tr>
+     
+                 </table>                        
+                 </div>
+                
+        </div>
+    </div>

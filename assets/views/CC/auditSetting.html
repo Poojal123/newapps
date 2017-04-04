@@ -1,0 +1,132 @@
+
+
+  
+<div class="container-fluid" >
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+
+      <div class="col-md-8" ng-repeat="section in sections">
+        <div class="card">
+
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+					
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+                          <div class="row" >
+                            <div class="col-md-4" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                    	<hr ng-if="field.fieldType=='Label'" />
+                                    
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >
+                                    {{field.fieldName}} 
+                                   
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"
+                                    ng-blur="change([field.model])"
+                                    ng-disabled="field.model=='tmpalpl__enterdValue' && formdata.selectedType.selectedItem.CategoryValue!=2"/>
+                                    </label>
+                                                              
+							
+                                	<label ng-if="field.fieldType=='Radio'">
+                                    	<vc-radio  
+                                       	 model= "formdata[field.model]" 
+                                         value="{{field.fieldName}}" 
+                                         label="{{field.fieldName}}" 
+                                         name="{{field.metaInfo.name}}">
+                                         </vc-radio>
+                                   	</label>
+                       
+                                    
+                                    <label ng-if="field.fieldType=='Checkbox'">
+                                        <box 
+a                                        data-ng-model='formdata[field.model]' 
+                                        name="{{field.fieldName}}"> 
+                                        </box>
+                                    </label>
+                                    <label 
+                                    class="col-md-12" 
+                                    ng-if="field.fieldType=='Calendar'">
+                                    {{field.fieldName}}
+                                    <input 
+                                    my-datepicker 
+                                    date-format="{{format}}" 
+                                    type="text" 
+                                    ng-model="formdata[field.model]" 
+                                    id="myDP" />
+                                    </label>
+                                    <vc-ddl   
+	                                 ng-if="field.fieldType=='DropDown'"
+                                 	 label="{{field.fieldName}}"
+                                     whr=' '  
+                                     tbl='{{field.metaInfo.Tables}}' 
+                                     dbval='{{field.metaInfo.Val}}' 
+                                     dblbl='{{field.metaInfo.DisplayLabel}}'
+                                     data-accessor="formdata[field.model]" 
+                                     labelaccessor="{{field.model}}"
+                                     data-datalist="field.metaInfo.datalist"
+                                     labeldatalist="{{field.metaInfo.datalist}}"
+                                     sql="{{field.metaInfo.sql}}" 
+                                     vc-change="getValue([field.model])"
+                                     data-field="field"
+                                      
+                                 ></vc-ddl>
+
+                                   
+
+                                  
+                                  
+                                   </div>
+	                      	</div>
+                          </div>
+						</span>
+                    </form>
+    				<br/>
+                    <div align="center">
+                        <input 
+                        type="button" 
+                        value="Submit" 
+                        ng-click="generate()" 
+                        class="btn btn-info btn-fill btn-wd" 
+                        ng-disabled="" />
+                      
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+     <div class="col-sm-8" ng-if="showAllocate==true" >
+
+				<table class="table table-striped" ng-table="tableParams" show-filter="true">
+                    
+                    <tr ng-repeat="batchallocations in $data">
+                        
+                       <td scope="row" title="'Application No'"  align="center">		   
+                       {{batchallocations.applicationNo}}</td>
+                       <td scope="row" title="'Mapped Image'"  align="center">
+                       {{batchallocations.allocatedApplication}}</td>
+                     </tr>
+                        
+                 </table>                 
+  	 </div>
+   </div>
+   
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

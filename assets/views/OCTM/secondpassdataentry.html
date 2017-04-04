@@ -1,0 +1,72 @@
+<div>
+    <input type="button" class="btn btn-info btn-fill btn-wd" value="Back" ng-click="gotoback()"/>
+</div>
+                    <div class="panel-body">
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                            <center>
+                            <label style="font-size:18px;">Batch Number : {{batchNumber}}</label>
+                            <label style="margin-left:10px;font-size:18px;">Total Records : {{totalrecords}}</label>
+                            <label style="margin-left:10px;font-size:18px;"> Amount Category : {{amountcategory}}</label>
+                            <label style="margin-left:10px;font-size:18px;"> User Name : {{userName}}</label>
+                            </center>
+                            
+                            <div id="scrollable-area">
+                            	<table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                	<tr  ng-repeat="misreport in $data">
+                                        
+                                    	<td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.serialNumber" value="{{misreport.serialNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Account Number'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.accountNumber" value="{{misreport.accountNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Cheque Number'" filter="{ chequeNumber: 'text'}" sortable="'chequeNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.chequeNumber" value="{{misreport.chequeNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'MICR Code'" filter="{ micrCode: 'text'}" sortable="'micrCode'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.micrCode" value="{{misreport.micrCode}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Category Amount'" filter="{ categoryAmount: 'text'}" sortable="'categoryAmount'" align="center" width="250px">
+
+                                 <vc-select   
+                                 	   whr=''  
+                                       label="{{field.fieldName}}"
+                                       tbl='octmamountcategory' 
+                                       dbval='categoryName' 
+                                       dblbl='categoryName'
+                                       data-inputtype="field.fieldType"
+                                       data-accessor="misreport.categoryAmount1" 
+                                       labelaccessor="categoryAmount1"
+                                       data-model="misreport.categoryAmount1"
+                                       data-field="field"
+                                       data-datalist="getallcat"
+                                       labeldatalist="getallcat"
+                                       sql="" 
+                                       vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"
+                                       data-processfield="processField"
+                                       tabindex="-1"                                    
+                                 ></vc-select>
+                                         </td>
+                                       	
+                                        <td  scope="row"  title="'Cheque Amount'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center" width="250px">
+                                        	<label ng-if="misreport.serialNumber == serialNumber1" >{{amount1}}</label>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Second Pass'" align="center" width="250px">
+                                        	<input id="{{$index}}" type="text" ng-model="secondpassentry" ng-blur="update(secondpassentry,misreport,'no')" autofocus="autofocus"></input>
+                                        </td>
+                                        <td  scope="row" align="center" width="250px">
+                                            <input tabindex="-1" type="button" class="btn btn-info btn-fill btn-wd" ng-click="update(secondpassentry,misreport,'save')" value="Update"></input>
+                                        </td> 
+                                        <td  scope="row" align="center" width="250px">
+                                            <input tabindex="-1" type="button" class="btn btn-info btn-fill btn-wd" ng-click="deleterecord2(misreport.serialNumber,misreport)" value="Delete"></input>
+                                        </td>
+                                    </tr>
+                                </table>
+			                </div>
+                        </form>
+                    </div>

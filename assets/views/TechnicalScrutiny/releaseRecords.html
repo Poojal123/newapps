@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="chart-title">Release Record</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                            <!--<div class="col-md-6">
+                                            <div class="form-group">
+                                               <label for="repeatSelect">Filter select: </label>
+                                                    <select class="form-control" name="repeatSelect" id="repeatSelect" ng-change="filterChange(getddlFilterData.model)" ng-model="getddlFilterData.model">
+                                                    <option ng-repeat="option in getddlFilterData.availableOptions"  value="{{option.id}}">{{option.name}}</option>
+                                                    </select>
+                                            </div>
+                                            </div>-->
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                               <label for="searchSelect"> Search select: </label>
+                                                    <select class="form-control" name="searchSelect" id="searchSelect" ng-change="searchChange(getddlFilterData.model,getddlSearchData.model)" ng-model="getddlSearchData.model">
+                                                        <option ng-repeat="option in getddlSearchData.result"  value="{{option.userId}}">{{option.fullName}}</option>
+                                                    </select>
+                                            </div>
+                                            </div> 
+                                            <!--<div class="col-md-6" ng-show = "getddlFilterData.model == 2 ">
+                                            <div class="form-group">
+                                               <label for="searchSelect1"> Search select: </label>
+                                                    <select class="form-control" name="searchSelect1" ng-change="searchChange(getddlFilterData.model,getddlSearchData.model)" id="searchSelect1" ng-model="getddlSearchData.model">
+                                                        <option ng-repeat="option in getddlSearchData.result"  value="{{option.batchNo}}">{{option.batchNo}}</option>
+                                                    </select>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6" ng-show = "getddlFilterData.model == 3 ">
+                                            <div class="form-group">
+              							
+                                             <label for="searchSelect2"> Search select: </label>
+                                                    <select class="form-control" name="searchSelect2" ng-change="searchChange(getddlFilterData.model,getddlSearchData.model)" id="searchSelect2" ng-model="getddlSearchData.model">
+                                                     <option ng-repeat="option in getddlSearchData.result"  value="{{option.applicationId}}">{{option.applicationNo}}</option>
+                                                    </select>
+                                            </div>
+                                            </div>
+                                        -->
+                                    </div>
+                                </form>
+                            </div>
+                             
+                                <div class="from-group" >         
+                                    <button type="search" class="btn btn-info" name="search" 
+                                    ng-click="searchButtonClicked()" >Search Record</button>
+                                    <button type= " releaseselector" class="btn btn-info" name="realse"
+                                    ng-click="releaseclicked()" >Release Record</button>
+                                
+                             </div>
+							<br /><br />
+
+                         <script type="text/ng-template" id="checkboxheader.html">
+							<input type="checkbox" ng-click="selectAll()">
+						</script>
+                   <table class="table table-striped" ng-table="tableParams" show-filter="true" ng-show="searchRelease.length > 0">
+                    
+                     <tr ng-repeat="releases in $data">
+                      
+                        <td scope="row" width="100px" align="center" data-header="'checkboxheader.html'">
+                          <input type="checkbox" 
+                           ng-model="releases.isSelected"> 
+                        </td>  
+                    	<td scope="row"  title="'Process Name'"  align="center">{{releases.processName}}</td>
+                        <td scope="row"  title="'Batch No'"  align="center">{{releases.batchNo}}<br/></td>
+                        
+                     </tr>
+                 </table>
+          </div>
+      </div>
+    </div>
+</div>
+
+      

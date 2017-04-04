@@ -1,0 +1,224 @@
+
+/*
+ * Full-page application style
+ */
+
+body.application,
+.keen-dashboard {
+  background: #f2f2f2;
+/*  font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+body.loginscreen,
+.keen-dashboard {
+  background: #ffffff;
+/*  font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+
+}
+/*}*/
+body.application > .container-fluid,
+.keen-dashboard > .container-fluid {
+  margin: 0 0 32px;
+  margin: 0 0 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.application div[class^="col-"],
+.keen-dashboard div[class^="col-"] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+body.application div[class^="col-"] div[class^="col-"],
+.keen-dashboard div[class^="col-"] div[class^="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+body.application hr,
+.keen-dashboard hr {
+  border-color: #d7d7d7;
+  margin: 10px 0;
+}
+
+body.application .navbar-inverse,
+.keen-dashboard .navbar-inverse {
+  background-color: #264796;
+  border-color: #ef7f1a;
+}
+
+body.application .navbar-inverse .navbar-nav > li > a,
+body.application .navbar .navbar-brand,
+.keen-dashboard .navbar-inverse .navbar-nav > li > a,
+.keen-dashboard .navbar .navbar-brand {
+  text-decoration: none;
+}
+
+body.application .main-nav > li > a:hover,
+.keen-dashboard .main-nav > li > a:hover {
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border 300ms ease;
+  -o-transition: border 300ms ease;
+  transition: border 300ms ease;
+  border-bottom-color: white;
+}
+
+body.application .return-link,
+body.application .return-link:focus,
+body.application .return-link:hover,
+.keen-dashboard .return-link,
+.keen-dashboard .return-link:focus,
+.keen-dashboard .return-link:hover {
+  text-decoration: none;
+}
+
+
+.chart-wrapper {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.header .chart-title {
+  border-bottom: 1px solid #d7d7d7;
+  color: #666;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 0px 10px 10px;
+}
+.chart-wrapper .chart-title {
+  border-bottom: 1px solid #d7d7d7;
+  color: #666;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 7px 10px 4px;
+}
+
+.header .chart-title {
+  border-bottom: 1px solid #d7d7d7;
+  color: #000;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 0px 0px 10px;
+  font-weight:bold;
+}
+.navbar-brand img { background-color:#ffffff; width:50px; height:50px; padding:9px 5px 10px 5px; margin: -15px 0px 0px 0px; }
+.chart-wrapper .chart-stage {
+  overflow: hidden;
+  padding: 5px 10px;
+  position: relative;
+}
+.graybg { background-color:#f4f4f4; }
+.chart-wrapper .chart-notes {
+  background: #fbfbfb;
+  border-top: 1px solid #e2e2e2;
+  color: #808080;
+  font-size: 12px;
+  padding: 8px 10px 5px;
+}
+
+.navbar-left .user-profile { padding-top:10px; padding-bottom:0px; color:#ffffff; }
+.navbar-right .user-profile { padding-top:15px; padding-bottom:0px; color:#ffffff; }
+
+.navbar-left .user-profile:hover { color:#d4d4d4; }
+.navbar-right .user-profile:hover { color:#d4d4d4; }
+
+.user-profile img { 
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    margin-right: 10px;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.card {
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    position: relative;
+    /*z-index: 1;*/
+	padding:10px;
+	border: 1px solid #e2e2e2;
+	border: 1px solid #e2e2e2;
+}
+.navbar-left ul li a:hover { color:#00ff00; }
+.imgtool { position:absolute; top:1px; right:5px; background-color: rgba(0, 0, 0, 0.1); width:auto; padding:5px; border-radius: 0 0 0 5px;  }
+
+.mainspace { padding:20px; }
+
+.auth-box {
+  float: none !important;
+  max-width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+}
+#login-form {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #f4f4f4;
+  padding-top:15px;
+}
+#login-form .main {
+  margin-top: 0;
+}
+#login-form .keenIcon {
+  display: block;
+  margin: 72px auto 48px;
+  max-width: 25%;
+}
+#login-form p {
+  font-size: 85%;
+  color: #8799ab;
+}
+#login-form p a {
+  color: #546678;
+}
+#login-form form input[type="text"],
+#login form input[type="password"] {
+  height: 45px;
+}
+#login-form form .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn-od {
+	width:100%;
+	padding: 5px;
+	font-size:20px;
+	float:left;
+	margin-bottom:10px;
+	}
+
+#login-form form .seperator {
+  border-top: 1px solid #d8dee4;
+  margin: 20px 0px;
+  height: 0px;
+  text-align: center;
+}
+#login-form form .seperator span {
+  background-color: #fff;
+  position: relative;
+  top: -12px;
+  padding: 0px 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #abb8c4;
+}
+
+
+
+form.ng-submitted input.ng-invalid {
+	border-color: red;
+	border-style:solid;
+	border-width:2px;
+}

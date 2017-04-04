@@ -1,0 +1,81 @@
+   
+<div class="container-fluid" >
+    
+	<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>      
+    
+    
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Personal Loan Fields Selections</div>
+					<div class="col-xs-6" align="right"><h3>                       <button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="submitMapping()">Update Settings</button></h3></div>         			
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+            <div class="form-group">
+             
+             
+             <div class="form-group has-feedback">
+              <label class="control-label">Search field</label>
+                <input type="text" class="form-control" placeholder="Search fields" ng-model="search" />
+                <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            </div>
+             
+              <label class="control-label">Select process</label>
+			<vc-ddl  whr='' tbl='coreprocessmaster' vc-change="getMapping()" dbval='processId' dblbl='processName' data-accessor="selectedProcess" 
+            data-datalist="getAllProcesses"></vc-ddl>
+            
+            </div>
+
+			<div class="form-group">
+              <label class="control-label">Select Fields</label>            
+          	<div class="col-md-12" >
+                      <div class="col-md-3">
+                      <span >
+                        
+                      </span>
+                      </div>
+                      <div class="col-md-2">
+                        <input type="checkbox" ng-change="selectAllEnable()"  ng-model="selAllEnabled"   > Select All
+                      </div>
+                      <div class="col-md-2">
+                        <input type="checkbox" ng-change="selectAllPrePopulated()" ng-model="selAllPrePopulated"   > Select All
+                      </div>
+                      <div class="col-md-2">
+                        <input type="checkbox" ng-change="selectAllValidated()" ng-model="selAllValidated"   > Select All
+                      </div>
+            </div>
+          	<div class="col-md-12" ng-repeat="fld in selFields | filter: search">
+                      <div class="col-md-3">
+                      <span >
+                        {{fld.fieldName}} 
+                      </span>
+                      </div>
+                      <div class="col-md-2">
+                        <input type="checkbox"     ng-model="fld.isEnabled"   > Enable
+                      </div>
+                      <div class="col-md-2">
+                        <input ng-disabled="!fld.isEnabled" type="checkbox"  ng-model="fld.isPrePopulated"   > Prepopulated
+                      </div>
+                      <div class="col-md-2">
+                        <input ng-disabled="!fld.isEnabled" type="checkbox"  ng-model="fld.isValidated"   > Validated
+                      </div>
+            </div>
+            
+			</div><br /><br />
+            
+		</div>
+
+  
+   
+    <hr>
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

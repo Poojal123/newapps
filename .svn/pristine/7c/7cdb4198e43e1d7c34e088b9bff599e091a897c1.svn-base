@@ -1,0 +1,160 @@
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Users</div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="subForm(formdata.file)" name="myform">
+            
+                <div class="row" >
+                    <div class="form-group col-md-5">
+                        <label >Full Name</label>
+                        <input type="text" name="name" placeholder="Full Name" required  class="form-control elastic" ng-model="formdata.fullName" />
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label >Email </label>
+                        <input type="text" name="name" placeholder="Email Id" required  class="form-control elastic" ng-model="formdata.emailId" />
+                    </div>    
+               </div>
+                            
+                <div class="row" >
+                    <div class="form-group col-md-5">
+                    <label >Password</label>
+                    <input type="password" name="name" placeholder="Password" required  class="form-control elastic" ng-model="formdata.passWord" />
+                    </div>
+                    <div class="form-group  col-md-5">
+                       <label>Profile Image
+                         <input 
+                            type="file" 
+                            style="border:solid;border-color:#CCC; border-radius:5px;" 
+                            
+                            ng-model="formdata.file"
+                            name="file"
+                            ngf-model-invalid="errorFile"
+                            ngf-select
+                            />
+                              <i ng-if="form.file.$error.maxSize">File too large 
+                                  {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                         </label>   
+                    </div>         
+                </div>           
+
+               
+                
+                <div class="row" >
+                    <div class="form-group col-md-5">
+                        <label >Role</label>
+	                    <vc-ddl   whr='' tbl='corerole'  dbval='roleId' dblbl='roleName' data-accessor="selectedRole" data-datalist="getAllRoles"></vc-ddl>
+						 
+                    </div>
+                    <div class="form-group col-md-5">
+                    
+                        <label >Date of Birth</label>
+                        <input my-datepicker date-format="{{format}}" type="text" required  ng-model="formdata.dateOfBirth"  id="myDP" placeholder="Date of Birth"/>
+     
+                    </div>
+               </div>
+               
+                <div class="row" >
+                
+                    <div class="form-group col-md-5">
+                        <label >Gender</label>
+                        <span class="form-control elastic" >
+                          <label class="radio-inline"><input type="radio" name="optradio" data-ng-model="formdata.gender" value="Male" >Male</label>
+                          <label class="radio-inline"><input type="radio" name="optradio" data-ng-model="formdata.gender" value="Female" >Female</label>
+                          </span>
+                    </div>
+                    
+                    <div class="form-group col-md-5">
+                        <label >Location</label>
+	                    <vc-ddl  whr='' tbl='corelocations'  dbval='locationId' dblbl='locationName' data-accessor="selectedLocation" 
+                        data-datalist="getAllLocations"></vc-ddl>
+						 
+                    </div>    
+               </div>
+                
+               
+             <div class="form-group">
+                <button class="btn btn-lg btn-primary "  >{{app.id==""?"Create":"Save"}}</button>
+                <button class="btn btn-lg btn-primary " type="button" ng-click="cancel()"  >Cancel</button>
+            </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Users</div>
+                    <div class="col-xs-6" align="right"><h3><a class="btn btn-primary" href ng-click="newUser()">New User
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="subForm(formdata.file)" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+                
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="user in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ userId: 'text'}" sortable="'userId'" align="center" width="250px">
+                       	{{user.userId}}
+                       </td>
+                       <td scope="row" title="'Full Name'" filter="{fullName: 'text'}" sortable="'fullName'" align="left">
+                       
+                       <img src="{{WEB_URL+'storage/profile/'+user.filename}}" width="40px" align="left" style="margin-right:20px;" />
+                       	<strong>{{user.fullName}}</strong><br />
+                        <em>{{user.emailId}}</em>
+                       
+                       <br/>
+                       </td>
+                       <td  scope="row"  title="'Role'" filter="{ roleName: 'text'}" sortable="'roleName'" align="center" >
+                       	{{user.roleName}}
+                       </td>
+
+                       <td  scope="row"  title="'Location'" filter="{ locationName: 'text'}" sortable="'locationName'" align="center" >
+                       	{{user.locationName}}<br /><em>{{user.regionName}}</em>
+                       </td>
+
+                       <td scope="row" title="'#'" width="100px" style="vertical-align:middle;" >
+                        <a href ng-click="getUser(user)" class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteUser(user)" class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

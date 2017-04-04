@@ -1,0 +1,46 @@
+{
+"Name":"OCTM Generate",
+"Columns":[
+		{
+            "dbcol":"serialNumber",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"cardNumber",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"chequeAmnt",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"transCode",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"",
+			"spaces":"2"
+        },
+		{
+            "dbcol":"convertedchequeDate",
+			"header":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"rejectionReason",
+			"header":"",
+			"spaces":"1"
+        }
+		
+	]
+}

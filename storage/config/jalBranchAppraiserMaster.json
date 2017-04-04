@@ -1,0 +1,50 @@
+{
+"Name":"Import branch appraisar master",
+"PrimaryTable":"jlabranchappraisermaster",
+"Columns":[
+	{
+            "table":"jlabranchappraisermaster",
+            "dbcol":"branchSolId",
+	    "dbdatatype":"char",
+            "csvindex":"1",
+            "header":"Sol ID"
+        },
+	{
+            "table":"jlabranchappraisermaster",
+            "dbcol":"branchAppraiserBranchName",
+	    "dbdatatype":"string",
+            "csvindex":"2",
+            "header":"Branch Name"
+        },
+        {
+            "table":"jlabranchappraisermaster",
+            "dbcol":"branchAppraiserZone",
+	    "dbdatatype":"string",
+            "csvindex":"3",
+            "header":"Zone"
+        },
+	{
+            "table":"jlabranchappraisermaster",
+            "dbcol":"branchAppraiserRegion",
+	    "dbdatatype":"string",
+            "csvindex":"4",
+            "header":"Region"
+        },
+
+	{
+             "table":"jlabranchappraisermaster",
+            "dbcol":"branchAppraiserIBoxId",
+	    "dbdatatype":"string",
+            "csvindex":"5",
+            "header":"I Box Id"
+        },
+	{
+            "table":"jlabranchappraisermaster",
+            "dbcol":"branchAppraiserName",
+	    "dbdatatype":"string",
+            "csvindex":"6",
+            "header":"Appraiser Name"
+        }
+
+	]
+}

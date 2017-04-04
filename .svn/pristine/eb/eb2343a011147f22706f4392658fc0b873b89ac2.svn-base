@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12" ng-repeat="section in sections">
+
+            <div class="card" id={{section.sectionId}}>
+                <form method="post" name="form">
+                    <div class="header">
+                        <h4 class="chart-title">
+                            {{section.sectionName}}
+                        </h4>
+                    </div>
+                    <div class="content">
+                     
+                           <span ng-repeat="rowFields in section.sortedFields track by $index">
+                          
+                            <div class="row" >
+                                <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                    <div class="form-group">
+                                       
+                                        <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+                                        <input 
+                                            ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                            value="" 
+                                            class="form-control"  
+                                            type="text" 
+                                            ng-model="formdata[field.model]"
+                                            ng-blur="change(field.model)"
+                                            />
+                                        </label>
+                                        <label class="col-md-12" ng-if="field.fieldType=='Number'" >{{field.fieldName}}
+                                        <input 
+                                            ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                            value="" 
+                                            class="form-control"  
+                                            type="number" 
+                                            ng-model="formdata[field.model]"
+                                            ng-blur="change(field.model)"
+
+                                            />
+                                        </label>
+                                    
+                                            <vc-ddl   
+                                                ng-if="field.fieldType=='DropDown' && field.fieldName!='User Name'"
+                                                label="{{field.fieldName}}"
+                                                whr=' '  
+                                                tbl='{{field.metaInfo.Tables}}' 
+                                                dbval='{{field.metaInfo.Val}}' 
+                                                dblbl='{{field.metaInfo.DisplayLabel}}'
+                                                data-accessor="formdata[field.model]" 
+                                                labelaccessor="{{field.model}}"
+                                                data-datalist="field.metaInfo.datalist"
+                                                labeldatalist="{{field.metaInfo.datalist}}"
+                                                sql="{{field.metaInfo.sql}}" 
+                                                vc-change="processChange(field.model)"
+                                                data-field="field"
+                                                data-processfield="processField"                                        
+                                            ></vc-ddl>
+                                        <label class="col-md-12" ng-if="field.fieldType=='Email'"  >{{field.fieldName}}
+                                        <input 
+                                            ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                            value="{{field.htmlCode}}" 
+                                            class="form-control"  
+                                            type="email" 
+                                            ng-model="formdata[field.model]"
+                                            />
+                                        </label>                                    
+                                        <label ng-if="field.fieldType=='Radio'">
+                                            <vc-radio  model= "field.fieldName" value="{{field.fieldName}}" label="{{field.fieldName}}" name="{{field.metaInfo.name}}"></vc-radio>
+                                        </label>
+                                        <label ng-if="field.fieldType=='Checkbox'">
+                                            {{field.fieldName}}
+                                            <box ng-model='formdata1[field.model]'> </box>
+                                        </label>
+                                        <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                                            <input my-datepicker ng-blur="checkdate(field.model)" format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        </div>
+                            <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                    <tr ng-repeat="batchallocations in $data">
+                        <td scope="row" width="200px" title="'Batch No'" filter="{batchNo: 'text'}" sortable="'accountNo'" align="center">{{batchallocations.batchNo}}</td>
+                       <td scope="row" width="200px" title="'D1 User'" a sortable="'accountNo'" align="center"
+                       ng-show="formdata.process1.selectedItem.processId==10">{{batchallocations.fullName}}</td>
+                        <td scope="row" width="400px"  title="'User Name'"  align="center">
+                           
+                            <vc-select class="select_users" id="Usertypes"  whr='' tbl='coreusers' dbval='userId' dblbl='fullName'
+
+                                data-accessor="selecteddlUserType" sql="" vc-change='selecteduser()'></vc-select>
+                        </td>
+                        <td scope="row" width="200px" title="'Action'"  align="center">
+                                   <input type="button" style="margin-top: 3px;float: right" ng-click="allocateclicked(batchallocations)" ng-disabled="batchallocations.assigned" class="btn btn-info btn-fill btn-wd" value="Allocate Batch" />
+                               </td>
+                         
+
+                    </tr>
+                </table>
+               
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

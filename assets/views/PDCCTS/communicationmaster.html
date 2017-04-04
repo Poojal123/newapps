@@ -1,0 +1,167 @@
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+ 				<div class="col-xs-9" align="left"><h3>Communication</div>
+                    <div class="col-xs-1"  align="right"><h3><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></h3></div>
+                    <div class="col-xs-2" align="right"><h3><a class="btn btn-primary" href ng-click="newCommunication()">New Communication
+                    </a></h3></div>					
+                </div>
+        </h3>
+      </div>
+
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="submitCommunication()">
+                <div class="form-group">
+                    <label >Location Code</label>
+                    <input type="text" name="name" placeholder="Location Code" required  class="form-control elastic" ng-model="Communication.val.locationCode"/>
+                </div>    
+                 <div class="form-group">
+                    <label >Location Name</label>
+                    <input type="text" name="name" placeholder="Location Name" required  class="form-control elastic" ng-model="Communication.val.locationName"/>
+                </div>     
+                <div class="form-group">
+                    <label >Account Number</label>
+                    <input type="text" name="name" placeholder="Account Number" required  class="form-control elastic" ng-model="Communication.val.accountNumber"/>
+                </div>     
+                <div class="form-group">
+                    <label >Phone Number</label>
+                    <input type="text" name="name" placeholder="Phone Number" required  class="form-control elastic" ng-model="Communication.val.phoneNumber"/>
+                </div>     
+                <div class="form-group">
+                    <label >Address1</label>
+                    <input type="text" name="name" placeholder="Address 1" required  class="form-control elastic" ng-model="Communication.val.address1" />
+                </div>     
+                <div class="form-group">
+                    <label >Address 2</label>
+                    <input type="text" name="name" placeholder="Address 2" required  class="form-control elastic" ng-model="Communication.val.address2" />
+                </div>     <div class="form-group">
+                    <label >Address 3</label>
+                    <input type="text" name="name" placeholder="Address 3" required  class="form-control elastic" ng-model="Communication.val.address3" />
+                </div>     <div class="form-group">
+                    <label >Address 4</label>
+                    <input type="text" name="name" placeholder="Address 4" required  class="form-control elastic" ng-model="Communication.val.address4" />
+                </div>     <div class="form-group">
+                    <label >Address 5</label>
+                    <input type="text" name="name" placeholder="Address 5" required  class="form-control elastic" ng-model="Communication.val.address5" />
+                </div>    <div class="form-group">
+                    <label >Payable At</label>
+                    <input type="text" name="name" placeholder="Payable At" required  class="form-control elastic" ng-model="Communication.val.payableAt" />
+                </div>   
+              <div class="row">  
+                <div class="form-group col-xs-1">
+             <vc-radio  model= "Communication.val.isActive" value="Active" label="Active" name="Active" > </vc-radio>
+                </div>
+			   <div class="form-group col-xs-1">
+             <vc-radio  model= "Communication.val.isActive" value="Inactive" label="Inactive" name="Inactive"> </vc-radio>
+                </div>
+			</div>
+                
+                
+              <div class="row">
+                    <div class="form-group col-md-1" align="left"> 
+                            <button class="btn btn-lg btn-primary "  >{{communication.id==""?"Create":"Save"}}</button>
+                    </div>
+                    <div class="col-md-1" align="left">
+                        <button class="btn btn-lg btn-primary " ng-click="cancelCommunication()"  >Cancel</button>
+                    </div>
+               </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-9" align="left"><h3>Communication</div>
+                    <div class="col-xs-1"  align="right"><h3><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></h3></div>
+                    <div class="col-xs-2" align="right"><h3><a class="btn btn-primary" href ng-click="newCommunication()">New Communication
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitCommunication()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div>
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="communication in $data">
+                       <td scope="row"  title="'Id'" filter="{Id:'text'}" sortable="'Id'" align="center" width="130px">{{communication.communicationmasterId}}</td>
+                       <td scope="row" title="'Location Code'" filter="{locationCode: 'text'}" sortable="'locationCode'" align="center" width="230px">{{communication.locationCode}}<br/></td>
+                       
+                       <td scope="row"  title="'Location Name'" filter="{ locationName: 'text'}" sortable="'locationName'" align="center" width="230px">{{communication.locationName}}</td>
+                       
+                       <td scope="row"  title="'Account Number'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="260px">
+                       	{{communication.accountNumber}}
+                       </td>
+                       <td scope="row"  title="'Phone Number'" filter="{ phoneNumber: 'text'}" sortable="'phoneNumber'" align="center" width="250px">
+                       	{{communication.phoneNumber}}
+                       </td>
+                       <td scope="row"  title="'Address 1'" filter="{ address1: 'text'}" sortable="'address1'" align="center" width="200px">
+                       	{{communication.address1}}
+                       </td>
+                        <td scope="row"  title="'Address 2'" filter="{ address2: 'text'}" sortable="'address2'" align="center" width="200px">
+                       	{{communication.address2}}
+                       </td>
+                       <td scope="row"  title="'Address 3'" filter="{ address3: 'text'}" sortable="'address3'" align="center" width="200px">
+                       	{{communication.address3}}
+                       </td>
+                        <td scope="row"  title="'Address 4'" filter="{ address4: 'text'}" sortable="'address4'" align="center" width="200px">
+                       	{{communication.address4}}
+                       </td>
+                        <td scope="row"  title="'Address 5'" filter="{ address5: 'text'}" sortable="'address5'" align="center" width="200px">
+                       	{{communication.address5}}
+                       </td>
+                       <td scope="row"  title="'Payable At'" filter="{payableAt: 'text'}" sortable="'payableAt'" align="center" width="220px">{{communication.payableAt}}
+                       </td>
+                       <td scope="row"  title="'IsActive'" filter="{isActive: 'text'}" sortable="'isActive'" align="center" width="170px">{{communication.isActive}}
+                       </td>
+                       
+                        <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="getCommunication(communication)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteCommunication(communication)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

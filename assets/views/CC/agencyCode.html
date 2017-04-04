@@ -1,0 +1,164 @@
+
+<div class="container-fluid">
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>
+    
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Add Agency</div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="submitAgency()">
+                <div class="form-group">
+                    <label >Agency Code</label>
+                    <input type="text" name="name" placeholder="Agency Code" required  class="form-control" ng-model="AgencyType.val.agencyCode" />
+                    </div>
+                    <div class="form-group">
+                    <label >Batch From</label>
+                    <input type="text" name="name" placeholder="Batch From" required  class="form-control" ng-model="AgencyType.val.batchFrom" />
+                </div>    
+                <div class="form-group">
+                    <label >Batch To</label>
+                    <input type="text" name="name" placeholder="Batch To" required  class="form-control" ng-model="AgencyType.val.batchTo" />
+                </div>    
+                <div class="form-group">
+                    <label >Agency Name</label>
+                    <input type="text" name="name" placeholder="Agency Name" required  class="form-control" ng-model="AgencyType.val.agencyName" />
+                </div>    
+                <div class="form-group">
+                    <label >Batch Id</label>
+                    <input type="text" name="name" placeholder="Batch Id" required  class="form-control " ng-model="AgencyType.val.batchId" />
+                </div>    
+                <div class="form-group">
+                    <label >Credit Hub</label>
+                    <input type="text" name="name" placeholder="Credit Hub" required  class="form-control elastic" ng-model="AgencyType.val.creditHub" />
+                </div>    
+             <div class="form-group">
+                <button class="btn btn-lg btn-primary " type="submit" >Save</button>
+            </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Agency</div>
+                    <div class="col-xs-6" align="right"><h3><a class="btn btn-primary" href ng-click="newAgency()">New Agency
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitImageType()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+ 
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="agency in $data">
+			             
+                         
+                       <td  scope="row"  title="'Agency Code'" filter="{ agencyCode: 'text'}" sortable="'agencyCode'" align="center" width="250px">
+                       	{{agency.agencyCode}}
+                       </td>
+                       <td scope="row" title="'Batch From'" filter="{batchFrom: 'text'}" sortable="'batchFrom'" align="center">{{agency.batchFrom}}<br/></td>
+                       <td scope="row" title="'Batch To'" filter="{batchTo: 'text'}" sortable="'batchTo'" align="center">{{agency.batchTo}}<br/></td>
+                       <td scope="row" title="'Agency Name'" filter="{agencyName: 'text'}" sortable="'agencyName'" align="center">{{agency.agencyName}}<br/></td>
+                        <td scope="row" title="'Batch Id'" filter="{batchId: 'text'}" sortable="'batchId'" align="center">{{agency.batchId}}<br/></td>
+                        <td scope="row" title="'Credit Hub'" filter="{creditHub: 'text'}" sortable="'creditHub'" align="center">{{agency.creditHub}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="editAgency(agency)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteAgency(agency)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>
+    
+    
+      
+    <!--<div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" >
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                    <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</label>
+                                    <label ng-if="field.fieldType=='Label' && field.model=='octmchequeentry.categoryAmount'">
+                                       
+                                    </label>
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"  
+                                    ng-blur="change([field.model])"                                   
+                                    />
+                                    </label>   
+                               </div>
+                          	</div>     						
+                          </div>                            
+						</span>
+                      <br>
+                       <button type="submit"  ng-click="submitagencycode()" style="margin-left:14px;" class="btn btn-info btn-fill btn-wd">submit</button>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

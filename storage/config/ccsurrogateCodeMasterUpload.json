@@ -1,0 +1,36 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"ccsurrogatecodemaster",
+"Columns":[
+		{
+        	"table":"ccsurrogatecodemaster",
+            "dbcol":"id",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+        	"table":"ccsurrogatecodemaster",
+            "dbcol":"surrogateCode",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"ccsurrogatecodemaster",
+            "dbcol":"surrogateName",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        },
+        {
+        	"table":"ccsurrogatecodemaster",
+            "dbcol":"modifyBy",
+			"dbdatatype":"string",
+            "csvindex":"4"
+        },
+        {
+        	"table":"ccsurrogatecodemaster",
+            "dbcol":"modifyOn",
+			"dbdatatype":"string",
+            "csvindex":"5"
+        }
+	]
+}

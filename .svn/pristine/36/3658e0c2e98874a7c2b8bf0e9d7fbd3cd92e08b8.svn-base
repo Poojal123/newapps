@@ -1,0 +1,159 @@
+<div class="container-fluid">
+
+	<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>      
+    
+    <textarea
+	    ng-show="proval > 0"
+        class="form-control" rows="3"
+        ng-model="logs"
+        readonly="readonly"
+        style="background:#FFF"
+      ></textarea>
+      
+<br />
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-2" align="left"><h3>Importer</h3></div>
+         			<div class="col-xs-10" ng-show="headers.length != 0 || 1==1" align="right" >
+
+	                    <div align="right" style="padding-top:10px;">
+                        <label style="font-size:10pt; font-weight:100" ng-show="headers.length != 0" ><input type="checkbox" value="" ng-model="coluniquedb" >&nbsp;Ignore records if exists in database</label> 
+                         <a ng-show="headers.length != 0"  style="font-size:10pt; font-weight:100"  data-toggle="popover" title="Popover Header" data-content="If the record already exists in database, by selecting this option, import utility will not add the record in database." data-placement="bottom"><span class="badge">?</span></a> 
+                        <button type="button" class="btn btn-success" ng-show="headers.length != 0" ng-click="processImport()">Import</button>
+                        <button type="button" class="btn btn-warning" ng-show="headers.length != 0" ng-click="startNew()">Cancel</button>
+<!--                        <button type="button" class="btn btn-warning" >Start New</button>-->
+                        
+                        </div>
+                    	
+                    </div>	
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+
+			<!--
+      		<div class="alert alert-danger" ng-repeat="error in formatValidations">
+              <strong>{{error.title}}</strong> {{error.details}}
+            </div>
+      -->
+            <div class="form-group" ng-show="headers.length == 0" >
+            	 <select ng-model="importconfig">
+                  <optgroup label="{{app.APP}}" ng-repeat="app in jsonlist">
+                    <option value="{{item.file}}" ng-repeat="item in app.JSONS">{{item.title}}</option>
+                  </optgroup>
+                </select> 
+				 <input type="button" value="Get Config" ng-click="readConfig()" />         {{importconfig}}
+			</div>
+            
+            <div ng-show="jsonconfig!=null && headers.length == 0" >
+            	<table border="1" class="table">
+                  <thead class="thead-default">
+                	<tr class="table-active">
+                    	<th colspan="100">Expected Format - {{jsonconfig.data.Name}}</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr>
+                    	<td ng-repeat="col in jsonconfig.data.Columns">
+                        	{{col.header}}<br />
+                            ({{col.dbdatatype}})
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="form-group" ng-show="jsonconfig!=null && headers.length == 0" >
+				<label>Select File : 
+                <input type="file" on-read-file="displayFileContents(contents,ext, filename, fileobj)" />
+                </label>
+                
+                
+			</div>
+            <div>
+             
+            	<table border="1" class="table" ng-show="csvObject!=null && headers.length == 0 ">
+                  <thead class="thead-default">
+                	<tr class="table-active">
+                    	<th colspan="100">Preview</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr ng-repeat="row in csvObject | limitTo:1 track by $index">
+                    	<td ng-repeat="col in row track by $index">
+                        	{{col}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+     
+
+
+<!--<p><input class="form-control" type="text" ng-model="searchtext" placeholder="Suche" ng-model-options="{debounce: 1000}"/></p>-->
+			<div ng-show="headers.length != 0">
+			<div>Preview</div>
+             
+ 			<table ng-table="tableParams" class="tile table table-custom" show-filter="false" width="100%"  id="anchorpreview" >       
+            
+            	<tr >
+                
+					<td ng-repeat="(key,value)  in headers track by $index">
+ 						 
+						<select ng-model="colunique[$index]">
+                        	<option value="duplicate">Accept duplicate</option>
+                            <option value="unique">Remove duplicate</option>
+                        </select>
+					</td>                     
+				</tr>
+                
+                <tr >
+                
+					<td ng-repeat="(key,value)  in headers track by $index">
+						<strong>{{value}} </strong>
+					</td>                     
+				</tr>
+                
+            	<tr ng-repeat="row in $data track by $index">
+					<td data-title="key"  ng-repeat="(key,value) in row track by $index">
+						{{value}} 
+					</td>                     
+				</tr>
+			</table>
+
+			</div>
+            </div>
+	  </div>
+  
+     
+
+  </div>
+  
+<div class="container-fluid">
+
+  
+
+
+
+     
+
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>
+  
+  
+  
+  <script language="javascript">$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});</script>

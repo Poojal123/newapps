@@ -1,0 +1,86 @@
+{
+"Name":"Import JLA branch email master",
+"PrimaryTable":"jlabranchemailmaster",
+"Columns":[
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"solId",
+	    "dbdatatype":"char",
+            "csvindex":"1",
+            "header":"SOL ID"
+        },
+        {
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchName",
+	    "dbdatatype":"string",
+            "csvindex":"2",
+            "header":"Branch"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchRegion",
+	    "dbdatatype":"string",
+            "csvindex":"3",
+            "header":"Region"
+        },
+
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchZone",
+	    "dbdatatype":"string",
+            "csvindex":"4",
+            "header":"Zone"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchCategory",
+	    "dbdatatype":"string",
+            "csvindex":"5",
+            "header":"Category"
+        },
+ 
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchEmailId",
+	    "dbdatatype":"string",
+            "csvindex":"6",
+            "header":"Branch Email ID"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchProcessManagerName",
+	    "dbdatatype":"string",
+            "csvindex":"7",
+            "header":"Process Manager Name"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchClusterManagerEmailId",
+	    "dbdatatype":"string",
+            "csvindex":"8",
+            "header":"Cluster Manager Email ID"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchClusterManagerContactNo",
+	    "dbdatatype":"bigint",
+            "csvindex":"9",
+            "header":"Cluster Manager Contact No"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchCCEmailIds",
+	    "dbdatatype":"string",
+            "csvindex":"10",
+            "header":"CC Email ID"
+        },
+	{
+            "table":"jlabranchemailmaster",
+            "dbcol":"branchFromEmialId",
+	    "dbdatatype":"string",
+            "csvindex":"11",
+            "header":"From Email ID"
+        }
+
+	]
+}

@@ -1,0 +1,136 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" id={{section.sectionId}}>
+
+                <div class="header">
+                
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+					
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                    	<label ng-if="field.fieldType=='Label'">{{field.fieldName}}</label>
+                                        
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >{{field.fieldName}}
+
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata[field.model]"
+                                     
+                                    />
+                                    </label>
+
+
+                                    <label class="col-md-12" ng-if="field.fieldType=='Email'"   >{{field.fieldName}}
+                                    <input 
+                                    ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    value="{{field.htmlCode}}" 
+                                    class="form-control"  
+                                    type="email" 
+                                    ng-model="formdata[field.model]"
+                                    />
+									                  </label>                                    
+                                    
+                                    
+                                    <label class="col-md-12" ng-if="field.fieldType=='DropDown'">{{field.fieldName}}
+                                        <vc-ddl   whr='' tbl='{{field.metaInfo.Tables}}' dbval='{{field.metaInfo.Val}}' dblbl='{{field.metaInfo.DisplayLabel}}'
+                                    data-accessor="formdata[field.model]" sql="" vc-change="nriChange()" ></vc-ddl>
+									                  </label>
+									                  </label>
+                                    <label ng-if="field.fieldType=='Radio'">
+                                           
+
+                    <vc-radio  model= "field.fieldName" value="{{field.fieldName}}" label="{{field.fieldName}}" name="{{field.metaInfo.name}}"></vc-radio>
+                                   
+                                
+                                    </label>
+                                  
+                                
+                                <label ng-if="field.fieldType=='Checkbox'">
+                                    <box data-ng-model='checkboxValue' name="{{field.fieldName}}"> </box>
+                                <!--<my-checkbox ng-model="field.fieldName" value="">{{field.fieldName}}</my-checkbox>-->
+                                </label>
+                                <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                                <input my-datepicker date-format="{{format}}" type="text" ng-model="container.two" id="myDP" />
+                                </label>
+                               </div>
+                          	</div>
+                          </div>
+
+						</span>
+
+                            <br>
+                       <button type="submit" ng-click="" class="btn btn-lg btn-primary">submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="company in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ companyId: 'text'}" sortable="'companyId'" align="center" width="250px">
+                       	{{company.companyId}}
+                       </td>
+                       <td scope="row" title="'Name'" filter="{companyName: 'text'}" sortable="'companyName'" align="center">{{company.companyName}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="getCompany(company)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteCompany(company)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

@@ -1,0 +1,86 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		{
+            "dbcol":"AAA",
+			"TitleName":"",
+			"spaces":"15"
+        },
+		{
+            "dbcol":"Title",
+			"TitleName":"",
+			"spaces":"3"
+        },
+		{
+            "dbcol":"currDateTime",
+			"TitleName":"",
+			"spaces":"1"
+        },
+		{
+            "dbcol":"lotNumber",
+			"TitleName":"LOT: ",
+			"spaces":"1"
+        }
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"serialNumber",
+			"header":"SRL",
+			"spaces":"8"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"CHQ No.",
+			"spaces":"8"
+        },
+		{
+            "dbcol":"chequeAmnt",
+			"header":"AMOUNT",
+			"spaces":"17"
+        },
+		{
+            "dbcol":"transCode",
+			"header":"TRAN",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"MICR CODE",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"reason",
+			"header":"REJECTION-REASON",
+			"spaces":"25"
+        },
+		{
+            "dbcol":"branch",
+			"header":"BRANCH",
+			"spaces":"8"
+        },
+		{
+            "dbcol":"payeeName",
+			"header":"PAYEENAME",
+			"spaces":"1"
+        }
+	],
+	"Totals":[
+		
+		{
+            "dbcol":"batchId",
+			"header":"BATCH NO     : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalRecord",
+			"header":"TOTAL RECORD : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalAmount",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        }
+	]
+}

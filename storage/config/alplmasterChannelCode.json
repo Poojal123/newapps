@@ -1,0 +1,20 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_channelcode",
+"Columns":[
+		{
+        	"table":"plde_channelcode",
+            "dbcol":"channelCode",
+			"dbdatatype":"string",
+            "csvindex":"1",
+			"header":"CHANNEL_CODE"
+        },
+        {
+        	"table":"plde_channelcode",
+            "dbcol":"channelDesc",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"CHANNEL_DESC"
+        }
+	]
+}

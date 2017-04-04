@@ -1,0 +1,279 @@
+
+<div class="container-fluid">
+        <div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+             <form method="post" name="form1" autocomplete="off" >
+            <div class="header">
+               <h4 class="chart-title">{{section.sectionName}}
+                    <input type="button" ng-click="CreateBatch()" class="btn btn-info btn-fill btn-wd" value="Start"
+                   		 ng-disabled="disabled" align="right"/>
+
+			  	  <input type="button"  class="btn btn-info btn-fill btn-wd" value="Save" ng-click="formdatadisplay()"
+                        ng-disabled="!disabled" align="right"/>
+
+                 <input type="button" ng-click="FinishBatch()" class="btn btn-info btn-fill btn-wd" value="Finish"
+                   		 ng-disabled="!disabled" align="right"/>
+                 
+                  <!-- <input type="button" ng-click="" class="btn btn-info btn-fill btn-wd">Batch Complete</button>
+                  <input type="button" ng-click="" class="btn btn-info btn-fill btn-wd">View Check Details</button>-->
+                  <input type="button" ng-show="showlist" style="float: right" ng-click="chequelist1()"  class="btn btn-info btn-fill btn-wd" value="Show" />
+                  <input type="button" ng-show="hidelist" style="float: right" ng-click="hide()"  class="btn btn-info btn-fill btn-wd" value="Hide" />
+
+               </h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                <div class="col-md-3">
+                    <label style="float:left;font-size:15px;margin-bottom:20px;margin-left: 40px">{{user}}</label><br>
+                </div>
+                <div class="col-md-3">
+                    <!--<label style="font-size:15px;;margin-bottom:20px;margin-left:10px;  margin-right: 40px">{{user}}</label><br>               -->
+                </div>
+                </div>
+                  <span ng-repeat="rowFields in section.sortedFields track by $index">
+                     <div class="row" >
+                        <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                           <div class="form-group"><!--{{field.model}}-->
+                              <label ng-if="field.fieldType=='Label'" ng-hide="((field.model=='octmotherchequeentry__cardType') && (cardType == true))">{{field.fieldName}}
+                                    </br>
+                                    <span ng-if="field.model=='bankName'">{{micr1}}</span>
+                                    <span ng-if="field.model=='octmotherchequeentry__serialNumber'">{{formdata.octmotherchequeentry__serialNumber}}</span>
+                                    <span ng-if="field.model=='octmotherchequeentry__lotNumber'">{{formdata.octmotherchequeentry__lotNumber}}</span>
+                                    <span ng-if="field.model=='octmchequeentry__categoryAmount'">{{formdata.octmchequeentry__categoryAmount}}</span>
+                                    <span ng-if="field.model=='amountletter1'">{{word1}}</span>
+                                    <span ng-if="field.model=='amountletter2'">{{word2}}</span>
+                                    <span ng-if="field.model=='lastChequeNumber'">{{lastChequeNumber}}</span>
+                                    <span ng-if="field.model=='lastChequeAmount'">{{lastChequeAmount}}</span>
+                                     <span ng-if="field.model=='octmotherchequeentry__clgDate'">{{formdata.octmotherchequeentry__clgDate}}</span>
+                                      <span ng-if="field.model=='octmotherchequeentry__cardType'">{{formdata.octmotherchequeentry__cardType}}</span>
+                              </label>
+                                
+                                <vc-text 
+                             	labelaccessor="{{field.fieldId}}"        
+                                ng-if="field.fieldType=='TextField'" 
+                                data-model="formdata[field.model]"                                          
+                                data-field="field"                                          
+                                data-processfield="processField"                                          
+                                data-inputtype="field.fieldType"        
+                                vc-blur="change([field.model])"                                          
+                                maxlength="{{field.maxLen}}"                                                                      
+                                minlength="{{field.minLen}}"
+                                allowedchars="{{field.allowedChars}}" 
+                                vc-blur="change(field.model)"
+                                vc-change="varSplChar(field.model)"
+ ng-hide="(( field.model=='octmotherchequeentry__accountNumber') && (accno1==true)) || (( field.model=='octmotherchequeentry__accountNumber2') && (accno2==true)) || (( field.model=='octmotherchequeentry__shortMicrCode') && (shmicr == true)) || (( field.model=='octmotherchequeentry__draweeName') && (drawname==true))|| (( field.model=='octmotherchequeentry__payeeName') && (payname==true)) ||	(( field.model=='octmotherchequeentry__debitAccountNumber') && (debitaccno==true)) || (( field.model=='octmotherchequeentry__cardNumber') && (cflag==true)) || (( field.model=='octmotherchequeentry__cardNumber2') && (carNum2==true)) || ((field.model=='octmotherchequeentry__chequeAmount') && (chqamnt==true)) || ((field.model=='octmotherchequeentry__nonCtsCategory')&&(payname==true))" id="field.model" ></vc-text>                                
+                                
+                              </label>
+                              <label class="col-md-12" ng-if="field.fieldType=='Email'"   >{{field.fieldName}}
+                                  <input 
+                                         ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                         value="{{field.htmlCode}}" 
+                                         class="form-control"  
+                                         type="email" 
+                                         ng-model="formdata[field.model]"
+                                     />
+                              </label>                                 
+                              
+                              <label class="col-md-12" ng-if="field.fieldType=='DropDown'"> 
+                             
+                                 <vc-select   
+                                         ng-if="field.fieldType=='DropDown'"
+                                         label="{{field.fieldName}}"
+                                         whr=''  
+                                         tbl='{{field.metaInfo.Tables}}' 
+                                         dbval='{{field.metaInfo.Val}}' 
+                                         dblbl='{{field.metaInfo.DisplayLabel}}'
+                                         data-accessor="formdata[field.model]" 
+                                         labelaccessor="{{field.model}}"
+                                         data-datalist="field.metaInfo.datalist"
+                                         labeldatalist="{{field.metaInfo.datalist}}"
+                                         sql="" 
+                                         vc-blur="valuechange(field)"
+                                         data-field="field"
+                                         data-processfield="processField"
+                                         ng-hide="((field.model=='octmotherchequeentry__reason')&&(reasondp==true))" 
+                                         id = "{{field.fieldId}}"             
+                                 ></vc-select>
+                              </label>
+
+                              <label ng-if="field.fieldType=='Radio'">
+                                     <vc-radio  
+                                            model= "field.fieldName" 
+                                            value="{{field.fieldName}}" 
+                                            label="{{field.fieldName}}" 
+                                            name="{{field.metaInfo.name}}">
+                                     </vc-radio>
+                              </label>
+
+                                 <box data-ng-model='formdata1[field.model]' ng-if="field.fieldType=='Checkbox'" ng-hide="((field.model=='iciciBankCreditCard') && (iciciCreditCardBox==true))" name = "{{field.fieldName}}"
+                                 > </box> 
+                              
+                              <label class="col-md-12" ng-if="field.fieldType=='MaskDate'"
+                                    ng-hide ="(field.model=='octmotherchequeentry__chequeDate')&&(chqdt==true)" >{{field.fieldName}}
+                              	<input 
+                                  		ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  		class = "form-control" 
+                                        type = "text"
+                                        id = "field.model"
+                                        ng-model = "formdata[field.model]"
+                                        value = "" 	
+                                        ng-blur = "checkdate1(field.model)"
+                                        ng-change = "validateSplChar(field.model)"
+                                        placeholder = "MM/DD/YYYY"
+                                  		mask ="19/29/2999"
+                                        
+ 		                     /> 
+                              </label>
+                               <label class="col-md-12" ng-if="field.fieldType=='Calendar'" >{{field.fieldName}}
+                                		<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="{{field.fieldId}}" />
+                               </label>
+                           </div>
+                        </div>
+                     </div>
+                  </span>
+                  <br>
+               </form>
+            </div>
+                    <div class="panel-body" ng-show="chequelisttable">
+                             <center>
+                             <label style="font-size:18px;">Batch Number : {{formdata.octmotherchequeentry__batchId}}</label>
+                            <label style="margin-left:10px;font-size:18px;">Total Records : {{totalrecords}}</label>
+                            <label style="margin-left:10px;font-size:18px;"> Amount Category : {{amountcategory}}</label>
+                            </center>
+                            
+                            <div id="scrollable-area">
+                            	<table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                	<tr ng-repeat="misreport in $data">
+                                        
+                                    	<td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.serialNumber" value="{{misreport.serialNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Category'" filter="{ nonCtsCategory: 'text'}" sortable="'nonCtsCategory'" align="center" width="250px">
+                                             <label style="font-size:14px;">{{misreport.nonCtsCategoryName}}</label>
+                                           <!--<select class="form-control">
+                                           		<option value="{{misreport.nonCtsCategory}}">{{misreport.nonCtsCategoryName}}</option>
+                                                </select>-->
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Account Number1'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.accountNumber" value="{{misreport.accountNumber}}" pattern=".{12,12}" required title="Only 12 digit allowed"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Cheque Date'" filter="{ chequeDate: 'text'}" sortable="'chequeDate'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.chequeDate" value="{{misreport.chequeDate}}"/>
+                                        </td>
+                                        
+                                         <td  scope="row"  title="'Cheque Amount1'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center" width="250px">
+                                        	<input type="text" ng-model="misreport.chequeAmount" value="{{misreport.chequeAmount}}" />
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Cheque Number'" filter="{ chequeNumber: 'text'}" sortable="'chequeNumber'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.chequeNumber" value="{{misreport.chequeNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'MICR Code'" filter="{ micrCode: 'text'}" sortable="'micrCode'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.micrCode" value="{{misreport.micrCode}}"/>
+                                        </td>
+                                        
+                                  		<td  scope="row"  title="'Trans Code'" filter="{ transCode: 'text'}" sortable="'transCode'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.transCode" value="{{misreport.transCode}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Payee Name'" filter="{ payeeName: 'text'}" sortable="'payeeName'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.payeeName" value="{{misreport.payeeName}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Drawee Name'" filter="{ draweeName: 'text'}" sortable="'draweeName'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.draweeName" value="{{misreport.draweeName}}"/>
+                                        </td>
+                                        
+                                         <td  scope="row"  title="'Sol Id'" filter="{ solId: 'text'}" sortable="'solId'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.solId" value="{{misreport.solId}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Debit Account Number'" filter="{ debitAccountNumber: 'text'}" sortable="'debitAccountNumber'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.debitAccountNumber" value="{{misreport.debitAccountNumber}}"/>
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Short MICR Code'" filter="{ shortMicrCode: 'text'}" sortable="'shortMicrCode'" align="center" width="250px">
+                                            <input type="text" ng-model="misreport.shortMicrCode" value="{{misreport.shortMicrCode}}"/>
+                                        </td>
+                                       
+                                        <td  scope="row" align="center" width="250px">
+                                            <input type="submit" class="btn btn-info btn-fill btn-wd" ng-click="update(otherchequeentry,misreport,'save')" value="Update"></input>
+                                        </td> 
+                                        <td  scope="row" align="center" width="250px">
+                                            <input type="button" class="btn btn-info btn-fill btn-wd" ng-click="deleterecord2(misreport.serialNumber,misreport)" value="Delete"></input>
+                                        </td>
+                                    </tr>
+                                </table>
+			                </div>
+                            
+                            <!--<div id="scrollable-area">
+                                <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                    <tr ng-repeat="misreport in $data">
+                                        <td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px">
+                                            {{misreport.serialNumber}}
+                                        </td>
+                                        <td  scope="row"  title="'Account Number'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="250px">
+                                            {{misreport.accountNumber}}
+                                        </td>
+                                        <td  scope="row"  title="'Clg Date'" filter="{ clgDate: 'text'}" sortable="'clgDate'" align="center" width="250px">
+                                            {{misreport.clgDate}}
+                                        </td>
+                                            <td  scope="row"  title="'Card Number'" filter="{ cardNumber: 'text'}" sortable="'cardNumber'" align="center" width="250px">
+                                            {{misreport.cardNumber}}
+                                        </td>
+                                            <td  scope="row"  title="'Cheque Date'" filter="{ chequeDate: 'text'}" sortable="'chequeDate'" align="center" width="250px">
+                                                {{misreport.chequeDate}}
+                                        </td>
+                                        <td  scope="row"  title="'Cheque Number'" filter="{ chequeNumber: 'text'}" sortable="'chequeNumber'" align="center" width="250px">
+                                            {{misreport.chequeNumber}}
+                                        </td>
+                                        <td  scope="row"  title="'MICR Code'" filter="{ micrCode: 'text'}" sortable="'micrCode'" align="center" width="250px">
+                                            {{misreport.micrCode}}
+                                        </td>
+                                            <td  scope="row"  title="'Category Amount'" filter="{ categoryAmount: 'text'}" sortable="'categoryAmount'" align="center" width="250px">
+                                            {{misreport.categoryAmount}}
+                                        </td>
+                                            <td  scope="row"  title="'Cheque Amount'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center" width="250px">
+                                                {{misreport.chequeAmount}}
+                                        </td>
+                                              <td  scope="row"  title="'Short MICR Code'" filter="{ shortMicrCode: 'text'}" sortable="'shortMicrCode'" align="center" width="250px">
+                                            {{misreport.shortMicrCode}}
+                                        </td>
+                                            <td  scope="row"  title="'Payee Name'" filter="{ payeeName: 'text'}" sortable="'payeeName'" align="center" width="250px">
+                                                {{misreport.payeeName}}
+                                        </td>
+                                        <td  scope="row"  title="'Trans Code'" filter="{ transCode: 'text'}" sortable="'transCode'" align="center" width="250px">
+                                            {{misreport.transCode}}
+                                        </td>
+                                        <td  scope="row"  title="'SolId'" filter="{ solId: 'text'}" sortable="'solId'" align="center" width="250px">
+                                            {{misreport.solId}}
+                                        </td>
+                                            <td  scope="row"  title="'Card Type'" filter="{ cardType: 'text'}" sortable="'cardType'" align="center" width="250px">
+                                            {{misreport.cardType}}
+                                        </td>
+                                            <td  scope="row"  title="'Debit Account Number'" filter="{ debitAccountNumber: 'text'}" sortable="'debitAccountNumber'" align="center" width="250px">
+                                                {{misreport.debitAccountNumber}}
+                                        </td>
+                                        <td  scope="row"  title="'Drawee Name'" filter="{ draweeName: 'text'}" sortable="'draweeName'" align="center" width="250px">
+                                                {{misreport.draweeName}}
+                                        </td>
+                                    </tr>
+                                </table>
+			                </div>-->
+                    </div>
+         </div>
+      </div>
+   </div>
+   <hr>
+   <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>

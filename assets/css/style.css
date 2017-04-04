@@ -1,0 +1,171 @@
+.form-control:focus {
+  background-color:#9FF;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.actionbutton{
+	font-size:18px;
+	padding-left:10px;
+
+}
+
+
+.disabled {
+  cursor: not-allowed;
+}
+
+
+.system {
+  color:#F00;
+}
+gridListdemoBasicUsage md-grid-list {
+
+}
+
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5;
+}
+
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.selectedStyle {
+    /* don't use important! :) - just for example simplicity */
+  background-color: green !important;
+  color: black !important;
+}
+.parent {
+    display: block;
+}
+
+.card img {
+    width: 70px;
+   	height:50px;
+    display: block;
+}
+
+#scrollable-area {
+           margin: auto;
+	       width: 100%;
+	       border: 2px solid #ccc;
+	       overflow-y: scroll; /* <-- here is what is important*/
+}
+
+.icon-flipped {
+transform: scaleX(-1);
+-moz-transform: scaleX(-1);
+-webkit-transform: scaleX(-1);
+-ms-transform: scaleX(-1);
+}
+
+.rightfix {
+
+
+}
+
+
+
+
+.ddlnoborder{
+border-width:0px;
+border-style:none;
+}
+
+.ddlborder{
+border-width:1px;
+border-style:solid;
+border-color:#F00;
+}
+
+.red{
+color:#F00;
+}
+
+.nored{
+color:#000000;
+}
+/*added by s*/
+#documentType:focus {
+    background-color: #87cefa;
+}
+/*input:focus{
+      background-color: yellow;
+}*/
+#promocode:focus, #applicationno:focus,#accountno:focus,#expirydate:focus {
+    background-color: #87cefa;
+}
+
+span.infoTotal {
+    float: left;
+    width: 100%;
+    margin-left: 33%;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+#Usertypes {
+    display: block;
+    width: 55%;
+}
+.content.inputchanges.form-control {
+    height: 24px;
+    padding: 0 15px;
+}
+.allocate_btn.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 2px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+a.success_close {
+/*    width: 18px;
+    height: 16px;
+    float: right;
+    margin-top: -14px;
+    font-size: 20px;
+    font-weight: 600;*/
+width: 18px;
+    height: 16px;
+    float: right;
+    margin-top: -25px;
+    margin-right: 24px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.ToastMsg_Success.alert-success {
+    color: rgba(251, 248, 248, 0.94);
+    background-color: #368217;
+    border-color: #368217;
+}
+.ToastMsg_Success.alert {
+    padding: 5px;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 427px;
+}
+/*e*/

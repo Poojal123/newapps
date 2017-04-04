@@ -1,0 +1,139 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" >
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                        
+                                <label class="col-md-12" ng-if="field.fieldType=='DropDown'">
+                                           
+                                  <vc-ddl   
+                                  ng-if="field.fieldType=='DropDown'"
+                                   label="{{field.fieldName}}"
+                                     whr=' '
+                                     tbl='{{field.metaInfo.Tables}}' 
+                                     dbval='DisplayLabel' 
+                                     dblbl='{{field.metaInfo.DisplayLabel}}'
+                                     data-accessor="formdata[field.model]" 
+                                     labelaccessor="{{field.model}}"
+                                     data-datalist="field.metaInfo.datalist"
+                                     labeldatalist="{{field.metaInfo.datalist}}"
+                                     sql="{{field.metaInfo.sql}}" 
+                                     vc-change="getValue([field.model])"
+                                     data-field="field"
+                                     data-processfield="processField"
+                             	    >
+                                 </vc-ddl> 
+								</label>
+                                <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                                <input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                </label>
+                                                      
+                               </div>
+                          	</div>     						
+                          </div>                            
+						</span>
+                      
+                       <button type="submit"  ng-click="hourlyStatusReport()" style="margin-left:14px;" class="btn btn-lg btn-primary">Submit</button>                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</h3></div>
+					 
+                  <div class="col-xs-6"  align="right"><a class="btn" title="Export Table" ng-click='csvnew.generate()' ng-href="{{ csvnew.link() }}"
+                     download="hourlyStatusReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export 
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+    
+     <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+                 <div id="scrollable-area"  >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csvnew" separator=",">
+                     <tr ng-repeat="misreport in $data | unique:'userId'">
+                    
+                       <td  scope="row"  title="'Operator'" filter="{Operator: 'text'}" sortable="'Operator'" align="center" width="250px">
+                       	{{misreport.Operator}}
+                       </td>  
+
+                       <td  scope="row"  title="'08To09'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                       	{{misreport.Eight}}
+                       </td>  
+                         
+                       <td  scope="row"  title="'09To10'" filter="{search: 'text'}" sortable="'B'" align="center" width="250px">
+                       	{{misreport.Nine}}
+                       </td>
+                       
+                       <td  scope="row"  title="'10To11'" filter="{search: 'text'}" sortable="'C'" align="center" width="250px">
+                       	{{misreport.Ten}}
+                       </td>
+                       
+                       <td  scope="row"  title="'11To12'" filter="{search: 'text'}" sortable="'D'" align="center" width="250px">
+                       	{{misreport.OneOne}}
+                       </td>
+                       
+                       <td  scope="row"  title="'12To01'" filter="{search: 'text'}" sortable="'F'" align="center" width="250px">
+                       	{{misreport.OneTwo}}
+                       </td>
+                       
+                        <td  scope="row"  title="'01To02'" filter="{search: 'text'}" sortable="'G'" align="center" width="250px">
+                       	{{misreport.OneThree}}
+                       </td>
+                       
+                       <td  scope="row"  title="'02To03'" filter="{search: 'text'}" sortable="'H'" align="center" width="250px">
+                       	{{misreport.OneFour}}
+                       </td>
+                       
+                       <td  scope="row"  title="'03To04'" filter="{search: 'text'}" sortable="'I'" align="center" width="250px">
+                       	{{misreport.OneFive}}
+                       </td>
+                       
+                        <td  scope="row"  title="'04To05'" filter="{search: 'text'}" sortable="'J'" align="center" width="250px">
+                       	{{misreport.OneSix}}
+                       </td>
+                       
+                       <td  scope="row"  title="'05To06'" filter="{search: 'text'}" sortable="'K'" align="center" width="250px">
+                       	{{misreport.OneSeven}}
+                       </td>
+                       
+                       <td  scope="row"  title="'06To07'" filter="{search: 'text'}" sortable="'L'" align="center" width="250px">
+                       	{{misreport.OneEight}}
+                       </td>
+                       
+                        <td  scope="row"  title="'07To08'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                       	{{misreport.OneNine}}
+                       </td>
+                       
+                       
+                     </tr>
+     
+                 </table>
+			    </div>
+    <hr>
+
+    
+
+  </div>  </div>

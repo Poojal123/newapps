@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+
+                <div class="content">
+                 
+                    <form method="post" name="form1" ng-submit="submitForm(formdata.file)">
+                         <span ng-repeat="rowFields in section.sortedFields track by $index">
+
+                          <div class="row" >
+                            <div class="col-md-8" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                            
+                                    <label
+                                     ng-if="field.fieldType=='File'" >{{field.fieldName}}
+                                     <input 
+	                                    type="file" 
+                                    	style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                     	ng-if="field.fieldType=='File'" 
+                                        ng-model="formdata.file"
+                                        name="file"
+                                        ngf-model-invalid="errorFile"
+                                        ngf-select
+                                        /><br>
+                                          <i ng-show="form.file.$error.maxSize">File too large 
+                                              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                     </label>   
+                                   
+                                       <!--<label class="col-md-12" ng-if="field.fieldType=='TextArea'" >{{field.fieldName}}  
+                                          <textarea
+                                            class="form-control" rows="3"
+                                            ng-if="field.fieldType=='TextArea'" 
+                                            ng-model="logs"
+                                          >
+                                      </textarea>
+                                      </label>  
+-->                                   </div>
+                                  </div>
+                                </div>
+
+                             </span>
+						<hr>
+                        <div class="clearfix"></div>
+                   
+                  <br>
+                  <button type="submit" ng-click="" style="margin-left:20px;" class="btn btn-info btn-fill btn-wd">Submit</button>
+                  <button type="submit" ng-click="" class="btn btn-info btn-fill btn-wd">Exit</button>
+                            
+                            
+                    </form>
+
+				</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

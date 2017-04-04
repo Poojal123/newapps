@@ -1,0 +1,10 @@
+
+.vc-radio {
+   display         : block;
+   
+}
+.vc-radio>input {
+   width         : 24px;
+   height        : 24px;
+   vertical-align: text-bottom;
+}

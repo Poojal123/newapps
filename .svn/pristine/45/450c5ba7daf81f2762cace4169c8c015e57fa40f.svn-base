@@ -1,0 +1,16 @@
+{
+"Name":"OCTM Generate",
+"Columns":[
+		{
+            "dbcol":"octmBatchId",
+			"header":"Batch Id",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"clgDate",
+			"header":"Clearing Date",
+			"spaces":"4"
+        }
+		
+	]
+}

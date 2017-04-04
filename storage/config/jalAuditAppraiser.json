@@ -1,0 +1,116 @@
+{
+"Name":"Import Audit Appraiser",
+"PrimaryTable":"jlaauditappraisermaster",
+"Columns":[
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditAppraiser",
+	     "dbdatatype":"string",
+            "csvindex":"1",
+            "header":"AUDIT APPRAISER"
+        },
+        {
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorLocation",
+	    "dbdatatype":"string",
+            "csvindex":"2",
+            "header":"LOCATION"
+        },
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorState",
+	    "dbdatatype":"string",
+            "csvindex":"3",
+            "header":"STATE"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorZone",
+	    "dbdatatype":"string",
+            "csvindex":"4",
+            "header":"ZONE"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorAppraiserCode",
+	    "dbdatatype":"string",
+            "csvindex":"5",
+             "header":"AUDIT APPRAISER CODE"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorVstsCvId",
+	    "dbdatatype":"string",
+            "csvindex":"6",
+            "header":"VSTS CV ID"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorVstsUpdation",
+	    "dbdatatype":"string",
+            "csvindex":"7", 
+                "header":"VSTS UPDATION"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorStatus",
+	    "dbdatatype":"string",
+            "csvindex":"8",
+             "header":"AUDITOR STATUS"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorClusterManager",
+	    "dbdatatype":"string",
+            "csvindex":"9",
+            "header":"CLUSTER MANAGER"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorClusterManagerEmpNo",
+	    "dbdatatype":"string",
+            "csvindex":"10",
+            "header":"CLUSTER MANAGER EMP NO"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorRegionalManager",
+	    "dbdatatype":"string",
+            "csvindex":"11",
+            "header":"REGIONAL MANAGER"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorRegionalManagerEmpNo",
+	    "dbdatatype":"string",
+            "csvindex":"12",
+             "header":"REGIONAL MANAGER EMP NO"
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorZonalManager",
+	    "dbdatatype":"string",
+            "csvindex":"13",
+           "header":"ZONAL MANAGER"
+
+        }
+        ,
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditorZonalManagerEmpNo",
+	    "dbdatatype":"string",
+            "csvindex":"14",
+                    "header":"ZONAL MANAGER EMP NO"
+        }
+	]
+}

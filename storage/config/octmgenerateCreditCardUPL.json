@@ -1,0 +1,54 @@
+{
+"Name":"OCTM Generate",
+"Columns":[
+		{
+            "dbcol":"AccountNo",
+			"header":"",
+			"spaces":"4",
+			"Tempspaces":"12"
+        },
+		{
+            "dbcol":"INR",
+			"header":"",
+			"spaces":"7",
+			"Tempspaces":"3"
+        },
+		{
+            "dbcol":"chequeAmnt",
+			"header":"",
+			"spaces":"1",
+			"Tempspaces":"4"
+        },
+		{
+            "dbcol":"chequeNumberShortBankCode",
+			"header":"",
+			"spaces":"17",
+			"Tempspaces":"11"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"",
+			"spaces":"9",
+			"Tempspaces":"6"
+        },
+		{
+            "dbcol":"amntAndTrans",
+			"header":"",
+			"spaces":"1",
+			"Tempspaces":"4"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"",
+			"spaces":"80",
+			"Tempspaces":"4"
+        },
+		{
+            "dbcol":"payeeName",
+			"header":"",
+			"spaces":"1",
+			"Tempspaces":"4"
+        }
+		
+	]
+}

@@ -1,0 +1,12 @@
+{
+"Name":"Import JLA",
+"PrimaryTable":"jlacouriermaster",
+"Columns":[
+	{
+            "table":"jlacouriermaster",
+            "dbcol":"courierName",
+	    "dbdatatype":"string",
+            "csvindex":"1"
+        }
+	]
+}

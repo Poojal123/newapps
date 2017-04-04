@@ -1,0 +1,143 @@
+<div class="container-fluid">
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>User Performance Report</h3></div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" >
+            
+                <div class="row" >
+                    <div class="form-group col-md-3">
+                        <label >Date from</label>
+                        <input my-datepicker format="{{format}}" type="text" name="name" placeholder="Select Date"  
+                         class="form-control elastic" ng-model="searchparams.fromDate" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label >Date to</label>
+                        <input my-datepicker format="{{format}}"  type="text" name="name" placeholder="Select Date"  
+                        class="form-control elastic" ng-model="searchparams.toDate" />
+                    </div>    
+               </div>
+
+                <div class="row" >
+                    <div class="form-group col-md-3">
+                        <label >User</label>
+                        <vc-ddl    whr='' tbl='coreusers'  dbval='userId' dblbl='fullName' data-accessor="selectedUser" ></vc-ddl>
+                         
+                    </div>
+                   
+                    <div class="form-group col-md-3">
+                        <label >Process</label>
+                        <vc-ddl    whr='' tbl='coreprocessmaster'  dbval='processId' dblbl='processName' data-accessor="selectedProcess" ></vc-ddl>
+                   
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label >Location</label>
+                        <vc-ddl    whr='' tbl='alplapplications'  dbval='location' dblbl='location' data-accessor="selectedLocation"  sql="select *, location as displaylabel from alplapplications group by location"></vc-ddl>
+                    </div>
+               </div>
+               
+
+               <div class="row" >
+                     <div class="form-group col-md-3">
+                        <button class="btn btn-lg btn-primary " ng-click="getReport()"  >Search</button>
+                    </div> 
+                     <div class="form-group col-md-3">
+                        <button class="btn btn-lg btn-primary " ng-click="reportRejected()" >Rejection Report</button>
+                    </div>      
+				</div>
+
+					
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+					<div class="col-xs-6"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div ng-if="showtb==true" >
+                 
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator="," >
+                     <tr ng-repeat="user in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ userId: 'text'}" sortable="'userId'" align="center" width="250px" >
+                       	{{user.userId}}
+                       </td>
+                      <td scope="row" title="'Full Name'" filter="{fullName: 'text'}" sortable="'fullName'" align="center" >
+                       
+                      {{user.fullName}}
+                       
+                      
+                       </td>
+                       <td scope="row" title="'Process Name'" filter="{processName: 'text'}" sortable="'processName'" align="center" >{{user.processName}}</td>  
+ 					   <td scope="row" title="'Location Name'" filter="{location: 'text'}" sortable="'location'" align="center" >{{user.location}}</td>  
+                       <td scope="row" title="'Processed Records'" filter="{Total: 'text'}" sortable="'Total'" align="center" >{{user.Total}}</td>
+                     
+                     
+                     </tr>
+     
+                 </table>
+			    </div>
+                
+                <div ng-if="showtb==false" >
+                 
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator="," >
+                     <tr ng-repeat="user in $data">
+			             <td scope="row" title="'ALPL_ImageName'"  align="center" >{{user.ALPL_ImageName}}</td>
+                        <td scope="row" title="'ALPL_Status'"  filter="{ALPL_Status: 'text'}" sortable="'ALPL_Status'" align="center" >{{user.ALPL_Status}}</td>   
+                        <td scope="row" title="'ALPL_Remark'"  align="center" >{{user.remark}}</td> 
+                        <td scope="row" title="'ALPL_ApsNo'"  filter="{apsNo: 'text'}" sortable="'apsNo'" align="center" >{{user.apsNo}}</td> 
+                      <td scope="row" title="'ALPL_Rej_By'" filter="{fullName: 'text'}" sortable="'fullName'" align="left" >
+                       
+                      
+                       	<strong>{{user.fullName}}</strong><br />
+                        <em>{{user.emailId}}</em>
+                       
+                       <br/>
+                       </td>
+                       <td scope="row" title="'ALPL_Rej_Date'"  align="center" >{{user.endDate}}</td>  
+ 					    <td scope="row" title="'ALPL_Rej_Remark'"  align="center" >{{user.name}}</td>   
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

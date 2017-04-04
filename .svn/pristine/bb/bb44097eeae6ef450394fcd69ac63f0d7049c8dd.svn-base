@@ -1,0 +1,230 @@
+<?php
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+// This can be removed if you use __autoload() in config.php OR use Modular Extensions
+require APPPATH . 'libraries/REST_Controller.php';
+
+class TechnicalScrutiny extends REST_Controller
+{
+    function __construct() {
+        parent::__construct();
+
+		if (isset($_SERVER['HTTP_ORIGIN']))
+		 {
+			header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+ 		    header('Access-Control-Allow-Credentials: true');
+  		    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+  		    header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding,X-Custom-Header");   
+   			header('Access-Control-Max-Age: 86400');    // cache for 1 day
+
+   		if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] )
+			 {
+    			die();
+   			 }
+		}
+
+		$this->load->database();
+		$this->load->model('TechnicalScrutiny_model');	
+		$this->load->model('Core_model');
+		$this->load->helper('file');    
+		$this->load->library('Csvreader');	
+		
+	}
+	function StartEntry_get($processId,$userId){
+		$result = $this->TechnicalScrutiny_model->startEntry($processId, $userId);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"error"));
+		}
+			else
+			{
+				return $this->set_response(array("status"=>"success","message"=>"Success","result"=>$result));
+			}
+		
+	}
+	function EndEntry_post(){
+		
+		$result = $this->TechnicalScrutiny_model->endEntry($formdata, $id);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+			else
+			{
+				return $this->set_response(array("status"=>"success","message"=>"Success","result"=>$result));
+			}
+	}
+	
+		
+	function getreport_get($enddate)
+	{	
+		$result = $this->TechnicalScrutiny_model->getreport($enddate);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	function deletepurgedata_get($clgdate)
+	{	
+		$types=$this->TechnicalScrutiny_model->deletepurgedata($clgdate);
+		return $this->set_response(array("status"=>"success","message"=>"Record is release","result"=>$types));
+	
+	}	
+	function processStatusGetReport_get($enddate)
+	{	
+		$result = $this->TechnicalScrutiny_model->processStatusGetReport($enddate);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	
+	function pendingWorkGetReport_get($batchno)
+	{	
+		$result = $this->TechnicalScrutiny_model->pendingWorkGetReport($batchno);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	function inwardTechnicalScrutinyGetReport_get($batchNoFrom,$batchNoTo,$clgDate)
+	{	
+		$result = $this->TechnicalScrutiny_model->inwardTechnicalScrutinyGetReport($batchNoFrom,$batchNoTo,$clgDate);
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		//print_r($result);
+		
+	}
+	function pendencyCheckGetReport_get($enddate)
+	{	
+		$result = $this->TechnicalScrutiny_model->pendencyCheckGetReport($enddate);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	
+	function ImportTXT_get($file,$folderId,$json,$extData="",$separator="|",$extention="txt"){
+			 
+			 $path = $this->Core_model->getFolderPath($folderId);
+			 $data = $this->TechnicalScrutiny_model->importTXT($path.$file.".".$extention,IMPORT_CSVJSON_ROOT.$json.'.json',json_encode($extData),$separator,$extention);
+			 
+			 return $this->set_response(array('status'=>'post_success', 'result'=>$data));
+	}
+	function userProductivityStatusGetReport_get($batchNo,$from,$to)
+	{	
+		$result = $this->TechnicalScrutiny_model->userProductivityStatusGetReport($batchNo,$from,$to);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	function hourlyStatusGetReport_get($date,$shift,$activity)
+	{	
+	
+		$result = $this->TechnicalScrutiny_model->hourlyStatusGetReport($date,$shift,$activity);
+		if($result==false)
+		{
+			return $this->set_response(array("status"=>"error","message"=>"Error","result"=>"no result"));
+		}
+		else
+		{
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+		}
+	}
+	function TSBatchApplication_get($batchId=0,$processId=0)
+	{
+		$types = $this->TechnicalScrutiny_model->TSgetBatchApplication($batchId,$processId);
+		
+		return $this->set_response(array("status"=>"success","message"=>"List of all allocation enteries","result"=>$types));
+	}
+
+	function TSAllocateApplication_post($processId=0,$applicationId=0,$userId=0)
+	{
+		$params = json_decode(file_get_contents('php://input'),true);
+		$types = $this->TechnicalScrutiny_model->TSallocateApplication($params["processId"],$params["userId"],$params["batchNo"]);
+		return $this->set_response(array("status"=>"success","message"=>"application allocated","result"=>$types));
+	}	
+	function folderscan_get($job="")
+	{
+		//echo dirname(__FILE__);
+		
+		$types = $this->TechnicalScrutiny_model->folderscan(TECHNICAL_SCRUTINY_JOB_ROOT."".$job,$job);
+		return $this->set_response(array("status"=>"success","message"=>"List of All files","result"=>$types));
+		
+	}						
+	function Previous_get($entryId,$userId,$processId)
+	{	
+	
+		$result = $this->TechnicalScrutiny_model->getPrevious($entryId,$userId,$processId);
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+	}
+	function Next_get($entryId,$userId,$processId)
+	{	
+	
+		$result = $this->TechnicalScrutiny_model->getNext($entryId,$userId,$processId);
+		return $this->set_response(array("status"=>"success","message"=>"data for report","result"=>$result));
+	}
+	function SearchTSRelease_get($key=0,$val=0)
+	{
+		
+		$types = $this->TechnicalScrutiny_model->getSearchTSRelease($key, $val);
+		return $this->set_response(array("status"=>"success","message"=>"List of all allocation entries","result"=>$types));
+		
+	}
+	function DeleteTSRelease_get($allocationIds="")
+	{	
+		$types=$this->TechnicalScrutiny_model->DeleteTSRelease($allocationIds);
+		return $this->set_response(array("status"=>"success","message"=>"Record is release","result"=>$types));
+	}
+	function TSBatches_get($processId=0)
+	{
+		$types = $this->TechnicalScrutiny_model->getTSBatches($processId);
+		//echo $types;
+		return $this->set_response(array("status"=>"success","message"=>"List of all Batches entries","result"=>$types));
+		
+	}
+	function TSUsers_get($id=0)
+	{
+		$types = $this->TechnicalScrutiny_model->getTSUsers($id);
+		//echo $types;
+		return $this->set_response(array("status"=>"success","message"=>"List of all Users entries","result"=>$types));
+		
+	}
+	function TSApplications_get($id=0)
+	{
+		$types = $this->TechnicalScrutiny_model->getTSApplications($id);
+		//echo $types;
+		return $this->set_response(array("status"=>"success","message"=>"List of all applications entries","result"=>$types));
+		
+	}	
+	function SearchStatus_get($account,$cheque)
+	{
+		$result = $this->TechnicalScrutiny_model->SearchStatus($account,$cheque);
+		return $this->set_response(array("status"=>"success","message"=>"List of all applications entries","result"=>$result));
+		
+	}							
+}
+?>

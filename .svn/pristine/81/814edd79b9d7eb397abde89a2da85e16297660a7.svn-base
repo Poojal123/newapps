@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="chart-title">Image Indexing</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label >Indexing Type</label>
+                                                <select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Sub Type</label>
+                                                <select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Source Path</label>
+                                                <input type="file" class="form-control border-input" placeholder="Source Path" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Total Image</label>
+                                                <input type="text" class="form-control border-input" placeholder="Total Image" value="">
+                                            </div>
+                                        </div>
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Current Image</label>
+                                                <input type="text" class="form-control border-input" placeholder="Current Image" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Source Path</label>
+                                                <input type="file" class="form-control border-input" placeholder="Source Path" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Image Name</label>
+                                                <input type="text" class="form-control border-input" placeholder="Image Name" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Account No</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+										<div class="col-md-4">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <input type="text" class="form-control border-input" placeholder="" value="">
+                                            </div>
+                                        </div>
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Document Type</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Document Type</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+
+										
+                                    </div>
+									
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Save</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Previous</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Next</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Previously Saved Image</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Go To</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-8">
+	  <div class="imgtool">
+	  <a href="#"><img src="assets/img/right_rotate.png"></a>
+	  <a href="#"><img src="assets/img/left_rotate.png"></a>
+	  <a href="#"><img src="assets/img/zoom-in-32.png"></a>
+	  <a href="#"><img src="assets/img/zoom-out-32.png"></a>
+	  </div>
+        <div class="chart-wrapper">
+          <img src="assets/img/vara-solutions.jpg" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

@@ -1,0 +1,89 @@
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Location</div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="submitLocation()">
+                <div class="form-group">
+                    <label >Location Name</label>
+                    <input type="text" name="name" placeholder="Location Name" required  class="form-control elastic" ng-model="Location.val.locationName" />
+                </div>    
+                <div class="form-group">
+                    <label >Region Name</label>
+                    <vc-ddl   whr='' tbl='coreregions' dbval='regionId' dblbl='regionName' data-accessor="selectedRegion" data-datalist="getAllRegions" ng-model="selectedRegion.regionId"
+                    
+                     ></vc-ddl>
+                </div>    
+             <div class="form-group">
+                <button class="btn btn-lg btn-primary "  >{{location.id==""?"Create":"Save"}}</button>
+            </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Location</div>
+                    <div class="col-xs-6" align="right"><h3><a class="btn btn-primary" href ng-click="newLocation()">New Location
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitLocation()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="location in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ locationId: 'text'}" sortable="'locationId'" align="center" width="250px">
+                       	{{location.locationId}}
+                       </td>
+                       <td scope="row" title="'Name'" filter="{locationName: 'text'}" sortable="'locationName'" align="center">{{location.locationName}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="getLocation(location)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteLocation(location)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

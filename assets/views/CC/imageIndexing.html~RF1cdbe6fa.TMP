@@ -1,0 +1,205 @@
+<style>
+gridListdemoBasicUsage md-grid-list {
+  
+}
+
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5;
+}
+
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.selectedStyle {
+    /* don't use important! :) - just for example simplicity */
+  background-color: green !important;
+  color: black !important;
+}
+.parent {
+    display: block;
+}
+
+.card img {
+    width: 70px;
+   	height:50px;
+    display: block;
+}
+</style>
+
+<style>
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+
+<style>
+#thumbwrap {
+	position:relative;
+	margin:20px auto;
+	width:252px; height:252px;
+}
+.thumb img { 
+	border:1px solid #000;
+	margin:3px;
+	float:left;
+}
+.thumb span { 
+	position:absolute;
+	visibility:hidden;
+}
+.thumb:hover, .thumb:hover span { 
+	visibility:visible;
+	top:0; left:250px; 
+	z-index:1;
+}
+</style>
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Image Indexing</h4>
+                </div>
+                <div class="content">
+                    <form>
+                   
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job No.</label>
+                                    <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <br>
+                                    <button type="submit" name="import" id="import" ng-click="import()" class="btn btn-info btn-fill btn-wd">Import</button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                      <input ng-model="indexObject.goto" type="text" class="form-control" value="{{indexObject.goto}}" placeholder="Search for...">
+                                      <span class="input-group-btn">
+                                      <button class="btn btn-default" ng-click="navigate(false,indexObject.goto-1)" type="button">Goto</button>
+                                      </span>
+                                  </div>
+                            </div>
+                            
+                            
+                         </div>
+                         	 
+         					<div>
+                            	<label> Application No.
+                            		<input type="text" ng-model="indexObject.imageName"/></label>
+                             	<input type="button" type="submit" ng-click="merge()" class="btn btn-info btn-fill btn-wd" value="Generate TIFF" />
+							</div>                   
+                             
+                         </form>
+                         <div  class="gridListdemoBasicUsage" >
+
+  
+  <div class='md-padding' layout="row" flex>
+    <div layout="row" flex>
+      <div class="parent" layout="column" ng-repeat="arrfile in arrfiles" flex>
+        <md-card ng-click="show(!isPreview)" ng-class='arrfile.isSelected?"selectedStyle":""' class="card">
+         <md-card-content>
+          <img src="{{weburl}}/{{arrfile.img}}"  alt="user avatar">
+          <input type="checkbox" ng-click="show(arrfile)">{{arrfile.isSelected}}
+          </md-card-content>
+          
+        </md-card>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<div>
+<img src="{{weburl}}/{{arrfiles}}"/>
+</div>
+
+
+                      </div>
+                  </div>
+               </div>
+                        
+           
+
+      </div>
+      </div>
+      
+             
+                  
+       
+   
+    <hr>
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>
+<script>
+// When the user clicks on div, open the popup
+function myFunction() {
+    var popup = document.getElementById('myPopup');
+    popup.classList.toggle('show');
+}
+</script>

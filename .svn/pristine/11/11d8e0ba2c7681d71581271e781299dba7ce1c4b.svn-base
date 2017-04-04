@@ -1,0 +1,42 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"cclogomaster",
+"Columns":[
+        {
+        	"table":"cclogomaster",
+            "dbcol":"logoId",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+        	"table":"cclogomaster",
+            "dbcol":"logoCode",
+			"dbdatatype":"int",
+            "csvindex":"2"
+        },
+        {
+        	"table":"cclogomaster",
+            "dbcol":"logoDescription",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        },
+        {
+        	"table":"cclogomaster",
+            "dbcol":"logoTempl",
+			"dbdatatype":"string",
+            "csvindex":"4"
+        },
+        {
+        	"table":"cclogomaster",
+            "dbcol":"modifyOn",
+			"dbdatatype":"string",
+            "csvindex":"5"
+        },
+        {
+        	"table":"cclogomaster",
+            "dbcol":"modifyBy",
+			"dbdatatype":"string",
+            "csvindex":"6"
+        }
+	]
+}

@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12" ng-repeat="section in sections">
+       
+        <div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3> Status Search </h3></div>
+				
+                     
+                </div>
+                </h3>
+      
+      </div>
+      <div class="panel-body">        
+			
+            <div class="content">
+                    <form method="post" name="form1">
+
+
+
+                          
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                    <div class="form-group" ng-if="field.fieldType=='TextField'">
+                                        <label>{{field.fieldName}}</label>
+                                        <input type="text" class="form-control border-input" ng-model="formdata[field.model]">
+                                    </div>
+                                </div>
+							</div>
+                           </span>
+                        
+                            <div class="from-group" >         
+                                    <button type="search" class="btn btn-info" name="search" 
+                                    ng-click="searchStaus()" >Search </button>
+                                </div>
+						     
+                                
+<!--<button ng-click="test()">test</button>-->
+   <div class="clearfix"></div>
+                        
+                    </form>
+                </div>
+		</div>
+ <table class="table table-striped" ng-table="tableParams" show-filter="true" >
+                    
+                     <tr ng-repeat="statusSearch in $data">
+                      
+                       <td scope="row"  title="'Batch No'"  align="center">{{statusSearch.batchAlias}}</td>
+                        <td scope="row"  title="'Application No'"  align="center">{{statusSearch.applicationNo}}</td>
+                        <td scope="row"  title="'Aps No'"  align="center">{{statusSearch.apsNo}}</td>
+                       <td scope="row"  title="'DE Status'"  align="center">{{statusSearch.DE_Status}}</td>
+                        <td scope="row"  title="'FI Status'"  align="center">{{statusSearch.FI_Status}}</td>
+                        <td scope="row"  title="'QC Status'"  align="center">{{statusSearch.QC_Status}}</td>
+                        <td scope="row"  title="'CAM Status'"  align="center">{{statusSearch.CAM_Status}}</td>
+                        <td scope="row"  title="'Audit Status'"  align="center">{{statusSearch.Audit_Status}}</td>
+                       	<td scope="row"  title="'Audit Status'"  align="center">{{statusSearch.Audit_Status}}</td>
+						<td scope="row"  title="'Status'"  align="center">{{statusSearch.Status}}</td>
+                     </tr>
+                 </table>
+
+                
+
+  </div>
+            </div>
+        </div>
+  
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

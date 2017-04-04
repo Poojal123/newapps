@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card">
+
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm(file)" >
+	        
+                <div class="col-md-3" >
+                <div class="form-group">
+                    <label for="searchSelect2">Process</label>
+                        <select class="form-control" name="searchSelect2" ng-change="processChange( process.model)" id="searchSelect2" ng-model="process.model">
+                            <option ng-repeat="option in process.result"  value="{{option.processId}}">{{option.processName}}</option>
+                        </select>
+                </div>
+                
+                </div>
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label for="searchSelect1">Batch</label>
+                        <select class="form-control" name="searchSelect1" ng-change="batchChange(batches.model)" id="searchSelect1" ng-model="batches.model">
+                        <option ng-repeat="option in batches.result"  value="{{option.batchId}}">{{option.batchNo}}</option>
+                        </select>
+                </div>
+                </div>
+                
+                
+                <div class="col-md-3" >
+                <div class="form-group">
+                    <label for="searchSelect">User </label>
+                        <select class="form-control" name="searchSelect" id="searchSelect" ng-change="searchChange(option.userId)" ng-model="processUsers.model">
+                        <option ng-repeat="option in processUsers.result"  value="{{option.userId}}">{{option.fullName}}</option>
+                        </select>
+                </div>
+                </div><br>
+               <div class="col-md-3">  
+                   <div class="form-group" align="center">     
+                                    <button type="submit" class="btn btn-info" name="search" 
+                                    ng-click="allocateclicked()" >Allocate Record</button>
+                   </div>                
+                                
+               </div>                            
+
+                        <div class="clearfix"></div>
+                    </form>
+                  <script type="text/ng-template" id="checkboxheader.html">
+					<input type="checkbox" ng-click="selectAll()">
+				</script>
+
+				<table class="table table-striped" ng-table="tableParams" show-filter="true">
+                    <tr ng-repeat="batchallocations in $data">
+                        <td scope="row" width="100px" align="center" data-header="'checkboxheader.html'">
+                               <input type="checkbox" 
+	                               ng-model="batchallocations.isSelected"> 
+                        </td>  
+                       <td scope="row" title="'Application No'"  filter="{applicationNo: 'text'}" sortable="'applicationNo'" align="center">{{batchallocations.applicationNo}}</td>
+                        <td scope="row" title="'Batch No'" filter="{batchNo: 'text'}"  align="center">{{batchallocations.batchNo}}<br />
+                       </td>
+
+                       
+                     </tr>
+                        
+                 </table>                 
+  
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

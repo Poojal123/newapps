@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>
+   	<div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Second Pass entry
+                    </h4>
+                </div>
+                
+                <div class="panel-body">        
+                	<form class="form" role="form" ng-submit="submitGrades()" method="post">
+                    	<div class="row">
+
+                           	<label class="col-md-4">Select Lot Number
+                           		<vc-ddl   
+                           			 	label="lot Number"
+                            	      	tbl='corelotnumber' 
+                                     	dbval='lotNumber'
+                                     	dblbl='lotNumberId'
+                                     	data-accessor="formdata1.octmchequeentry__lotNumber" 
+                                     	labelaccessor="octmchequeentry__lotNumber"
+                                     	data-datalist="getalllot"
+                                     	labeldatalist="getalllot"
+                                     	whr=""
+                                     	sql=""
+                                     	vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"
+                                     	data-field="field"
+                                        
+                                 	></vc-ddl>
+                            	</label>
+
+                            <label class="col-md-4">Clg Date
+                                		<input my-datepicker format="{{format}}" type="text" ng-model="formdata1.octmchequeentry__clgDate" id="octmchequeentry__clgDate" />
+                                	</label>
+                            </div>
+                            
+                            <div class="row">
+                            	<button class="btn btn-info btn-fill btn-wd" ng-click="showme()"> Get Data</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                            
+                            <div id="scrollable-area">
+                            	<table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                	<tr ng-repeat="misreport in $data">
+                                        
+                                    	<td  scope="row"  title="'Batch Number'" filter="{ batchNumber: 'text'}" sortable="'batchNumber'" align="center" width="250px">
+                                            {{misreport.batchNumber}}
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Total cheques'" filter="{ Total: 'text'}" sortable="'Total'" align="center" width="250px">
+                                            {{misreport.Total}}
+                                        </td>
+                                        
+                                        <td  scope="row"  title="'Category Amount'" filter="{ categoryAmount: 'text'}" sortable="'categoryAmount'" align="center" width="250px">
+                                            {{misreport.categoryAmount}}
+                                        </td>
+
+                                        <td  scope="row" align="center" width="250px">
+                                            <input type="button" class="btn btn-info btn-fill btn-wd" ng-click="gotodataentry(misreport)" value="View" />
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+			                </div>
+                        </form>
+                    </div>
+        		</div>
+      		</div>
+    	</div>
+	</div>

@@ -1,0 +1,80 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		{
+            "dbcol":"blank",
+			"TitleName":"",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"Title",
+			"TitleName":"",
+			"spaces":"4"
+        },
+		{
+            "dbcol":"currDateTime",
+			"TitleName":"",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"lotNumber",
+			"TitleName":"LOT :",
+			"spaces":"4"
+        }
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"serialNumber",
+			"header":"SRL",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"cardNumber",
+			"header":"CREDIT CARD No",
+			"spaces":"20"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"CHQ No",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"chequeAmount",
+			"header":"AMOUNT",
+			"spaces":"17"
+        },
+		{
+            "dbcol":"transCode",
+			"header":"TRANS",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"MICR CODE",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"draweeName",
+			"header":"DRAWEE BANK",
+			"spaces":"15"
+        },
+		{
+            "dbcol":"branch",
+			"header":"BRANCH",
+			"spaces":"8"
+        }
+	],
+	"Totals":[
+		{
+            "dbcol":"totalRecord",
+			"header":"TOTAL RECORD : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalAmount",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        }
+	]
+}

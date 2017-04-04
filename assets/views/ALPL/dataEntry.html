@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12" ng-repeat="section in sections">
+       
+        <div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3> AL/PL {{process.processName}}  </h3></div>
+				
+                     <div align="right" class="col-xs-6" role="toolbar" aria-label="Toolbar with button groups" style="margin-top:10px;">
+                      <div class="btn-group" role="group" aria-label="First group" align="right" style="background-color:#0C6;">
+                        <button type="button" class="btn btn-secondary btn btn-info btn-fill btn-wd" ng-click="getNext()" ng-if="!isStarted">Start</button>
+                        <button type="button" class="btn btn-secondary btn btn-info btn-fill btn-wd" ng-click="endEntry()" ng-if="isStarted">Save</button>
+
+                      </div>
+                    </div>
+
+                </div>
+                </h3>
+      
+      </div>
+      <div class="panel-body">        
+			
+            <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+
+
+
+                          
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                 
+								<div class="form-group" ng-if="field.fieldType=='Link' && process.processName!='Data Entry' && previousRemarks==true" >
+                                    <label><a ng-click="getRemarks()">{{field.fieldName}}</a></label>
+                                    <label class="col-md-12" ng-if="showlog==true" > 
+                                          <textarea
+                                            class="form-control" rows="3"
+                                             
+                                            ng-model="logs"
+                                          readonly="readonly"/>
+                                      
+                                      </label>
+
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='Label'">
+                                    <label>{{field.fieldName}}</label>
+                                    <input type="text" class="form-control border-input" ng-model="formdata[field.model]" 
+                                    ng-disabled="(process.processName=='Data Entry' && field.model!='apsNo')|| (process.processName!='Data Entry')">
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='TextArea'">
+                                    <label ng-if="!formdata.rejected">Accept Remark</label>
+                                    <label ng-if="formdata.rejected">{{field.fieldName}}</label>
+                                    <TextArea  class="form-control border-input" ng-model="formdata[field.model]"></TextArea>
+                                </div>
+                                
+                                <div class="form-group" ng-if="field.fieldType=='Checkbox'">
+                                    <label>{{field.fieldName}}
+                                    <input type="checkbox" class="form-control border-input" ng-model="formdata[field.model]" /></label>
+                                </div>
+                                
+                              
+                                <div class="form-group" ng-if="field.fieldType=='DropDown' && formdata.rejected " >
+                                    <label>{{field.fieldName}}</label>
+               	                    <vc-ddl    whr='' tbl='alplremarkcodemaster'  dbval='remarkId'  dblbl='remarkDescription' data-accessor="selectedReason" >
+                                   </vc-ddl>
+                                   
+                                   </div>
+                                   <div class="form-group" ng-if="field.fieldType=='TextField' && formdata.rejected " >
+                                    <label>{{field.fieldName}}</label>
+                                    <input type="text" class="form-control border-input" ng-model="formdata[field.model]">
+                                   </div> 
+                                </div>
+                               
+                              
+                                </div>
+
+                            
+						</span>
+                        <div class="form-group" ng-if="process.processName=='Field Investigation' &&  !formdata.rejected">
+                                    <div class="row" >
+                            <div class="col-md-3"> 
+                                      <input type="checkbox"  ng-model="formdata.RV" value="RV" />&nbsp;RV
+                                      <br />
+                                    
+                                      <input type="checkbox"  ng-model="formdata.OV" value="OV" />&nbsp;OV
+                                      </div>
+                                     <div class="col-md-3"> 
+                                       
+									<label>Waiver
+                                    <input type="checkbox" class="form-control border-input" ng-model="formdata.chk" value="Waiver" /></label> 
+                                    
+                                    </div>
+                                    <div class="col-md-3" ng-if="formdata.chk"> 
+                                     <TextArea  class="form-control border-input" ng-model="formdata.waiverrmrk"></TextArea>
+									</div>
+								</div>
+                                
+                                </div>
+                                
+                                <div class="form-group" ng-if="process.processName=='CAM' &&  !formdata.rejected">
+                                    <div class="row" >
+                            <div class="col-md-3"> 
+                                      <input type="checkbox"  ng-model="formdata.FNCB" value="FNCB" />&nbsp;FNCB
+                                      <br />
+                                    
+                                      <input type="checkbox"  ng-model="formdata.FNCS" value="FNCS" />&nbsp;FNCS
+                                      </div>
+                                     
+								</div>
+                                
+                                </div>
+<!--<button ng-click="test()">test</button>-->
+   <div class="clearfix"></div>
+                        
+                    </form>
+                </div>
+		</div>
+  </div>
+
+
+
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

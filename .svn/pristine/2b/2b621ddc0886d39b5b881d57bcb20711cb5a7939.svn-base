@@ -1,0 +1,73 @@
+
+  
+<div class="container-fluid" >
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+
+      <div class="col-md-8" >
+        <div class="card">
+
+                <div class="header">
+                
+                    <h4 class="chart-title">Search Application
+                    
+                        </h4>
+                </div>
+					
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+
+						
+
+                          <div class="row" >
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    	
+                                  <label class="col-md-12" >Application Ref. No.
+                                    <input 
+                                    value="" 
+                                    class="form-control"  
+                                    type="text" 
+                                    ng-model="formdata.appRefNo"
+                                   />
+                                   </label>
+                                                                
+                               </div>
+
+                          	</div>
+							
+                          </div>
+							
+                            
+
+
+                            
+					
+                        
+                     
+
+                    </form>
+    				<br/>
+                    <div  align="left">
+                        <button type="submit"  ng-click="searchApp()" class="btn btn-info btn-fill btn-wd"  >Search</button>
+                      	
+                      	
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+     
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

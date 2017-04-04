@@ -1,0 +1,320 @@
+
+
+bpoApps.factory('TSStartEntry', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSSTARTENTRY+"/:processId/:userId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSEndEntry', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSENDENTRY+"/:formdata/:id", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('getreport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSGETREPORT+"/:enddate", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('ProcessStatusGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.PROCESSSTATUSGETREPORT+"/:enddate", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('PendingWorkGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.PENDINGWORKGETREPORT+"/:batchno", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('InwardTechnicalGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.INWARDTECHNICALSCRUTINY+"/:batchNoFrom/:batchNoTo/:clgDate", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('PendencyCheckGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.PENDENCYCHECK+"/:enddate", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('UserProductivityGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.USERPRODUCTIVITY+"/:batchNo/:from/:to", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('HourlyStatusGetReport', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.HOURLYSTATUSGETREPORT+"/:date/:shift/:activity", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('ImportTxt', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.IMPORTTXT+"/:file/:folderId/:json/:extData/:separator/:extension", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('SearchTSRelease', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+//	 console.log("00000000uuuuuuuuuuu......."+CORE_CONFIG.WEB_SERVICE+WEB_API.RELEASE+"/:userId/:batchId/:applicationId", {userId:'@userId', batchId:'@batchId', applicationId:'@applicationId'})
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.SEARCHTSRELEASE+"/:key/:value", {}, 
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSUsers', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSUSERS, {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('DeleteTSRelease', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.DELTSRELEASE+"/:allocationId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('deletepurgedata', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.DELPURGE+"/:clgDate", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSBatches', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSBATCHES+"/:processId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSApplications', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSAPPLICATION, {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSAllocateApplication', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+	
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSALLOCATEAPPLICATION+"/:processId/:applicationId/:userId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('TSBatchApplication', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSBATCHAPPLICATION+"/:processId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('PreviousRecord', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.PREVIOUS+"/:entryId/:userId/:processId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('NextRecord', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.NEXTRECORD+"/:entryId/:userId/:processId", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.directive('capitalize', function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attrs, modelCtrl) {
+        var capitalize = function(inputValue) {
+          if (inputValue == undefined) inputValue = '';
+          var capitalized = inputValue.toUpperCase();
+		 
+          if (capitalized !== inputValue) {
+            modelCtrl.$setViewValue(capitalized);
+            modelCtrl.$render();
+          }
+          return capitalized;
+        }
+        modelCtrl.$parsers.push(capitalize);
+        capitalize(scope[attrs.ngModel]); // capitalize initial value
+      }
+	  
+    };
+  });
+  
+
+/*  
+bpoApps.directive('myDate', function dateInput($filter, $parse){
+	return {
+    	restrict: 'A',
+      	require: 'ngModel',
+      	replace: true,
+	  
+      	transclude: true,
+      	template: '<input ng-transclude ui-mask="19/39/2999" ui-mask-raw="false" ng-keypress="limitToValidDate($event)" placeholder="DD/MM/YYYY"/>',
+      	link: function(scope, element, attrs, controller) {
+        	scope.limitToValidDate = limitToValidDate;
+        	var dateFilter = $filter("date");
+        	var today = new Date();
+        	var date = {};
+
+        	
+			function isValidMonth(month) {
+          		return month >= 0 && month < 12;
+        	}
+
+        
+			function isValidDay(day) {
+          		return day > 0 && day < 32;
+        	}	
+
+        	function isValidYear(year) {
+          		return year > (today.getFullYear() - 115) && year < (today.getFullYear() + 115);
+        	}
+
+        	function isValidDate(inputDate) {
+          	
+			inputDate = new Date(formatDate(inputDate));
+          	if (!angular.isDate(inputDate)) {
+            	return false;
+          	}
+          
+		  	date.month = inputDate.getMonth();
+          	date.day = inputDate.getDate();
+          	date.year = inputDate.getFullYear();
+          
+		  	return (isValidMonth(date.month) && isValidDay(date.day) && isValidYear(date.year));
+        }
+
+        function formatDate(newDate) {
+          
+			var modelDate = $parse(attrs.ngModel);
+          	newDate = dateFilter(newDate, "MM/dd/yyyy");
+          	modelDate.assign(scope, newDate);
+          	return newDate;
+       }
+
+       controller.$validators.date = function(modelValue) {
+       		return angular.isDefined(modelValue) && isValidDate(modelValue);
+       };
+
+      var pattern = "^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])(19|20)\\d\\d$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])(19|20)\\d$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])(19|20)$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])[12]$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])([0-3])$" +
+          			"|^(0[1-9]|[12][0-9]|3[01])$" +
+          			"|^[0123]$";
+        
+	var regexp = new RegExp(pattern);
+
+   	function limitToValidDate(event) {
+		
+		
+   		var key = event.charCode ? event.charCode : event.keyCode;
+         
+		if ((key >= 48 && key <= 57) || key === 9 || key === 46) {
+        	var character = String.fromCharCode(event.which);
+            var start = element[0].selectionStart;
+            var end = element[0].selectionEnd;
+            var testValue = (element.val().slice(0, start) + character + element.val().slice(end)).replace(/\s|\//g, "");
+           // if (!(regexp.test(testValue))) {
+            //  event.preventDefault();
+           // }
+         }
+       }
+      }
+    }
+  }
+);
+*/
+
+
+bpoApps.factory('focus', function($timeout, $window) {
+    return function(id) {
+      // timeout makes sure that is invoked after any other event has been triggered.
+      // e.g. click events that need to run before the focus or
+      // inputs elements that are in a disabled state but are enabled when those events
+      // are triggered.
+      $timeout(function() {
+        var element = $window.document.getElementById(id);
+        if(element)
+          element.focus();
+      });
+    };
+  })
+
+bpoApps.directive('eventFocus', function(focus) {
+    return function(scope, elem, attr) {
+      elem.on(attr.eventFocus, function() {
+        focus(attr.eventFocusId);
+      });
+      
+      // Removes bound events in the element itself
+      // when the scope is destroyed
+      scope.$on('$destroy', function() {
+        elem.off(attr.eventFocus);
+      });
+    };
+  })
+
+bpoApps.factory('folderscan', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSGETFILENAME+"/:job", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+bpoApps.factory('SearchStatus', ['$resource','CORE_CONFIG','WEB_API', function($resource,CORE_CONFIG,WEB_API)
+ {
+  return $resource(CORE_CONFIG.WEB_SERVICE+WEB_API.TSSEARCHSTATUS+"/:account/:cheque", {},
+  	{
+		'update': { method:'PUT' }
+	}  
+  ); 
+}]);
+
+

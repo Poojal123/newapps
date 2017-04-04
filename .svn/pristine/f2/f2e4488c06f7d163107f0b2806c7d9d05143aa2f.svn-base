@@ -1,0 +1,100 @@
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Contract</div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="submitContract()">
+                <div class="form-group">
+                    <label >Contract Title</label>
+                    <input type="text" name="name" placeholder="Contract Name" required  class="form-control elastic" ng-model="Contract.contractTitle" />
+                </div>    
+                <div class="form-group">
+                    <label >Company </label>
+                    <vc-ddl   whr='' tbl='corecompany' dbval='companyId' dblbl='companyName' data-accessor="selectedCompany" data-datalist="getAllCompanies"  ng-model="Contract.companyId"  ></vc-ddl>
+                </div>    
+                <div class="form-group">
+                    <label >Application </label>
+                    <vc-ddl   whr='' tbl='coreapps' dbval='appId' dblbl='appname' data-accessor="selectedApplication" data-datalist="getAllApplications" ng-model="Contract.appId"></vc-ddl>
+                </div>    
+
+             <div class="form-group">
+                <button class="btn btn-lg btn-primary "  >{{contract.contractId==""?"Create":"Save"}}</button>
+                <button class="btn btn-lg btn-primary " type="button" ng-click="cancel()"  >Cancel</button>
+
+            </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Contracts</div>
+                    <div class="col-xs-6" align="right"><h3><a class="btn btn-primary" href ng-click="newContract()">New Contract
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitLocation()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="contract in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ contractId: 'text'}" sortable="'contractId'" align="center" width="250px">
+                       	{{contract.contractId}}
+                       </td>
+                       <td scope="row" title="'Contract Title'" filter="{contractTitle: 'text'}" sortable="'contractTitle'" align="center">{{contract.contractTitle}}<br/></td>
+                       <td scope="row" title="'Company'" filter="{companyName: 'text'}" sortable="'companyName'" align="center">{{contract.companyName}}</td>
+                       <td scope="row" title="'Application'" filter="{appname: 'text'}" sortable="'appname'" align="center">{{contract.appname}}</td>
+                       <td scope="row" title="'#'" width="150px" >
+                        
+                        <a href ng-click="getContract(contract)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteContract(contract)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+
+                        <a href="#/Core/Contract/Users?contractId={{contract.contractId}}&contractName={{contract.contractTitle}}"
+                        class="glyphicon glyphicon-user actionbutton"></a>
+
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

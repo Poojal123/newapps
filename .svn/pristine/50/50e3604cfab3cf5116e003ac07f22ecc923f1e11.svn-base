@@ -1,0 +1,66 @@
+{
+"Name":"OCTM Generate",
+	"Titles":[
+		
+	],
+	"Columns":[
+		
+		{
+            "dbcol":"serialNumber",
+			"header":"SRL",
+			"spaces":"6"
+        },
+		{
+            "dbcol":"chequeNumber",
+			"header":"INSTRUMENT",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"chequeDate1",
+			"header":"CHEQUE_DAT",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"chequeAmnt",
+			"header":"AMOUNT",
+			"spaces":"17"
+        },
+		{
+            "dbcol":"accountNumber2",
+			"header":"ACCOUNT_NO",
+			"spaces":"15"
+        },
+		{
+            "dbcol":"payeeName",
+			"header":"PAYEE_NAME",
+			"spaces":"18"
+        },
+		{
+            "dbcol":"transCode",
+			"header":"CHQ_TYPE",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"micrCode",
+			"header":"BANKCODE",
+			"spaces":"12"
+        },
+		{
+            "dbcol":"debitAccountNumber1",
+			"header":"DEBT A/C",
+			"spaces":"8"
+        }
+	],
+	"Totals":[
+		{
+            "dbcol":"totalRecord",
+			"header":"TOTAL RECORD : ",
+			"spaces":"10"
+        },
+		{
+            "dbcol":"totalAmount",
+			"header":"TOTAL AMOUNT : ",
+			"spaces":"10"
+        }
+	]
+}

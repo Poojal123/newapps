@@ -1,0 +1,153 @@
+
+
+
+<div class="container-fluid">
+
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Users Selections</h3></div>
+         			
+                     <div class="col-xs-6" align="right">
+                    
+</div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+            <div class="form-group">
+             
+             
+             
+             <div class="form-group has-feedback">
+              <label class="control-label">Select location</label>
+			<vc-ddl  whr='' tbl='corelocations' vc-change="" dbval='locationId' dblbl='locationName' data-accessor="selectedLocation" data-datalist="getAllLocation"></vc-ddl> 
+            </div>
+            <div class="form-group has-feedback">
+            
+            <label class="control-label">Select process</label>
+			<vc-ddl  whr='' tbl='coreprocessmaster' vc-change="getLocationUsers()" dbval='processId' dblbl='processName' data-accessor="selectedProcess" data-datalist="getAllProcesses"></vc-ddl>
+           
+           <h3><input type="button" class="btn btn-lg btn-primary "   ng-click="nonAllocatedUser()" ng-disabled="enable==false" value="Non Allocated Users"/>
+<input type="button" class="btn btn-lg btn-primary "   ng-click="AllocatedUser()" ng-disabled="enable==false" value="Allocated Users" /></h3>
+            </div>
+            </div>
+  
+		</div>
+
+
+<div align="center">
+
+</div>
+ 
+  </div>
+  
+    </div>
+
+
+     
+
+<div class="container-fluid" ng-if="showUsers==1">
+
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Non Allocated Users</h3></div>
+                  <!--<div class="form-group has-feedback">
+
+                <input type="text" class="form-control" placeholder="Search fields" ng-model="search"  />
+                <ul>  
+            <li ng-repeat="user in allUsers | filter:fullName">  
+                <a ng-href="https://www.google.co.in/webhp?q={{user}}">{{user}} </a>  
+            </li>  
+                <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            </div>-->
+              
+         			 <div align="right" style="margin-top:5px">
+                    <label>
+                    <input type="button" class="btn btn-lg btn-primary "   ng-click="save()"  value="Save"/>
+					</label>
+                    </div>
+
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+<div  class="gridListdemoBasicUsage" >
+
+  
+  <div class='md-padding' layout="row" flex>
+    <div layout="row" flex>
+      <div class="parent" layout="column" ng-repeat="user in allUsers" flex>
+        <md-card ng-click="show(user)" ng-class='user.isSelected?"selectedStyle":""' class="card">
+         <md-card-content>
+          <img src="{{ (user.filename == '' ? WEB_URL+'storage/profile/default.png':WEB_URL+'storage/profile/'+user.filename) }} "  alt="user avatar">
+          
+           <b>{{user.fullName}}</b>
+         {{user.emailId}}
+          </md-card-content>
+          
+        </md-card>
+      </div>
+    </div>
+  </div>
+  
+</div>
+      </div>
+      </div>
+      </div>
+     
+
+<div class="container-fluid" ng-if="showUsers==0">
+
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Allocated Users</h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">     
+	<div >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="user in $data">
+			             <td scope="row" title="'Full Name'" filter="{fullName: 'text'}" sortable="'fullName'" align="left">
+                       
+                       <img src="{{WEB_URL+'storage/profile/'+user.filename}}" width="40px" align="left" style="margin-right:20px;" />
+                       	<strong>{{user.fullName}}</strong><br />
+                        <em>{{user.emailId}}</em>
+                       
+                       <br/>
+                       </td>
+                         
+                       <td  scope="row"  title="'Id'" filter="{ fullName: 'text'}" sortable="'fullName'" align="center" width="250px">
+                       	{{user.fullName}}
+                       </td>
+                       <td scope="row" title="'EamilId'" filter="{emailId: 'text'}" sortable="'emailId'" align="center">{{user.emailId}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                     
+                        <a href ng-click="deleteUser(user)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+
+      </div>
+</div>
+</div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>
+  
+  

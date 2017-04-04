@@ -1,0 +1,235 @@
+<div class="container-fluid">
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Filter</h3></div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form"  ng-submit="$interval(report(), 1000);">
+            <div class="row" >
+                    <div class="form-group col-md-3">
+                    <label>	<input type="radio"  ng-model= "formdata1.reportType" value="Consolidated"  name="reportType" 
+                       />&nbsp;Consolidated Report</label>
+                   <!--   <vc-radio  model= "reportType" value="Consolidated" label="Consolidated Report" name="reportType" checked="checked"> </vc-radio>
+                       --> </div>
+                    <div class="form-group col-md-3">
+                      <label> <input type="radio"   ng-model= "formdata1.reportType" value="Summary" name="reportType" />&nbsp;Summary Report</label>
+                        <!--<vc-radio  model= "reportType" value="Summary" label="Summary Report" name="reportType" checked> </vc-radio>-->
+                    </div>    
+               </div>
+               <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                        <label >Date from</label>
+                        <input my-datepicker format="{{format}}" type="text" name="name" placeholder="Select Date"  
+                         class="form-control elastic" ng-model="searchparams.fromDate" />
+                    </div>
+                    <div class="form-group col-md-3" >
+                        <label >Date to</label>
+                        <input my-datepicker format="{{format}}"  type="text" name="name" placeholder="Select Date"  
+                        class="form-control elastic" ng-model="searchparams.toDate" />
+                    </div>    
+               </div>
+
+               <!-- <div class="row" ng-if="formdata1.reportType=='Consolidated'">
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "selectedRadio" value="AL" label="Auto Loan" name="applicationType"> </vc-radio>
+                        </div>
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "selectedRadio" value="PL" label="Personal Loan" name="applicationType"> </vc-radio>
+                    </div>    
+               </div>
+                <div class="row" ng-if="formdata1.reportType=='Summary'" >
+               <div class="form-group col-md-3">
+                        <label >Location</label>
+                        <vc-ddl    whr='' tbl='alpllocationmaster'  dbval='locationId' dblbl='location' data-accessor="selectedLocation" ></vc-ddl>
+                    </div>
+
+               </div>
+               -->
+
+               <div class="row" >
+                     <div class="form-group col-md-3">
+                        <button class="btn btn-lg btn-primary " type="submit" >Report</button>
+                    </div>    
+				</div>
+
+            </form>
+		</div>
+  </div> 
+  <style>
+  #scrollable-area {
+  margin: auto;
+	width: 100%;
+	
+	border: 2px solid #ccc;
+	overflow-y: scroll; /* <-- here is what is important*/
+}
+  </style>
+      <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+					<div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                  <div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csvnew.generate()' ng-href="{{ csvnew.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export New
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div id="scrollable-area" ng-if="showtb==false">
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="misreport in $data">
+			             
+                         
+                       <td  scope="row"  title="'Batch No'" filter="{ batchNo: 'text'}" sortable="'batchNo'" align="center" width="250px">
+                       	{{misreport.Batch_No}}</td>
+                       
+                       <td scope="row" title="'Application No'" filter="{applicationNo: 'text'}" sortable="'applicationNo'" align="center">				                       {{misreport.applicationNo}}</td>
+                       
+                       <td scope="row" title="'Image Name'" filter="{Img_Name: 'text'}" sortable="'Img_Name'" align="center">{{misreport.Img_Name}}</td>
+                       
+                       <td scope="row" title="'Aps No'" filter="{apsNo: 'text'}" sortable="'apsNo'" align="center">{{misreport.apsNo}}</td>
+                       
+                         <td  scope="row"  title="'Uploaded_BY'" filter="{ Uploaded_BY: 'text'}" sortable="'Uploaded_BY'" align="center" width="250px">
+                       	{{misreport.Uploaded_By}}</td>
+                        
+                       <td  scope="row"  title="'Uploaded_Date'" filter="{ Uploaded_Date: 'text'}" sortable="'Uploaded_Date'" align="center" width="250px">
+                       	{{misreport.Uploaded_Date}}</td>
+                        
+                        <td  scope="row"  title="'Uploaded_Time'" filter="{ Uploaded_Time: 'text'}" sortable="'Uploaded_Time'" align="center" width="250px">
+                       	{{misreport.Uploaded_Time}}</td>
+                        
+                        <td scope="row" title="'Entry BY'" filter="{Entry_BY: 'text'}" sortable="'Entry_BY'" align="center">{{misreport.Entry_BY}}</td>
+                       
+                        <td scope="row" title="'Entry_Date'" filter="{Entry_Date: 'text'}" sortable="'Entry_Date'" align="center">						                        {{misreport.Entry_Date}}</td>
+                        
+                        <td scope="row" title="'Entry_Time'" filter="{Entry_Time: 'text'}" sortable="'Entry_Time'" align="center">						                        {{misreport.Entry_Time}}</td>
+                        
+                        <td scope="row" title="'FI BY'" filter="{FI_BY: 'text'}" sortable="'FI_BY'" align="center">{{misreport.FI_BY}}</td>
+                        
+                        <td scope="row" title="'FI_Date'" filter="{FI_Date: 'text'}" sortable="'FI_Date'" align="center">
+                        {{misreport.FI_Date}}</td>
+
+						<td scope="row" title="'FI_Time'" filter="{FI_Time: 'text'}" sortable="'FI_Time'" align="center">
+                        {{misreport.FI_Time}}</td>
+                        
+                        <td scope="row" title="'QC BY'" filter="{QC_BY: 'text'}" sortable="'QC_BY'" align="center">{{misreport.QC_BY}}</td>
+                        
+                        <td scope="row" title="'QC_Date'" filter="{QC_DateQC_Date: 'text'}" sortable="'QC_End_Date'" align="center">
+                        {{misreport.QC_Date}}</td>
+                        
+                        <td scope="row" title="'QC_Time'" filter="{QC_Time: 'text'}" sortable="'QC_Time'" align="center">
+                        {{misreport.QC_Time}}</td>
+                        
+                         <td scope="row" title="'CAM BY'" filter="{CAM_BY: 'text'}" sortable="'CAM_BY'" align="center">{{misreport.CAM_BY}}</td>
+                         
+                        <td scope="row" title="'CAM_Date'" filter="{CAM_Date: 'text'}" sortable="'CAM_Date'" align="center">
+                        {{misreport.CAM_Date}}</td>
+                        
+                        <td scope="row" title="'CAM_Time'" filter="{CAM_Time: 'text'}" sortable="'CAM_Time'" align="center">
+                        {{misreport.CAM_Time}}</td>
+                        
+                        <td scope="row" title="'Audit BY'" filter="{Audit_BY: 'text'}" sortable="'Audit_BY'" align="center">
+                        {{misreport.Audit_BY}}</td>
+                        
+                        <td scope="row" title="'Audit_Date'" filter="{Audit_Date: 'text'}" sortable="'Audit_Date'" align="center">					                         {{misreport.Audit_Date}}</td>
+                        
+                        <td scope="row" title="'Audit_Time'" filter="{Audit_Time: 'text'}" sortable="'Audit_Time'" align="center">					                         {{misreport.Audit_Time}}</td>
+                        
+                        <td scope="row" title="'DE Remarks'" filter="{Entry_Remarks: 'text'}" sortable="'Entry_Remarks'" align="center">                             {{misreport.Entry_Remarks}}</td>
+                        
+                        <td scope="row" title="'FI_Remarks'" filter="{FI_Remarks: 'text'}" sortable="'FI_Remarks'" align="center">
+                        {{misreport.FI_Remarks}}</td>
+                        
+                        <td scope="row" title="'QC_Remarks'" filter="{QC_Remarks: 'text'}" sortable="'QC_Remarks'" align="center">
+                        {{misreport.QC_Remarks}}</td>
+                        
+                         <td scope="row" title="'CAM_Remarks'" filter="{CAM_Remarks: 'text'}" sortable="'CAM_Remarks'" align="center">
+                         {{misreport.CAM_Remarks}}</td>
+                         
+                        <td scope="row" title="'Audit_Remarks'" filter="{Audit_Remarks: 'text'}" sortable="'Audit_Remarks'" align="center">                      {{misreport.Audit_Remarks}}</td>
+                        
+                        <td scope="row" title="'Status'" filter="{Status: 'text'}" sortable="'Status'" align="center">{{misreport.Status}}</td>
+                        
+                        
+                     </tr>
+     
+                 </table>
+			    </div>
+                 <div id="scrollable-area" ng-if="showtb==true">
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csvnew" separator=",">
+                     <tr ng-repeat="misreport in $data">
+			           <td  scope="row"  title="'Location'" filter="{ Location: 'text'}" sortable="'Location'" align="center" width="250px">
+                       	{{misreport.location}}
+                       </td>  
+                         
+                       <td  scope="row"  title="'Batch_No'" filter="{ Batch_No: 'text'}" sortable="'Batch_No'" align="center" width="250px">
+                       	{{misreport.batchNo}}
+                       </td>
+                      
+                      <td  scope="row"  title="'No Of Files'" filter="{ NoOfFiles: 'text'}" sortable="'NoOfFiles'" align="center" width="250px">
+                       	{{misreport.NoOfFiles}}
+                       </td>
+                       
+                      <td  scope="row"  title="'Uploaded_Time'" filter="{ Uploaded_Time: 'text'}" sortable="'Uploaded_Time'" align="center" width="250px">
+                       	{{misreport.Upload_Time}}
+                       </td>
+                      
+                      <td  scope="row"  title="'DE'" filter="{ DE: 'text'}" sortable="'DE'" align="center" width="250px">
+                       	{{misreport.DE}}
+                       </td>
+                       
+                        <td  scope="row"  title="'FI'" filter="{ FI: 'text'}" sortable="'FI'" align="center" width="250px">
+                       	{{misreport.FI}}
+                       </td>
+                       
+                        <td  scope="row"  title="'QC'" filter="{ QC: 'text'}" sortable="'QC'" align="center" width="250px">
+                       	{{misreport.QC}}
+                       </td>
+                       
+                       <td  scope="row"  title="'CAM'" filter="{ CAM: 'text'}" sortable="'CAM'" align="center" width="250px">
+                       	{{misreport.CAM}}
+                       </td>
+                       
+                        <td  scope="row"  title="'Audit'" filter="{ Audit: 'text'}" sortable="'Audit'" align="center" width="250px">
+                       	{{misreport.Audit}}
+                       </td>
+                       
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

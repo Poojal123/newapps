@@ -1,0 +1,129 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+        <div class="card" >
+                <div class="header">
+                    <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm()" >
+						<span ng-repeat="rowFields in section.sortedFields track by $index">
+                          <div class="row" >
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                <div class="form-group">
+                                 <vc-text 
+                                        labelaccessor="{{field.fieldId}}"
+                                          ng-if="field.fieldType=='TextField' || field.fieldType=='Email'"
+                                          data-model="formdata[field.model]"
+                                          data-field="field"
+                                          data-processfield="processField"
+                                          data-inputtype="field.fieldType"                                         
+                                          vc-tabkeychange="change([field.model],field.fieldId,field.fieldName)"
+                                          maxlength="{{field.maxLen}}" 
+                                          minlength="{{field.maxLen}}"                                  
+		                                  allowedchars="{{field.allowedChars}}"
+                                          vc-focus="onFocus(field)"
+                                          ></vc-text>
+										
+                                        <vc-select
+                                         ng-if="field.fieldType=='DropDown'" 
+                                         label="{{field.fieldName}}"
+                                         whr=''
+                                         tbl='{{field.metaInfo.Table}}' 
+                                         dbval='{{field.metaInfo.Val}}' 
+                                         dblbl='{{field.metaInfo.DisplayLabel}}'
+                                         data-accessor="formdata[field.model]" 
+                                         labelaccessor="{{field.model}}"
+                                         data-datalist="field.metaInfo.datalist"
+                                         labeldatalist="{{field.metaInfo.datalist}}"
+                                         sql={{field.metaInfo.sql}} 
+                                         data-field="field"
+                                         data-prevfield="rowFields[$index-1]"
+                                         data-processfield="processField"
+										 vc-focus="onFocus(field)"                                         
+                                         vc-change=""
+                                         style="font-weight:900"                                     
+                                         ></vc-select>
+                               </div>
+                          	</div>     						
+                          </div>                            
+						</span>
+                      <br>
+                       <button type="submit"  ng-click="submitDashboardDownload()" style="margin-left:14px;" class="btn btn-info btn-fill btn-wd">submit</button>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</h3></div>
+					 
+                  <div class="col-xs-6"  align="right"><a class="btn" title="Export Table" ng-click='csvnew.generate()' ng-href="{{ csvnew.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export 
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+    
+     <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+                 <div id="scrollable-area"  >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csvnew" separator=",">
+                     <tr ng-repeat="misreport in $data">
+                       <td  scope="row"  title="'Row Labels'" filter="{agencycode: 'text'}" sortable="'agencycode'" align="center" width="250px">
+                       	{{misreport.agencyCode}}
+                       </td>  
+
+                       <td  scope="row"  title="'Location'" filter="{Location: 'text'}" sortable="'Location'" align="center" width="250px">
+                       	{{misreport.agencyId}}
+                       </td>  
+                         
+                       <td  scope="row"  title="'Pending For Capture'" filter="{PendingForCapture: 'text'}" sortable="'PendingForCapture'" align="center" width="250px">
+                       	{{misreport.PENDINGD1==null?0:misreport.PENDINGD1}}
+                       </td>
+                       
+                       <td  scope="row"  title="'In Capture'" filter="{InCapture: 'text'}" sortable="'InCapture'" align="center" width="250px">
+                       	{{misreport.INCAPTURE==null?0:misreport.INCAPTURE}}
+                       </td>
+                       
+                        <td  scope="row"  title="'Pending For QC'" filter="{PendingForQC: 'text'}" sortable="'PendingForQC'" align="center" width="250px" >
+                       	{{misreport.PENDINGQC==null?0:misreport.PENDINGQC}}
+                       </td>
+                       
+                        <td  scope="row"  title="'In QC'" filter="{QC: 'text'}" sortable="'QC'" align="center" width="250px">
+                        {{misreport.INQC==null?0:misreport.INQC}}
+                       </td>
+                       
+                        <td  scope="row"  title="'Final Ready For Upload'" filter="{Final: 'text'}" sortable="'Final'" align="center" width="250px">
+                        {{misreport.FINALUPLOAD==null?0:misreport.FINALUPLOAD}}
+                       </td>
+                       
+                        <td  scope="row"  title="'Rejected'" filter="{Rejected: 'text'}" sortable="'Rejected'" align="center" width="250px">
+                       	{{misreport.REJECTED==null?0:misreport.REJECTED}}
+                       </td>
+                       
+                        <td  scope="row"  title="'Grand Total'" filter="{Total: 'text'}" sortable="'Total'" align="center" width="250px">
+                       	{{misreport.grandTotal==null?0:misreport.grandTotal}}
+                       </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

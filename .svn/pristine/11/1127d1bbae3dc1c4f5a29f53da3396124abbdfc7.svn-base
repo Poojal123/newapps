@@ -1,0 +1,261 @@
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-sm-12" ng-repeat="section in sections">
+        	<div class="card" id={{section.sectionId}}>
+            	<form method="post" name="form1" ng-submit="subForm()" >
+				<div class="header">
+                	<h4 class="chart-title">{{section.sectionName}}
+                    	<input type="button" ng-show="showlist" ng-click="chequelist()"  class="btn btn-info btn-fill btn-wd" value="Show" />
+						<input type="button" ng-show="hidelist" ng-click="hide()"  class="btn btn-info btn-fill btn-wd" value="Hide" />
+                    </h4>
+                </div>
+					
+                <div class="content">
+               
+					<span ng-repeat="rowFields in section.sortedFields track by $index">
+						
+                        	<div class="row" >
+                            	<div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                	<div class="form-group">
+                                    
+                                    <label ng-if="field.fieldType=='Label'">{{field.fieldName}}</br>
+                                    	
+                                    </label>
+                                        
+                                    <label class="col-md-12" ng-if="field.fieldType=='TextField'" >
+
+                                        <vc-text 
+                                              ng-if="field.fieldType=='TextField' || field.fieldType=='Email'"
+                                              data-model="formdata[field.model]"
+                                              data-field="field"
+                                              data-processfield="processField"
+                                              data-inputtype="field.fieldType"                                         
+                                              vc-blur="change([field.model])"
+                                              maxlength="{{field.maxLen}}"                                   
+                                              allowedchars="{{field.allowedChars}}"
+                                              id="{{field.fieldId}}"
+                                            
+                                         ></vc-text>
+                                    </label>
+
+
+                                	<!--<label class="col-md-12" ng-if="field.fieldType=='Email'"   >{{field.fieldName}}
+                                		<input 
+                                    	ng-required="(field.validations.indexOf('Blank') === -1)?false:true" 
+                                    	value="{{field.htmlCode}}" 
+                                    	class="form-control"  
+                                    	type="email" 
+                                    	ng-model="formdata[field.model]"
+                                    />
+									</label>                                    -->
+                                                                 
+                                	<label class="col-md-12" ng-if="field.fieldType=='DropDown'">
+                                		<!--<vc-ddl   
+	                                	   ng-if="field.fieldType=='DropDown'"
+                                 		   whr=''  
+                                    	   label="{{field.fieldName}}"
+                                    	   tbl='{{field.metaInfo.Tables}}' 
+                                    	   dbval='{{field.metaInfo.Val}}' 
+                                           dblbl='{{field.metaInfo.DisplayLabel}}'
+                                           data-inputtype="field.fieldType"
+                                           data-accessor="formdata[field.model]" 
+                                           labelaccessor="{{field.model}}"
+                                           data-model="formdata[field.model]"
+                                           data-field="field"
+                                           data-datalist="field.metaInfo.datalist"
+                                           labeldatalist="{{field.metaInfo.datalist}}"
+                                           sql="" 
+                                           vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"
+                                           data-processfield="processField"                                    
+                                     ></vc-ddl>-->
+                                       <vc-select
+                                             ng-if="field.fieldType=='DropDown'" 
+                                             label="{{field.fieldName}}"
+                                             whr=' '
+                                             tbl='{{field.metaInfo.Tables}}' 
+                                             dbval='{{field.metaInfo.Val}}' 
+                                             dblbl='{{field.metaInfo.DisplayLabel}}'
+                                             data-accessor="formdata[field.model]" 
+                                             labelaccessor="{{field.model}}"
+                                             data-datalist="field.metaInfo.datalist"
+                                             labeldatalist="{{field.metaInfo.datalist}}"
+                                             sql={{field.metaInfo.sql}} 
+                                             data-field="field"
+                                             data-processfield="processField"
+                                             vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"                                     
+                                             ></vc-select>
+                                    </label>
+                                    </label>
+                                    
+                                    <label ng-if="field.fieldType=='Radio'">
+                                    	<vc-radio  
+                                        	model= "field.fieldName" 
+                                            value="{{field.fieldName}}" 
+                                            label="{{field.fieldName}}" 
+                                            name="{{field.metaInfo.name}}">
+                                        </vc-radio>
+                                   	</label>
+                                  
+                                
+                                	 <label ng-if="field.fieldType=='Checkbox'">
+                                 <box ng-model='formdata[field.model]'> </box>
+                                 {{field.fieldName}}
+                              </label>
+                                
+                                	
+                                    <label class="col-md-12" ng-if="field.fieldType=='MaskDate'">{{field.fieldName}}
+                                 		<input 
+                                  			ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  			class = "form-control" 
+                                        	type = "text"
+                                        	id = "field.model"
+                                        	ng-model = "formdata[field.model]"
+                                        	value = "" 	
+                                        	ng-blur = "fireEvent(field.model)"
+                                        	ng-change = "validateSplChar(field.model)"
+                                        	placeholder = "MM/DD/YYYY"
+                                  			mask ="19/29/2999"
+                                        />
+                                		<!--<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />-->
+                                	</label>
+                                
+                                	<label class="col-md-12" ng-if="field.fieldType=='Calendar'" >{{field.fieldName}}
+                                		<input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                	</label>
+                               	</div>
+                          	</div>
+                       	</div>
+					</span>
+
+                    <br>
+                	<button type="submit" ng-click="report()" class="btn btn-lg btn-primary">Submit</button>
+                </form>
+        	</div>
+            
+    	</div>
+	
+     <style>
+  #scrollable-area {
+  margin: auto;
+	width: 100%;
+	
+	border: 2px solid #ccc;
+	overflow-y: scroll; /* <-- here is what is important*/
+}
+  </style>
+	<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+                    <div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="dailyOutputReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+                    <div class="panel-body" id="scrollable-area">
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                            <div class="scrollable-area">
+                            
+                                 <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                               
+                                    <tr ng-repeat="misreport in $data" class="table-header">
+                                      {{$data}}
+                                        <td  scope="row"  title="'Process By'" filter="{Operator: 'text'}" sortable="'Operator'" align="center" width="250px">
+                       					{{misreport.Operator}}
+                     					</td>  
+                                       <td  scope="row"  title="'00T01'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Zero}}
+                                       </td>
+                                       <td  scope="row"  title="'01To02'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.One}}
+                                       </td>
+                                       <td  scope="row"  title="'02To03'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Two}}
+                                       </td>
+                                       <td  scope="row"  title="'03To04'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Three}}
+                                       </td>
+                                       <td  scope="row"  title="'04To05'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Four}}
+                                       </td>
+                                       <td  scope="row"  title="'05To06'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Five}}
+                                       </td>
+                                       <td  scope="row"  title="'06To07'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Six}}
+                                       </td>
+                                       <td  scope="row"  title="'07To08'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Seven}}
+                                       </td> 
+                                       <td  scope="row"  title="'08To09'" filter="{search: 'text'}" sortable="'A'" align="center" width="250px">
+                                        {{misreport.Eight}}
+                                       </td>  
+                                         
+                                       <td  scope="row"  title="'09To10'" filter="{search: 'text'}" sortable="'B'" align="center" width="250px">
+                                        {{misreport.Nine}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'10To11'" filter="{search: 'text'}" sortable="'C'" align="center" width="250px">
+                                        {{misreport.Ten}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'11To12'" filter="{search: 'text'}" sortable="'D'" align="center" width="250px">
+                                        {{misreport.OneOne}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'12To13'" filter="{search: 'text'}" sortable="'F'" align="center" width="250px">
+                                        {{misreport.OneTwo}}
+                                       </td>
+                                       
+                                        <td  scope="row"  title="'13To14'" filter="{search: 'text'}" sortable="'G'" align="center" width="250px">
+                                        {{misreport.OneThree}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'14To15'" filter="{search: 'text'}" sortable="'H'" align="center" width="250px">
+                                        {{misreport.OneFour}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'15To16'" filter="{search: 'text'}" sortable="'I'" align="center" width="250px">
+                                        {{misreport.OneFive}}
+                                       </td>
+                                       
+                                        <td  scope="row"  title="'16To17'" filter="{search: 'text'}" sortable="'J'" align="center" width="250px">
+                                        {{misreport.OneSix}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'17To18'" filter="{search: 'text'}" sortable="'K'" align="center" width="250px">
+                                        {{misreport.OneSeven}}
+                                       </td>
+                                       
+                                       <td  scope="row"  title="'18To19'" filter="{search: 'text'}" sortable="'L'" align="center" width="250px">
+                                        {{misreport.OneEight}}
+                                       </td>
+                                       
+                                        <td  scope="row"  title="'19To20'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                                        {{misreport.OneNine}}
+                                       </td>
+                                       
+                                       
+                                       <td  scope="row"  title="'20To21'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                                        {{misreport.TwoZero}}
+                                       </td>
+                                       <td  scope="row"  title="'21To22'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                                        {{misreport.TwoTwo}}
+                                       </td>
+                                       <td  scope="row"  title="'22To23'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                                        {{misreport.TwoThree}}
+                                       </td>
+                                       <td  scope="row"  title="'23To24'" filter="{search: 'text'}" sortable="'M'" align="center" width="250px">
+                                        {{misreport.TwoFour}}
+                                       </td>
+                       </table>
+			                </div>
+                        </form>
+                    </div>
+        </div>
+
+	</div>
+</div>

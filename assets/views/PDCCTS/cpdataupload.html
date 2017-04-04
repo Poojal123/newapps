@@ -1,0 +1,58 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+            <div class="header">
+               <h4 class="chart-title">{{section.sectionName}}</h4>
+            </div>
+            <div class="content">
+               <form method="post" name="form1" ng-submit="subForm(formdata.file)" >
+                  <span ng-repeat="rowFields in section.sortedFields track by $index">
+                     <div class="row" >
+                        <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                           <div class="form-group">
+                              <label class="col-md-12" ng-if="field.fieldType=='DropDown'">
+                                 {{field.fieldName}}
+                           			<select class="ui-select-match btn btn-default form-control ui-select-toggle" style="text-align:left"  ng-model="field.metaInfo.Val" ng-options="x for x in field.metaInfo.DisplayLabel"></select>
+                              </label>
+                                  
+                              <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                              <input my-datepicker date-format="{{format}}" type="text" ng-model="container.two" id="myDP" />
+                              </label>
+                              <label
+                                     ng-if="field.fieldType=='File'" style="margin-left:15px;margin-top:15px">{{field.fieldName}}
+                                     <input 
+	                                    type="file" 
+                                    	style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                     	ng-if="field.fieldType=='File'" 
+                                        ng-model="formdata.file"
+                                        name="file"
+                                        ngf-model-invalid="errorFile"
+                                        ngf-select
+                                        /><br>
+                                          <i ng-show="form.file.$error.maxSize">File too large 
+                                              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                     </label>  
+                                <label class="col-md-12" ng-if="field.fieldType=='TextArea'" >{{field.fieldName}}  
+                                          <textarea
+                                            class="form-control" rows="3"
+                                            ng-if="field.fieldType=='TextArea'" 
+                                            ng-model="logs">
+                                      </textarea>   
+                                      </label>
+
+                           </div>
+                        </div>
+                     </div>
+                  </span><br><br><br>
+                  <button type="submit" style="margin-left:15px" ng-click="" class="btn btn-info btn-fill btn-wd">Submit</button>
+                  <button type="submit" ng-click="" class="btn btn-info btn-fill btn-wd">Reset</button>
+                  <button type="submit" ng-click="" class="btn btn-info btn-fill btn-wd">Generate Reject Data</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <hr>
+   <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+</div>

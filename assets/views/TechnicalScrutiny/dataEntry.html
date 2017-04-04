@@ -1,0 +1,252 @@
+  <div class="col-xs-12" align="left">
+                                 Zoom In[alt+shift+i] &nbsp;&nbsp;&nbsp;Zoom out[alt+shift+o]&nbsp;&nbsp;&nbsp;      Rotate Left[alt+shift+l]   &nbsp;&nbsp;&nbsp;     Rotate Right[alt+shift+r]</div>
+
+  <div class="container-fluid">
+      <div class="row">
+      	
+          <div class="col-sm-12" ng-repeat="section in sections">
+              <div class="card" id={{section.sectionId}}>
+                  
+                      <form method="post" name="form1" ng-submit="EndEntry()" autocomplete="off">
+                          
+                          <div class="row">
+                              <div class="col-md-12" >
+                                 <div class="col-xs-6" align="left"><h3>{{process.processName}}</h3></div>
+								  <input type="submit" class="btn btn-info btn-fill btn-wd" ng-if="isStarted" value="Save" />
+                                  <input type="button" class="btn btn-info btn-fill btn-wd" ng-if="!isStarted" value="Start"  ng-click="StartEntry()"/>
+                                  <input type="button" class="btn btn-info btn-fill btn-wd" ng-disabled="!prev" value="Prev" ng-click="Previous()" />
+                                  <input type="button" class="btn btn-info btn-fill btn-wd" ng-disabled="!nextRec" value="Next"  ng-click="Next()" />
+                              </div>
+                  
+                  				<div class="col-md-12" align="left" >                       
+                                  <label ng-if="ProcessId == 11 || ProcessId == 12" style="margin-left:15px;">
+                                  <h3>
+                                      Bank Amount :&nbsp;&nbsp;<span>{{amount}}</span> &nbsp;&nbsp; |&nbsp;&nbsp;
+                                      Amount D1 :&nbsp;&nbsp; <span>{{amountD1}}({{user1}})</span>&nbsp;&nbsp; |&nbsp;&nbsp;
+	                                      Amount D2 :&nbsp;&nbsp; <span>{{amountD2}}({{user2}})</span> &nbsp;&nbsp; |&nbsp;&nbsp;
+                                    
+                                  </label>
+                                 
+                              </div> 
+                              <div class="col-md-12" >
+                               <span ng-repeat="rowFields in section.sortedFields track by $index">
+                      
+                                           
+                              <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                                  <div>
+                                      
+                                      <vc-ddl  
+                                          ng-if="field.fieldType=='DropDown' && field.fieldName=='Reasons'"
+                                          whr=''  
+                                          label="{{field.fieldName}}"
+                                          tbl='{{field.metaInfo.Tables}}' 
+                                          dbval='{{field.metaInfo.Val}}'
+                                          dblbl='{{field.metaInfo.DisplayLabel}}' 
+                                          data-accessor="formdata[field.model]" 
+                                          labelaccessor="{{field.model}}"
+                                          data-datalist="field.metaInfo.datalist"
+                                          labeldatalist="{{field.metaInfo.datalist}}"
+                                          data-field="field"
+ 	                                 	  data-processfield="processField"
+                                          vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"
+                                          data-placeholder="Ok / Clear"
+                                           
+                                       ></vc-ddl> 
+                              
+                                      <label class="col-md-12"  ng-if="field.fieldType=='TextField' && 
+                                          (field.fieldName=='Reasons' || field.fieldName=='Stale Date' || field.fieldName=='Clg Date' || 
+                                          field.fieldName=='PDC Date')">
+                                          
+                                          <vc-text 
+                                              ng-model="formdata[field.model]"
+                                              data-model="formdata[field.model]"
+                                              data-accessor="formdata[field.model]"
+                                              labelaccessor="{{field.model}}"
+                                              data-field="field"
+                                              data-processfield="processField"
+                                              data-inputtype="field.fieldType"
+                                              vc-blur ="fireEvent(field.model)"
+                                              vc-change="validateSplChar(field.model)"
+                                              id="field.model"
+                                              data-disabled="field.metaInfo.disabled"
+                                             maxlength="{{field.maxLen}}"
+                                  allowedchars="{{field.allowedChars}}"
+                                 
+ 									style="background-color:#FF0"
+                                  ></vc-text>
+                                  </label>
+                                 
+                                  <label ng-if="field.fieldType=='MaskDate' && 
+                                          (field.fieldName=='Reasons' || field.fieldName=='Stale Date' || field.fieldName=='Clg Date' || 
+                                          field.fieldName=='PDC Date')" class="col-md-12">{{field.fieldName}}
+                                 
+                                  <input 
+                                  		my-date
+                                  		ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  		class = "form-control" 
+                                        type = "text"
+                                        id = "{{field.fieldId}}"
+                                        ng-model = "formdata[field.model]"
+                                        value = "" 	
+                                        ng-blur = "fireEvent(field.model)"
+                                        ng-change = "validateSplChar(field.model)"
+                                        placeholder = "DD/MM/YYYY"
+                                  		mask ="29/19/2999"
+                                        data-field="field"
+                                        disabled="disabled"                                      />
+                              </label>
+                                  </div>
+                              </div>
+                         
+                      </span>
+                              </div>
+                  <div class="col-md-10" >
+               
+                        <div class="header">
+                            <h4 class="chart-title">{{name}} 
+                            </h4>
+                            <span style="font-weight:900" ng-if="ProcessId == 11 || ProcessId == 12">{{word}}
+                            </span>
+                            <h4 class="chart-title" ng-if="ProcessId==11 || ProcessId==12">{{formdata.tsdataentry__reasonId.selectedItem.reasonName}}
+                            </h4>
+                        </div>   
+                        <div class="content" style="height:50vh" >
+	                        
+                            <canvas-viewer src="fileInput" overlays="overlays" options="options">                
+                                    <div style="position:absolute; top:{{nTop}}%; left:{{nLeft}}%;  
+                                         right:{{nRight}}%; bottom:{{nBottom}}% ; width:{{nWidth}}%; height:{{nHeight}}%; 
+                                         background:grey; "></div>
+                                    
+                            </canvas>
+                                                       </div>
+					           <div class="content"><span style="font-weight:900; font-size:20px; font-style:bold;" ng-if="tsdataentry__MICR!=''">{{bankName}}
+                            </span>
+                        </div>
+                        </div>
+                     <div class="col-md-12"> 
+             
+   
+                  <span ng-repeat="rowFields in section.sortedFields track by $index">
+                       
+                              <div class="row">
+                                  
+                            <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                             
+                               
+                                <label class="col-md-12" >
+                                  <vc-ddl 
+                                      ng-if="field.fieldType=='DropDown' && field.fieldName!='Reasons'" 
+                                       whr=''  
+                                       label="{{field.fieldName}}"
+                                       tbl='{{field.metaInfo.Tables}}' 
+                                       dbval='{{field.metaInfo.Val}}' 
+                                       dblbl='{{field.metaInfo.DisplayLabel}}'
+                                       data-inputtype="field.fieldType"
+                                       data-accessor="formdata[field.model]" 
+                                       labelaccessor="{{field.model}}"
+                                       data-model="formdata[field.model]"
+                                       data-field="field"
+                                       data-datalist="field.metaInfo.datalist"
+                                       labeldatalist="{{field.metaInfo.datalist}}"
+                                       sql="" 
+                                       vc-change="businessValidations(formdata[field.model],[field.model],field.metaInfo.Val)"
+                                       data-processfield="processField"
+                                    ></vc-ddl> 
+                                </label>
+                                
+                                                               
+                                 <!--Labels-->                         
+                                <label ng-if="field.fieldType=='Label'" style="margin-left:15px;font-weight:900;">{{field.fieldName}} :&nbsp;
+                                  <span ng-if="field.model=='tsdataentry__UDKNo'" style="font-weight:900">{{formdata.tsdataentry__UDKNo}}</span>
+                                  <span ng-if="field.model=='tsdataentry__MICR'" style="font-weight:900">{{formdata.tsdataentry__MICR}}</span>
+                                  <span ng-if="field.model=='tsdataentry__accountNo'" style="font-weight:900">{{formdata.tsdataentry__accountNo}}</span>
+                                  <span ng-if="field.model=='tsdataentry__chequeId'" style="font-weight:900">{{formdata.tsdataentry__chequeId}}</span>
+                                  <span ng-if="field.model=='tsdataentry__totalCheque'" style="font-weight:900">{{formdata.tsdataentry__totalCheque}}</span>
+                                  <span ng-if="field.model=='tsdataentry__pendingCheque'" style="font-weight:900">{{formdata.tsdataentry__pendingCheque}}</span>
+                                  <span ng-if="field.model=='tsdataentry__batchNo'" style="font-weight:900">{{formdata.tsdataentry__batchNo}}</span>
+                                 
+								 
+			 
+                                  
+                               </label>
+                               
+                               
+                               <label class="col-md-12" ng-if="field.fieldType=='TextField' && (field.fieldName!='Reasons' && field.fieldName!='Stale Date' && field.fieldName!='Clg Date' && field.fieldName!='PDC Date') ">
+                              
+                                  	<vc-text 
+                                        labelaccessor="{{field.fieldId}}"
+                                          ng-if="field.fieldType=='TextField' || field.fieldType=='Email'"
+                                          data-model="formdata[field.model]"
+                                          data-field="field"
+                                          data-processfield="processField"
+                                          data-inputtype="field.fieldType"                                         
+                                          vc-blur="fireEvent([field.model])"
+                                          maxlength="{{field.maxLen}}" 
+                                          minlength="{{field.maxLen}}"                                  
+		                                  allowedchars="{{field.allowedChars}}"
+                                          vc-focus="onFocus(field)"
+                                          	data-disabled="field.metaInfo.disabled"
+                                             style="font-weight:900; font-size:20px; font-style:bold;"
+                                             id="{{field.fieldId}}"
+                                        ></vc-text>
+                                  
+                                  
+                                 
+                                
+                                  
+                              </label>       
+                            
+                                                        
+                              <label ng-if="field.fieldType=='Checkbox'">{{field.fieldName}} <br/>
+                                  <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="formdata[field.model]" checked="checked" />
+                              </label>
+                             
+                              
+                              <label ng-if="field.fieldType=='MaskDate' && ProcessId == 9  && 
+                                          field.fieldName=='Cheque Date'"  class="col-md-12"
+                                           style="font-weight:900; font-size:20px; font-style:bold;">{{field.fieldName}}
+                                  <input 
+                                  		my-date
+                                  		ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+                                  		class = "form-control" 
+                                        type = "text"
+                                        id="{{field.fieldId}}"
+                                        ng-model = "formdata[field.model]"
+                                        value = "" 	
+                                        ng-blur = "fireEvent(field.model)"
+                                        ng-change = "validateSplChar(field.model)"
+                                        placeholder = "DD/MM/YYYY"
+                                  		mask ="29/19/2999"
+                                        data-field="field"
+                                       />
+                              </label>
+                                                
+                                
+                             </div>
+                          </div>
+                   </span>
+                       
+              
+               
+
+               
+               
+               		
+                     
+               </div>
+
+                    
+                 
+           </div>
+                                               
+             </form>
+             
+           </div>
+         </div>
+       </div>
+     </div>
+    <hr>
+  <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+  </div>
+  
+  

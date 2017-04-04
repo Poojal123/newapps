@@ -1,0 +1,87 @@
+
+<div class="container-fluid">
+
+<div class="panel panel-default" ng-if="showNew">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>ImageType</div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="submitImageType()">
+                <div class="form-group">
+                    <label >ImageType Name</label>
+                    <input type="text" name="name" placeholder="Image Type" required  class="form-control elastic" ng-model="ImageType.val.imageType" />
+                </div>    
+             <div class="form-group">
+                <button class="btn btn-lg btn-primary "  >{{imageType.imageTypeId==""?"Create":"Save"}}</button>
+            </div>    
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Image Type</div>
+                    <div class="col-xs-6" align="right"><h3><a class="btn btn-primary" href ng-click="newImageType()">New Image Type
+                    </a></h3></div>
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitImageType()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+ 
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="imageType in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ imageTypeId: 'text'}" sortable="'imageTypeId'" align="center" width="250px">
+                       	{{imageType.imageTypeId}}
+                       </td>
+                       <td scope="row" title="'Image Type'" filter="{imageType: 'text'}" sortable="'imageType'" align="center">{{imageType.imageType}}<br/></td>
+                       <td scope="row" title="'Modified On'" filter="{modifyOn: 'text'}" sortable="'Modified On'" align="center">{{imageType.modifyOn}}<br/></td>
+                       <td scope="row" title="'Full Name'" filter="{modifyBy: 'text'}" sortable="'modifyBy'" align="center">{{imageType.modifyBy}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="getImageType(imageType)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteImageType(imageType)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

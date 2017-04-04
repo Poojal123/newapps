@@ -1,0 +1,67 @@
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-sm-12" ng-repeat="section in sections">
+        	<div class="card" id={{section.sectionId}}>
+         		<div class="header">
+                
+                <h4 class="chart-title">{{section.sectionName}}</h4>
+                </div>
+                	<div class="row" >
+                    	<div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                    	    <label >Select Date</label>
+                    	    <input  my-datepicker format="{{format}}" type="text" name="name" placeholder="Select Date"  
+                    	     		class="form-control elastic" ng-model="formdata.endDate" />
+                    	</div>
+               		</div>
+
+                    <br>
+                    <button type="submit" ng-click="report()" class="btn btn-lg btn-primary">Submit</button>
+				</div>
+                </div>
+                </div>
+                	<div class="panel panel-default">
+      					<div class="panel-heading" >
+        				<h3 class="panel-title">
+                	 
+                     	<div class="row">
+                    	<div class="col-xs-6" align="left"><h3>Records</h3></div>
+						
+                        <div class="col-xs-3"  align="right">
+                        		<a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     			   download="MIS.csv">
+                    		
+                            	<i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  				</a>
+                        </div>
+                 		</div>
+       					
+                        </div>
+                        
+                        
+      		<div class="panel-body">        
+        		<table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+            		<tr ng-repeat="misreport in $data">
+			    		<td  scope="row"  title="'Recd Date'" filter="{ recdDate: 'text'}" sortable="'recdDate'" align="center" width="250px">
+                    		{{misreport.recdDate}}</td>
+						<td  scope="row"  title="'Acount Number'" filter="{ accountNo: 'text'}" sortable="'accountNo'" align="center" width="250px">
+                       		{{misreport.accountNo}}</td>
+                  		<td  scope="row"  title="'Cheque Number'" filter="{ chequeId: 'text'}" sortable="'chequeId'" align="center" width="250px">
+                       		{{misreport.chequeId}}</td> 
+               			<td  scope="row"  title="'MICR'" filter="{ MICR: 'text'}" sortable="'MICR'" align="center" width="250px">
+                    	   	{{misreport.MICR}}</td>  
+                 		<td  scope="row"  title="'Amount'" filter="{ amount: 'text'}" sortable="'amount'" align="center" width="250px">
+                    	   	{{misreport.amount}}</td>  
+                  		<td  scope="row"  title="'Payee Name'" filter="{ payeeName: 'text'}" sortable="'payeeName'" align="center" width="250px">
+                    	   	{{misreport.payeeName}}</td>  
+                 		<td  scope="row"  title="'Full Name'" filter="{ fullName: 'text'}" sortable="'fullName'" align="center" width="250px">
+                    	   	{{misreport.fullName}}</td>  
+                                     		<td  scope="row"  title="'Process'" filter="{processName: 'text'}" sortable="'processName'" align="center" width="250px">
+                    	   	{{misreport.processName}}</td>            
+                  
+                	</tr>
+                    
+      			</table>                        
+      			
+    	</div>
+	</div>
+</div>

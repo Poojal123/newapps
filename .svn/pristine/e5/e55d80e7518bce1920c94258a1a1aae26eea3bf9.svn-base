@@ -1,0 +1,57 @@
+
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card">
+            <div class="header">
+               <h4 class="chart-title">Normal Upload</h4>
+            </div>
+            <div class="content">
+               <form method="post" name="form1" ng-submit="subForm(formdata.file)" >
+                  <div class="row">
+                     <div class="col-md-5">
+                        <div class="form-group">
+                           <label>Job No.</label>
+                           <input type="text" ng-model="indexObject.jobno" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+                        </div>
+                     </div>
+                     <div class="col-md-2">
+                        <div class="form-group">
+                           <br>
+                           <button type="submit" name="import" id="import" ng-click="import1()" class="btn btn-info btn-fill btn-wd">Import</button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+               
+               <div class="header">
+                            <h4 class="chart-title">Import Logs</h4>
+                        </div>
+        
+                        <div class="content">
+                          <textarea class="form-control" rows="5" ng-model="logs" readonly="readonly"    />
+						</div> 
+              
+            </div>
+            
+            
+           
+
+        </div>
+            
+            
+         </div>
+         
+         
+         
+      </div>
+   </div>
+    
+    </div>
+   <hr>
+   <p class="small text-muted">
+      <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+   </p>
+</div>
+

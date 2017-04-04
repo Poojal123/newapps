@@ -1,0 +1,20 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_customercategory",
+"Columns":[
+		{
+        	"table":"plde_customercategory",
+            "dbcol":"customerCatId",
+			"dbdatatype":"int",
+            "csvindex":"1",
+			"header":"CUSTOMER_CATG_ID"
+        },
+        {
+        	"table":"plde_customercategory",
+            "dbcol":"customerCategory",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"CUSTOMER_CATG_DESC"
+        }
+	]
+}

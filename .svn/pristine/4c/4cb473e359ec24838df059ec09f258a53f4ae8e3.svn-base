@@ -1,0 +1,109 @@
+
+<!--<button ng-click="clearStorage();">Clear Storage</button> -->
+<div class="container-fluid">
+  	<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+	<div class="row" >        
+        <div class="col-md-12" style="left:0px;">        
+        	<div class="row" >        
+                <div class="col-sm-12">
+                    <div > 
+                    <div class="card">
+                        <div class="header">
+                        		
+                            <h4 class="chart-title">Image Indexing
+                            </h4>
+                        </div>   
+                        <div class="content" style="height:60vh">
+                        	<div class="row">
+                            	<div class="col col-md-2" >
+                                	<label>Select Image Type [alt+k]
+									<vc-select   
+	                                accesskey = "k"
+                                     label="Select Image Type"
+                                     whr=' '  
+                                     tbl='ccimagetypemaster' 
+                                     dbval='imageTypeId' 
+                                     dblbl='imageType'
+                                     data-accessor="formdata.imageType" 
+                                     labelaccessor="formdata.imageType"
+                                     data-datalist="formdata.allImageTypes"
+                                     labeldatalist="{{formdata.allsections}}"
+                                     sql="" 
+                                     data-field="{}"    
+                                     vc-change="getSnippet()"                  
+                                 ></vc-select>    </label>                            
+                                </div>
+                                <div class="col col-md-2">
+									<label>Select Field [alt+j]
+{{formdata.field.selectedItem.fieldId}}
+                                    <vc-select   
+                                    accesskey = "j"
+                                         label="Select Page"
+                                         whr=' and sectionId in (5,6,7,8,9,10,11,12)'  
+                                         tbl='corefields' 
+                                         dbval='fieldId' 
+                                         dblbl='fieldName'
+                                         data-accessor="formdata.field" 
+                                         labelaccessor="fieldmodel"
+                                         data-datalist="formdata.allfields"
+                                         labeldatalist="{{formdata.allsections}}"
+                                         sql="" 
+                                         data-field="field"                                       
+                                         vc-change="getSnippet()"
+                                     ></vc-select>                                
+									</label>
+                                </div>
+                                
+                                <div align="right"  class="col col-md-8">
+<!--    {{options.picPos}}|{{options.size}}|{{options.zoom.value}}-->
+                                
+                                <button ng-click="move(-4,0)" accesskey="1" class="glyphicon glyphicon-arrow-left btn btn-info btn-fill btn-wd"><br />1</button>
+                                <button ng-click="move(4,0)" accesskey="2" class="glyphicon glyphicon-arrow-right	 btn btn-info btn-fill btn-wd"><br />2</button>
+                                <button ng-click="move(0,-4)" accesskey="3" class="glyphicon glyphicon-arrow-up	 btn btn-info btn-fill btn-wd"><br />3</button>
+                                <button ng-click="move(0,4)" accesskey="4" class="glyphicon glyphicon-arrow-down	 btn btn-info btn-fill btn-wd"><br />4</button>
+                                <button ng-click="size(0,4)" accesskey="5" class="glyphicon glyphicon-text-height btn btn-info btn-fill btn-wd">+<br />5</button>
+                                <button ng-click="size(0,-4)" accesskey="6" class="glyphicon glyphicon-text-height btn btn-info btn-fill btn-wd">-<br />6</button>        
+                                <button ng-click="size(4,0)" accesskey="7" class="glyphicon glyphicon-text-width	 btn btn-info btn-fill btn-wd">+<br />7</button>        
+                                <button ng-click="size(-4,0)" accesskey="8" class="glyphicon glyphicon-text-width	 btn btn-info btn-fill btn-wd">-<br />8</button>
+                                <button ng-click="reset()" accesskey="9" class="glyphicon btn btn-info btn-fill btn-wd">Clear<br />9</button>
+<!--								<button ng-click="gotopage(1)" accesskey="n" class="glyphicon btn btn-info btn-fill btn-wd">Next Page<br />n</button>-->                                <button ng-click="save()" accesskey="m" class="glyphicon btn btn-info btn-fill btn-wd">Save<br />m</button>
+								
+                                </div>
+
+                            </div>
+
+
+<div class="row" >
+            <div class="col-md-12" style="height:30vh; z-index:999" >
+            <div class="col-md-12" style="height:30vh; right:0px;">
+					<canvas-viewer src="fileInput" overlays="overlays" options="options" style="height:90%;"></canvas-viewer>
+			</div>
+     
+
+        </div>
+
+    </div>
+                            
+
+                        
+				        </div>
+                    </div>
+                    </div>
+                 </div>
+			</div>
+        </div> 
+        
+        
+    </div>
+
+ 
+    <hr>
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="chart-title">Image Indexing</h4>
+            </div>
+            <div class="content">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label >Indexing Type</label>
+                                <select class="form-control" ng-model="ddlDocumentTypes">
+                                    <option ng-repeat="docType in ddlDocumentTypes.result" value="{{docType.documentId}}">{{docType.documentName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+        </div>
+    </div>
+    <hr>
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+</div>

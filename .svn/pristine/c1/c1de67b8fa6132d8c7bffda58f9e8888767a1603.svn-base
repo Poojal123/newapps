@@ -1,0 +1,118 @@
+<div class="container-fluid">
+<div class="panel panel-default" >
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Filter</h3></div>
+         
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+			<form class="form" role="form" ng-submit="report()">
+            <div class="row" >
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "reportType" value="Consolidated" label="Consolidated Report" name="reportType"> </vc-radio>
+                        </div>
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "reportType" value="Summary" label="Summary Report" name="reportType"> </vc-radio>
+                    </div>    
+               </div>
+               
+               <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                        <label >Date from</label>
+                        <input my-datepicker date-format="{{format}}" type="text" name="name" placeholder="Select Date"  
+                         class="form-control elastic" ng-model="searchparams.fromDate" />
+                    </div>
+                    <div class="form-group col-md-3" >
+                        <label >Date to</label>
+                        <input my-datepicker date-format="{{format}}"  type="text" name="name" placeholder="Select Date"  
+                        class="form-control elastic" ng-model="searchparams.toDate" />
+                    </div>    
+               </div>
+
+                <div class="row" ng-if="reportType=='Consolidated'">
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "selectedRadio" value="AL" label="Auto Loan" name="applicationType"> </vc-radio>
+                        </div>
+                    <div class="form-group col-md-3">
+                        <vc-radio  model= "selectedRadio" value="PL" label="Personal Loan" name="applicationType"> </vc-radio>
+                    </div>    
+               </div>
+                <div class="row" ng-if="reportType=='Summary'" >
+               <div class="form-group col-md-3">
+                        <label >Location</label>
+                        <vc-ddl    whr='' tbl='alpllocationmaster'  dbval='locationId' dblbl='location' data-accessor="selectedLocation" ></vc-ddl>
+                    </div>
+
+               </div>
+               
+
+               <div class="row" >
+                     <div class="form-group col-md-3">
+                        <button class="btn btn-lg btn-primary " type="submit" ng-click="report()" >Report</button>
+                    </div>    
+				</div>
+
+            </form>
+		</div>
+  </div> 
+<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+
+                </div>
+        </h3>
+      </div>
+      <div class="panel-body">        
+                <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="!PERMISSION.READ && 1==2">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Error!</strong> You don't have permission to access this module.
+                </div>
+
+                <div >
+                 <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                     <tr ng-repeat="company in $data">
+			             
+                         
+                       <td  scope="row"  title="'Id'" filter="{ companyId: 'text'}" sortable="'companyId'" align="center" width="250px">
+                       	{{company.companyId}}
+                       </td>
+                       <td scope="row" title="'Name'" filter="{companyName: 'text'}" sortable="'companyName'" align="center">{{company.companyName}}<br/></td>
+                       <td scope="row" title="'#'" width="100px" >
+                        
+                        <a href ng-click="getCompany(company)"
+                     
+                        class="glyphicon glyphicon-edit actionbutton"></a>
+                        
+                        <a href ng-click="deleteCompany(company)" 
+                     
+                        class="glyphicon glyphicon-remove actionbutton"></a>
+                        
+                        </td>
+                     </tr>
+     
+                 </table>
+			    </div>
+                 </form>
+        
+      </div>
+    </div>
+
+
+     
+
+
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>

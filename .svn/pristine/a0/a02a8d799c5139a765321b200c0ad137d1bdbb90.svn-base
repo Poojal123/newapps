@@ -1,0 +1,13 @@
+{
+"Name":"Import Reasons",
+"PrimaryTable":"technicalscrutiny",
+"Columns":[
+        {
+        	"table":"tsreasonmaster",
+            "dbcol":"reasonName",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"EMPLOYERNAME"
+        }
+	]
+}

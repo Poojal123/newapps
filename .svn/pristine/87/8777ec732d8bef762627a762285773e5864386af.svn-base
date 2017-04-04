@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Starter UI, by Keen IO</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/keen-dashboards.css" />
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="assets/img/vara-logo.png">
+        </a>
+		<ul class="nav navbar-left">
+                <li>
+                  <a href="#" class="user-profile">
+				  <img src="assets/img/super-admin.jpg" alt="">Super Admin
+                  </a>
+                </li>
+			</ul>
+		
+      </div>
+	  <ul class="nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile" data-toggle="dropdown" aria-expanded="false">Logout
+                  </a>
+                </li>
+			</ul>
+    </div>
+	<div class="navbar-collapse collapse graybg">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#">Image Indexing</a></li>
+          <li><a href="#">Image Renaming</a></li>
+		  <li class="m-toggle"><a href="#">Logout</a></li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="chart-title">Image Indexing</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label >Indexing Type</label>
+                                                <select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Sub Type</label>
+                                                <select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Source Path</label>
+                                                <input type="file" class="form-control border-input" placeholder="Source Path" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Total Image</label>
+                                                <input type="text" class="form-control border-input" placeholder="Total Image" value="">
+                                            </div>
+                                        </div>
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Current Image</label>
+                                                <input type="text" class="form-control border-input" placeholder="Current Image" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Source Path</label>
+                                                <input type="file" class="form-control border-input" placeholder="Source Path" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Image Name</label>
+                                                <input type="text" class="form-control border-input" placeholder="Image Name" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Account No</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+										<div class="col-md-4">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <input type="text" class="form-control border-input" placeholder="" value="">
+                                            </div>
+                                        </div>
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Document Type</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+										<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Document Type</label>
+												<select class="form-control">
+												<option>Select One</option>
+												<option>Select Two</option>
+												<option>Select Three</option>
+												<option>Select Four</option>
+												</select>
+                                            </div>
+                                        </div>
+										
+
+										
+                                    </div>
+									
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Save</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Previous</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Next</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Previously Saved Image</button>
+										<button type="submit" class="btn btn-info btn-fill btn-wd">Go To</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-8">
+	  <div class="imgtool">
+	  <a href="#"><img src="assets/img/right_rotate.png"></a>
+	  <a href="#"><img src="assets/img/left_rotate.png"></a>
+	  <a href="#"><img src="assets/img/zoom-in-32.png"></a>
+	  <a href="#"><img src="assets/img/zoom-out-32.png"></a>
+	  </div>
+        <div class="chart-wrapper">
+          <img src="assets/img/vara-solutions.jpg" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted"><a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016</p>
+
+  </div>
+
+  <script type="text/javascript" src="assets/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="assets/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="assets/lib/keen-js/dist/keen.min.js"></script>
+  <script type="text/javascript" src="assets/js/meta.js"></script>
+  <script type="text/javascript" src="keen.dashboard.js"></script>
+
+</body>
+</html>

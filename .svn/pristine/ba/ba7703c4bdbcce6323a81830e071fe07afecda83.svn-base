@@ -1,0 +1,24 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"ccimport",
+"Columns":[
+		{
+        	"table":"ccimport",
+            "dbcol":"importId",
+			"dbdatatype":"string",
+            "csvindex":"1"
+        },
+		{
+        	"table":"ccimport",
+            "dbcol":"CCNo",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"ccimport",
+            "dbcol":"agencyBatchId",
+			"dbdatatype":"int",
+            "csvindex":"-1"
+        }
+	]
+}

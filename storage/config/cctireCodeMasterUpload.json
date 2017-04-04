@@ -1,0 +1,54 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"cctiercodemaster",
+"Columns":[
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"id",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"coCode",
+			"dbdatatype":"int",
+            "csvindex":"2"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"tierType",
+			"dbdatatype":"int",
+            "csvindex":"3"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"snNo",
+			"dbdatatype":"string",
+            "csvindex":"4"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"codeName",
+			"dbdatatype":"string",
+            "csvindex":"5"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"indicator",
+			"dbdatatype":"string",
+            "csvindex":"6"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"tireCode",
+			"dbdatatype":"string",
+            "csvindex":"7"
+        },
+        {
+        	"table":"cctiercodemaster",
+            "dbcol":"indicatorType",
+			"dbdatatype":"string",
+            "csvindex":"8"
+        }
+	]
+}

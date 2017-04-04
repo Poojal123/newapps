@@ -1,0 +1,21 @@
+{{model}}{{field.fieldName}}<input 
+									class="form-control"                                      
+									ui-mask="99-99-9999" 
+                                    model-view-value="true" 
+                                    ui-mask-raw="false" 
+                                    placeholder="DD-MM-YYYY"
+                                    ng-model="model"
+									name =  "{{field.fieldName}}"
+                                    tabindex="{{field.fieldId}}"
+									ng-disabled="((processfield | filter: {fieldId:field.fieldId}).length < 1)"
+                                    focus
+                                    ng-change="vcChange()"
+                                    ng-blur="vcBlur()"
+                                    id="{{field.fieldId}}"
+                                    style="margin-bottom:5px; margin-top:5px;"
+                                    data-field="field"
+                                    ng-required = "(field.validations.indexOf('Blank') === -1)?false:true" 
+									ng-focus="onFocus(field)"
+                                    />
+                                    
+                                    

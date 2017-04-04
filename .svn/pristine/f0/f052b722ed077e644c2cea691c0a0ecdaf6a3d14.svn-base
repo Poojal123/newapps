@@ -1,0 +1,24 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"tmp",
+"Columns":[
+		{
+        	"table":"tmp",
+            "dbcol":"fname",
+			"dbdatatype":"string",
+            "csvindex":"1"
+        },
+        {
+        	"table":"tmp",
+            "dbcol":"email",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"tmp",
+            "dbcol":"docId",
+			"dbdatatype":"int",
+            "csvindex":"3"
+        }
+	]
+}

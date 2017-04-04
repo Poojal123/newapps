@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="chart-title">Image Rename</h4>
+                </div>
+                <div class="content">
+                    <form method="post" name="form1" ng-submit="subForm(formdata.file)" >
+                        <div class="row">
+                            <div class="col-md-3">
+                                   <label
+                                       >CSV Upload
+                                     <input 
+	                                    type="file" 
+                                    	style="border:solid;border-color:#CCC; border-radius:5px;" 
+                                        ng-model="formdata.file"
+                                        name="file"
+                                        ngf-model-invalid="errorFile"
+                                        ngf-select
+                                        /><br>
+                                          <i ng-show="form.file.$error.maxSize">File too large 
+                                              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                     </label>   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Job No.</label>
+                                    <input type="text" ng-model="job" value="" class="form-control border-input" placeholder="Please Enter the job no.">
+                                </div>
+                            </div>
+                        </div>
+						<div class="row">
+                        <div class="col-md-3 ">
+                            <label >Indexing Type</label>
+                            <vc-ddl   whr='' tbl='casaimageindextype' dbval='indexingId' dblbl='indexingType'
+                             data-accessor="selectedindextype" sql=""  ></vc-ddl>
+                        </div>
+                           <div  class="col-md-3 form-group" ng-show = "selectedindextype.selectedItem.indexingId == 7"  class="row">
+                            <label>Sub Type</label>
+                            <vc-ddl   whr='' tbl='casanritype' dbval='nriId' dblbl='nriType'
+                             data-accessor="selectednritype" sql=""   ></vc-ddl>
+                        </div>
+
+						</div>
+<!--                        {{selectedindextype.selectedItem.indexingId}}
+                        {{selectednritype.selectedItem.nriId}}-->
+                        <div class="row">
+                           <div class="col-md-2">
+                                <div class="form-group"><br />
+                                    <button type="submit" name="Rename" id="Rename" ng-click="Rename()"class="btn btn-info btn-fill btn-wd">Import</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>

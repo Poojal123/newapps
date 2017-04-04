@@ -1,0 +1,84 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+         <div class="header">
+                
+                    <h4 class="chart-title">User Productivity Status</h4>
+                </div>
+                <form method="post" name="form1" ng-submit="subForm()" >
+               	<span ng-repeat="rowFields in section.sortedFields track by $index">
+                     <div class="row">
+                        <div class="col-md-3" ng-repeat="field in rowFields track by $index" >
+                           <div class="form-group">
+                            
+                              <label class="col-md-12">
+                                
+                                  <vc-ddl   
+                                  ng-if="field.fieldType=='DropDown'"
+                                   label="{{field.fieldName}}"
+                                     whr=' '
+                                     tbl='{{field.metaInfo.Tables}}' 
+                                     dbval='DisplayLabel' 
+                                     dblbl='{{field.metaInfo.DisplayLabel}}'
+                                     data-accessor="formdata[field.model]" 
+                                     labelaccessor="{{field.model}}"
+                                     data-datalist="field.metaInfo.datalist"
+                                     labeldatalist="{{field.metaInfo.datalist}}"
+                                     sql="{{field.metaInfo.sql}}" 
+                                     vc-change="getValue([field.model])"
+                                     data-field="field"
+                             	    >
+                                 </vc-ddl>
+                              </label>
+                              
+                                    <label class="col-md-12" ng-if="field.fieldType=='Calendar'">{{field.fieldName}}
+                                <input my-datepicker format="{{format}}" type="text" ng-model="formdata[field.model]" id="myDP" />
+                                </label>
+                           		
+                              </div>
+                        </div>
+                     </div>
+                  </span>
+                  
+                 
+                 <button type="submit" ng-click="userProductivityStatusReport()" class="btn btn-lg btn-primary">submit</button>
+
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+         <div class="panel panel-default">
+        <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+					<div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="userProductivityStatusReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+					<div >
+                    <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="misreport in $data">
+			     <td  scope="row"  title="'Batch No'" filter="{ batchNo: 'text'}" sortable="'batchNo'" align="center" width="250px">
+                       	{{misreport.batchNo}}</td>
+                  <td  scope="row"  title="'process Name'" filter="{ processName: 'text'}" sortable="'processName'" align="center" width="250px">
+                       	{{misreport.processName}}</td>
+                  <td  scope="row"  title="'pDate'" filter="{ endDate: 'text'}" sortable="'endDate'" align="center" width="250px">
+                       	{{misreport.endDate}}</td> 
+                <td  scope="row"  title="'Total Count'" filter="{ totalCount: 'text'}" sortable="'totalCount'" align="center" width="250px">
+                       	{{misreport.totalCount}}</td>  
+                 <td  scope="row"  title="'full Name'" filter="{ fullName: 'text'}" sortable="'fullName'" align="center" width="250px">
+                       	{{misreport.fullName}}</td>  
+                            
+                     </tr>
+     
+                 </table>                        
+                 </div>
+                 
+               
+        </div>
+    </div>

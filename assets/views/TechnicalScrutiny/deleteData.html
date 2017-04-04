@@ -1,0 +1,23 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" >
+         <div class="card" >
+         <div class="header">
+                
+                    <h4 class="chart-title">Purge Data</h4>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                   
+                        <label >Select Date</label>
+                         <input my-datepicker format="{{format}}" class="form-control elastic" type="text" ng-model="formdata.clgDate" id="myDP" />
+                    </div>
+                    
+               </div>
+
+                            <br>
+                       <button type="submit" ng-click="purgeData()" class="btn btn-lg btn-primary">Submit</button>
+				</div>
+                </div>
+                </div>
+	

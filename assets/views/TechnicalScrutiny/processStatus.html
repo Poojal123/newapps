@@ -1,0 +1,56 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+         <div class="header">
+                
+                    <h4 class="chart-title">Process Status</h4>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                   
+                        <label >Select Date</label>
+                         <input my-datepicker format="{{format}}" type="text" ng-model="formdata.endDate" id="myDP" />
+                    </div>
+                    
+               </div>
+
+                            <br>
+                       <button type="submit" ng-click="processStatusReport()" class="btn btn-lg btn-primary">Submit</button>
+				</div>
+                </div>
+                </div>
+	<div class="panel panel-default">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</h3></div>
+					<div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="processStatusReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                  
+                </div></h3>
+       
+      </div>
+      <div class="panel-body">     
+                    <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="misreport in $data">
+			     <td  scope="row"  title="'Batch No'" filter="{ batchNo: 'text'}" sortable="'batchNo'" align="center" width="250px">
+                       	{{misreport.batchNo}}</td>
+                <td  scope="row"  title="'Total Cheque'" filter="{ totalCheque: 'text'}" sortable="'totalCheque'" align="center" width="250px">
+                       	{{misreport.totalCheque}}</td>
+                  <td  scope="row"  title="'Pending Cheque'" filter="{ pendingCheque: 'text'}" sortable="'pendingCheque'" align="center" width="250px">
+                       	{{misreport.pendingCheque}}</td> 
+                <td  scope="row"  title="'Process Name'" filter="{ processName: 'text'}" sortable="'processName'" align="center" width="250px">
+                       	{{misreport.processName}}</td>  
+                 <td  scope="row"  title="'Full Name'" filter="{ fullName: 'text'}" sortable="'fullName'" align="center" width="250px">
+                       	{{misreport.fullName}}</td>  
+                            
+                     </tr>
+     
+                 </table>                        
+                 </div>
+                
+    </div>
+</div>

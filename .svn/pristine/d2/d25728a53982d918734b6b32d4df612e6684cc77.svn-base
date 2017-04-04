@@ -1,0 +1,85 @@
+<style>
+  #scrollable-area {
+           margin: auto;
+	       width: 100%;
+		   height:400px;
+	       border: 2px solid #ccc;
+	       overflow-y: scroll; /* <-- here is what is important*/
+  }
+  </style>
+<div class="container-fluid">
+<div class="progress" ng-show="proval > 0">
+      <div class="progress-bar {{progressbarstatus}} progress-bar-striped active" role="progressbar"
+      aria-valuenow="{{proval}}" aria-valuemin="0" aria-valuemax="100" style="width:{{proval}}%">
+        {{proval}}% {{currentstatus}}
+      </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="header ">
+                    <!--<h4 class="chart-title">Execute Query</h4>-->
+                 <div class="row">
+                    <div class="col-xs-9" align="left"><h3>Execute Query</div>
+                    <div ng-show="queryexecute!=undefined" class="col-xs-1"  align="right"><h3><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="performanceReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a>
+                 </div>
+                </div>
+                <hr><br>
+                <div class="content">
+                <label>Only Select Query Allowed</label>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea ng-model="sqlquery" class="form-control border-input" style="height:150px;" placeholder="Please Enter Query Here........."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <br>
+                                    <button type="submit" name="import" id="import" ng-click="submitquery(sqlquery)" class="btn btn-info btn-fill btn-wd">Execute</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-16">
+                                <div class="form-group">
+                                    <br>
+                                    <label>Output :-</label>
+                                    <div style=" margin: auto;width: 100%;height:400px;overflow:auto;">     
+                                        <table class="table table-bordered" export-csv="csv" separator="," border=1 >
+                                        <th 
+                                        ng-repeat="(key, value) in queryexecute[0]"
+                                        >
+                                     {{key}}
+                                        </th>
+                                        <tr ng-repeat="row in queryexecute" >
+                                            <!--<td ng-repeat="(key, value) in row">{{key}}</td>-->
+                                            <td ng-repeat="(key, value) in row">{{value}}</td>
+                                            <!--<td ng-repeat="value in row">{{value}}</td>            -->
+                                        </tr>
+                                    </table>     
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+    <p class="small text-muted">
+        <a href="#">VARA UNITED</a> | ALL RIGHTS RESERVED &copy; 2016
+    </p>
+</div>

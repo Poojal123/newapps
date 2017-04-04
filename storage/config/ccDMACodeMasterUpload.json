@@ -1,0 +1,48 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"ccdmamaster",
+"Columns":[
+		{
+        	"table":"ccdmamaster",
+            "dbcol":"dmaId",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"dmaCode",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"dmaDescription",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"dmaCity",
+			"dbdatatype":"string",
+            "csvindex":"4"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"dmaActiveStatus",
+			"dbdatatype":"string",
+            "csvindex":"5"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"modifyOn",
+			"dbdatatype":"string",
+            "csvindex":"6"
+        },
+        {
+        	"table":"ccdmamaster",
+            "dbcol":"modifyBy",
+			"dbdatatype":"string",
+            "csvindex":"7"
+        }
+	]
+}

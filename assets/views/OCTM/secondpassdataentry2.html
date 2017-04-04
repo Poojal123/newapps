@@ -1,0 +1,45 @@
+<div>
+    <input type="button" class="btn btn-info btn-fill btn-wd" value="Back" ng-click="gotoback()"/>
+</div>
+                    <div class="panel-body">
+                        <form class="form" role="form" ng-submit="submitGrades()" method="post" >
+                             <center>
+                            <label style="font-size:18px;">Batch Number : {{batchNumber}}</label>
+                            <label style="margin-left:10px;font-size:18px;">&nbsp;Total Records : {{totalrecords}}</label>
+                            <label style="margin-left:10px;font-size:18px;">&nbsp;User Name : {{userName}}</label>
+                            </center>
+                            <div id="scrollable-area">
+                                <table class="table table-striped" ng-table="tableParams" show-filter="true">
+                                    <tr id="" ng-repeat="misreport in $data">
+                                        <td  scope="row"  title="'Serial Number'" filter="{ serialNumber: 'text'}" sortable="'serialNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.serialNumber" value="{{misreport.serialNumber}}"/>
+                                        </td>
+                                        <td  scope="row"  title="'Account Number'" filter="{ accountNumber: 'text'}" sortable="'accountNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-hide="misreport.accountNumber == '0'" ng-model="misreport.accountNumber" value="{{misreport.accountNumber}}"/>
+                                        </td>
+                                        <td  scope="row"  title="'card Number'" filter="{ cardNumber: 'text'}" sortable="'cardNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-hide="misreport.cardNumber == '0'" ng-model="misreport.cardNumber" value="{{misreport.cardNumber}}"/>
+                                        </td>
+                                        <td  scope="row"  title="'Cheque Number'" filter="{ chequeNumber: 'text'}" sortable="'chequeNumber'" align="center" width="250px">
+                                            <input tabindex="-1" type="text" ng-model="misreport.chequeNumber" value="{{misreport.chequeNumber}}"/>
+                                        </td>
+                                        <td  scope="row"  title="'MICR Code'" filter="{ micrCode: 'text'}" sortable="'micrCode'" align="center" width="250px">
+                                           <input tabindex="-1" type="text" ng-model="misreport.micrCode" value="{{misreport.micrCode}}"/>
+                                        </td>
+                                        <td  scope="row"  title="'Cheque Amount'" filter="{ chequeAmount: 'text'}" sortable="'chequeAmount'" align="center" width="250px">
+                                                <label tabindex="-1" ng-if="misreport.serialNumber == serialNumber1" >{{amount1}}</label>
+                                        </td>
+                                         <td  scope="row"  title="'Second Pass'" align="center" width="250px">
+                                            <input type="text" id="{{$index}}" ng-model="secondpassentry" ng-blur="update(secondpassentry,misreport,'no')" autofocus="autofocus" ></input>
+                                        </td>
+                                        <td  scope="row" align="center" width="250px">
+                                            <input tabindex="-1" type="button" class="btn btn-info btn-fill btn-wd" ng-click="update(secondpassentry,misreport,'save')" value="Update"></input>
+                                        </td> 
+                                        <td  scope="row" align="center" width="250px">
+                                            <input tabindex="-1" type="button" class="btn btn-info btn-fill btn-wd" ng-click="deleterecord(misreport.serialNumber,misreport)" value="Delete"></input>
+                                        </td>
+                                    </tr>
+                                </table>
+			                </div>
+                        </form>
+                    </div>

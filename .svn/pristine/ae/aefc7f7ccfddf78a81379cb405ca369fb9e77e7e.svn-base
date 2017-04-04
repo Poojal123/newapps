@@ -1,0 +1,30 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"alplapplications",
+"Columns":[
+		{
+        	"table":"alplapplications",
+            "dbcol":"applicationNo",
+			"dbdatatype":"string",
+            "csvindex":"1"
+        },
+        {
+        	"table":"alplapplications",
+            "dbcol":"apsNo",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"alplapplications",
+            "dbcol":"location",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        },
+        {
+        	"table":"alplapplications",
+            "dbcol":"batchId",
+			"dbdatatype":"int",
+            "csvindex":"-1"
+        }
+	]
+}

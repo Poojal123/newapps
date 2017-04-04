@@ -1,0 +1,24 @@
+{
+"Name":"Import CC",
+"PrimaryTable":"cccompanymaster",
+"Columns":[
+		{
+        	"table":"cccompanymaster",
+            "dbcol":"companyId",
+			"dbdatatype":"int",
+            "csvindex":"1"
+        },
+        {
+        	"table":"cccompanymaster",
+            "dbcol":"companyCode",
+			"dbdatatype":"string",
+            "csvindex":"2"
+        },
+        {
+        	"table":"cccompanymaster",
+            "dbcol":"CompanyName",
+			"dbdatatype":"string",
+            "csvindex":"3"
+        }
+	]
+}

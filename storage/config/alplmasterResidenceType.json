@@ -1,0 +1,41 @@
+{
+"Name":"Import AL/PL",
+"PrimaryTable":"plde_residencetype",
+"Columns":[
+		{
+        	"table":"plde_residencetype",
+            "dbcol":"moduleId",
+			"dbdatatype":"string",
+            "csvindex":"1",
+			"header":"MODULEID"
+        },
+        {
+        	"table":"plde_residencetype",
+            "dbcol":"key1",
+			"dbdatatype":"string",
+            "csvindex":"2",
+			"header":"KEY1"
+        },
+        {
+        	"table":"plde_residencetype",
+            "dbcol":"key2",
+			"dbdatatype":"string",
+            "csvindex":"3",
+			"header":"KEY2"
+        },
+        {
+        	"table":"plde_residencetype",
+            "dbcol":"accovalue",
+			"dbdatatype":"string",
+            "csvindex":"4",
+			"header":"VALUE"
+        },
+        {
+        	"table":"plde_residencetype",
+            "dbcol":"accodesc",
+			"dbdatatype":"string",
+            "csvindex":"5",
+			"header":"DESCRIPTION"
+        }
+	]
+}

@@ -1,0 +1,24 @@
+{
+"Name":"Import JLA",
+"PrimaryTable":"jlaauditappraisermaster",
+"Columns":[
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditAppraiser",
+	     "dbdatatype":"string",
+            "csvindex":"1"
+        },
+        {
+            "table":"jlaauditappraisermaster",
+            "dbcol":"auditAppraiserEmpNo",
+	    "dbdatatype":"string",
+            "csvindex":"2"
+        },
+	{
+            "table":"jlaauditappraisermaster",
+            "dbcol":"zonalManager",
+	    "dbdatatype":"string",
+            "csvindex":"3"
+        }
+	]
+}

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12" ng-repeat="section in sections">
+         <div class="card" id={{section.sectionId}}>
+         <div class="header">
+                
+                    <h4 class="chart-title">Pendency Cheque Report</h4>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-md-3" ><!--ng-if="reportType!=''"-->
+                        <label >Select Date</label>
+                        <input my-datepicker format="{{format}}" type="text" name="name" placeholder="Select Date"  
+                         class="form-control elastic" ng-model="formdata.endDate" />
+                    </div>
+                    
+               </div>
+
+                            <br>
+                       <button type="submit" ng-click="pendencyCheckReport()" class="btn btn-lg btn-primary">Submit</button>
+				</div>
+                </div>
+                </div>
+      <div class="panel panel-default">
+     <div class="panel-heading" >
+        <h3 class="panel-title">
+                 <div class="row">
+                    <div class="col-xs-6" align="left"><h3>Records</div>
+					<div class="col-xs-3"  align="right"><a class="btn" title="Export Table" ng-click='csv.generate()' ng-href="{{ csv.link() }}"
+                     download="pendencyChequeReport.csv">
+                    <i class="glyphicon glyphicon-new-window"></i> &#160;Export
+                  </a></div>
+                </div>
+        </h3>
+      </div>
+					<div>
+                    <table class="table table-striped" ng-table="tableParams" show-filter="true" export-csv="csv" separator=",">
+                     <tr ng-repeat="misreport in $data">
+                     <td  scope="row"  title="'File Name'" filter="{ fileNames: 'text'}" sortable="'fileNames'" align="center" width="250px">
+                       	{{misreport.fileNames}}</td>
+			     <td  scope="row"  title="'Batch No'" filter="{ batchNo: 'text'}" sortable="'batchNo'" align="center" width="250px">
+                       	{{misreport.batchNo}}</td>
+                  <td  scope="row"  title="'Total Cheque'" filter="{ totalCheque: 'text'}" sortable="'totalCheque'" align="center" width="250px">
+                       	{{misreport.totalCheque}}</td>
+                  <td  scope="row"  title="'Pending In TS'" filter="{ pendingInTs: 'text'}" sortable="'pendingInTs'" align="center" width="250px">
+                       	{{misreport.pendingInTs}}</td> 
+                <td  scope="row"  title="'Pending In Cap 2'" filter="{ pendingInCap2: 'text'}" sortable="'pendingInCap2'" align="center" width="250px">
+                       	{{misreport.pendingInCap2}}</td>  
+                 <td  scope="row"  title="'Pending In Reject'" filter="{ pendingInReject: 'text'}" sortable="'pendingInReject'" align="center" width="250px">
+                       	{{misreport.pendingInReject}}</td>  
+                            
+                     </tr>
+     
+                 </table>                        
+                 </div>
+               
+        </div>
+    </div>
